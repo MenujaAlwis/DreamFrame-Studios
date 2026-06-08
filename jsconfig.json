@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "checkJs": false
+  },
+  "include": ["backend/**/*.js"],
+  "exclude": ["backend/node_modules", "node_modules"]
+}
