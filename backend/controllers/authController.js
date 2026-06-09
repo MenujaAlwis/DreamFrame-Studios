@@ -26,7 +26,20 @@ const loginUser = async (req, res, next) => {
     }
 };
 
+const getCurrentUser = async (req, res, next) => {
+    try {
+        const user = AuthService.getUserData(req.user);
+        res.status(200).json({
+            success: true,
+            user
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    getCurrentUser
 };
