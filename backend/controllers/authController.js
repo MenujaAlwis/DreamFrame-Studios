@@ -6,7 +6,7 @@ const registerUser = async (req, res, next) => {
         res.status(201).json({
             success: true,
             message: 'User registered successfully',
-            result
+            ...result
         });
     } catch (error) {
         next(error);
@@ -19,7 +19,7 @@ const loginUser = async (req, res, next) => {
         res.status(200).json({
             success: true,
             message: 'User logged in successfully',
-            result
+            ...result
         });
     } catch (error) {
         next(error);
