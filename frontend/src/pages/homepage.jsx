@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import './homepage.css';
 import img1 from '../assets/homepage-img1.png';
-import logo from '../assets/logonew.png';
 
 
 const backgroundImages = [img1];
@@ -18,8 +17,6 @@ const HomePage = () => {
 
     return (
         <div className="homepage" style={{ backgroundImage: `url(${backgroundImages[currentImageIndex]})`, }}>
-            <img className="logo" src={logo} alt="Logo" />
-            
         </div>
     );
 };

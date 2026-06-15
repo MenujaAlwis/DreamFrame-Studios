@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  background: transparent;
+}
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+.site-header {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.site-footer {
+  background: #fff;
+  color: #000;
+}
+.page-content {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
