@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import './homepage.css';
 import img1 from '../assets/homepage-img1.png';
-import img2 from '../assets/homepage-img2.png';
-import img3 from '../assets/homepage-img3.png';
-import logo from '../assets/logo.png';
+import logo from '../assets/logonew.png';
 
 
-const backgroundImages = [img1, img2, img3];
+const backgroundImages = [img1];
 
 const HomePage = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -14,7 +12,7 @@ const HomePage = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-        }, 5000);
+        }, 3000);
         return () => clearInterval(interval);
     }, []);
 
