@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import './layout.css';
-import logo from '../assets/logonew.png';
+import logo from '../assets/logo.png';
 
 const Layout = () => {
   return (
