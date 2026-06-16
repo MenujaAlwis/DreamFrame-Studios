@@ -1,0 +1,48 @@
+.mission-section {
+  background: white;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.mission-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.mission-text {
+  font-size: 20px;
+  line-height: 1.8;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s ease;
+  max-width: 800px;
+  text-align: center;
+}
+.mission-image-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s ease;
+}
+.mission-image-container img {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.mission-text.show,
+.mission-image-container.show {
+  opacity: 1;
+  transform: scale(1);
+}
+.mission-text.delay {
+  transition-delay: 0.4s;
+}

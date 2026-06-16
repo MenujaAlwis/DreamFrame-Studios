@@ -1,0 +1,31 @@
+.feedbacks-section {
+    background: #fff;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.feedbacks-title {
+    font-size: 42px;
+    margin-bottom: 60px;
+    font-weight: 600;
+}
+
+.feedback-card {
+    max-width: 700px;
+    margin: auto;
+    transition: opacity 0.5s ease;
+}
+
+.feedback-text {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #333;
+    opacity: 0.9;
+}
+
+.feedback-name {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #111;
+    letter-spacing: 1px;
+}
