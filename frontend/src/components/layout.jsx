@@ -2,12 +2,29 @@ import { NavLink, Outlet } from 'react-router-dom';
 import Feedbacks from '../components/Feedbacks';
 import Mission from '../components/Mission';
 import './layout.css';
-
+import { useEffect, useRef, useState } from 'react';
 import logo from '../assets/logo.png';
 import logofooter from '../assets/logofooter.png';
 import { FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
 const Layout = () => {
+  const footerRef = useRef(null);
+  const [footerVisible, setFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setFooterVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (footerRef.current) observer.observe(footerRef.current);
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <div className="layout">
 
@@ -31,9 +48,9 @@ const Layout = () => {
         <Feedbacks />
       </main>
 
-      <footer className="site-footer">
+      <footer className="site-footer" ref={footerRef}>
         <hr className="horizontal-line" />
-        <div className="footer-content">
+        <div className={`footer-content ${footerVisible ? 'show' : ''}`}>
           <img className="logofooter" src={logofooter} alt="Logo" />
           {/* quick-links */}
           <div className="footer-section">
@@ -66,7 +83,7 @@ const Layout = () => {
 
         <hr className="horizontal-line" />
 
-        <div className="footer-bottom">
+        <div className={`footer-bottom ${footerVisible ? 'show' : ''}`}>
           <p>&copy; {new Date().getFullYear()} DreameFrame-Studios. All rights reserved.</p>
         </div>
       </footer>

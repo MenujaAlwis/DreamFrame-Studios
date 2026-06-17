@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
-import missionImage1 from '../assets/mission1.jpg';
-import missionImage2 from '../assets/mission2.jpg';
-import missionImage3 from '../assets/mission3.jpg';
-import missionImage4 from '../assets/mission4.jpg';
+import missionImage1 from '../assets/mission1.1.png';
+import missionImage2 from '../assets/mission2.1.png';
+import missionImage3 from '../assets/mission3.1.png';
+import missionImage4 from '../assets/mission4.1.png';
 
 import './mission.css';
 
@@ -33,7 +33,7 @@ const Mission = () => {
 
       <div className="mission-container">
 
-        <p className={`mission-text ${isVisible ? 'show' : ''}`}>
+        <p className={`mission-text mission-text-first ${isVisible ? 'show' : ''}`}>
           We don’t just take photos — we preserve emotions, stories, and moments that can never be repeated.
         </p>
 
@@ -44,7 +44,7 @@ const Mission = () => {
           <img src={missionImage4} alt="Mission 4" />
         </div>
 
-        <p className={`mission-text ${isVisible ? 'show delay' : ''}`}>
+        <p className={`mission-text mission-text-second ${isVisible ? 'show delay' : ''}`}>
           From weddings to graduations, birthdays to family gatherings, we turn your memories into timeless visual art.
         </p>
 
