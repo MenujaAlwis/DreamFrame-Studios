@@ -1,46 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
 .feedbacks-section {
-    padding: 80px 0px;
+  padding: 80px 0;
   width: 100%;
   height: 50vh;
-    background: #fff;
+  background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: left;
-
   position: relative;
   color: white;
-
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+
 .feedbacks-section::before {
   content: "";
   position: absolute;
   inset: 0;
-    z-index: 1;
+  z-index: 1;
+}
+
+.slide-1::before,
+.slide-3::before {
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.75) 0%,
     rgba(0, 0, 0, 0.35) 30%,
-    rgba(0, 0, 0, 0.0) 60%
+    rgba(0, 0, 0, 0) 60%
   );
 }
+
+.slide-0::before,
+.slide-2::before {
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.35) 30%,
+    rgba(0, 0, 0, 0) 60%
+  );
+}
+
 .feedback-card {
-    z-index: 2;
+  z-index: 2;
   width: 33%;
   max-width: 500px;
-  text-align: left;
-  margin-left: 100px;
 }
+
+.slide-1 .feedback-card,
+.slide-3 .feedback-card {
+  margin-left: 100px;
+  margin-right: 0;
+  text-align: left;
+}
+
+.slide-0 .feedback-card,
+.slide-2 .feedback-card {
+  margin-left: auto;
+  margin-right: 100px;
+  text-align: right;
+}
+
 .feedback-text {
-    font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 40px;
   line-height: 1.2;
   color: #ffffff;
 }
+
 .feedback-name {
   margin-top: 20px;
   font-size: 20px;
@@ -53,7 +81,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   border: none;
   color: white;
   font-size: 30px;
@@ -64,7 +92,7 @@
 }
 
 .arrow:hover {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .left {
@@ -73,4 +101,18 @@
 
 .right {
   right: 20px;
+}
+.feedback-card.animate {
+  animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
