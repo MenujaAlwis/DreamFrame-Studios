@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+
 body {
   margin: 0;
   background: transparent;
 }
+
 .layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
+
 .logo {
   width: 150px;
   height: auto;
@@ -21,6 +24,7 @@ body {
   width: 100%;
   z-index: 1000;
 }
+
 .header-content {
   display: flex;
   align-items: center;
@@ -30,11 +34,13 @@ body {
   gap: 150px;
   padding: 15px 0;
 }
+
 .nav-links {
   display: flex;
   gap: 30px;
   align-items: center;
 }
+
 .nav-link {
   color: #fff;
   text-decoration: none;
@@ -53,12 +59,14 @@ body {
   border-bottom: 2px solid #fff;
   padding-bottom: 3px;
 }
+
 .page-content {
   display: flex;
   flex-direction: column;
 }
+
 .site-footer {
-  background: #fff;
+  background: #fdfdfd;
   color: #000;
 }
 
@@ -66,14 +74,98 @@ body {
   width: 90%;
   border: none;
   height: 1px;
-  background-color: #dfdfdf;
+  background-color: #dbcfc2;
   margin: 20px auto;
 }
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 85%;
+  margin: 0 auto;
+  padding: 40px 0;
+  gap: 60px;
+}
+
+.logofooter {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-section h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #6B5E50;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: #6B5E50;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #3e2f20;
+  transform: translateY(-2px);
+}
+
+.social-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.social-section h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #6B5E50;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.social-icons a {
+  color: #6B5E50;
+  font-size: 22px;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #4a3d2f;
+  transform: scale(1.2);
+}
+
 .footer-bottom {
   font-family: 'Inter', sans-serif;
   font-weight: 200;
   text-align: center;
   padding: 15px 0 30px;
   font-size: 14px;
-  color: #555;
+  color: #6B5E50;
 }

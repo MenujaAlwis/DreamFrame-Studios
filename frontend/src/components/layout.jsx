@@ -4,6 +4,8 @@ import Mission from '../components/Mission';
 import './layout.css';
 
 import logo from '../assets/logo.png';
+import logofooter from '../assets/logofooter.png';
+import { FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
 const Layout = () => {
   return (
@@ -30,27 +32,36 @@ const Layout = () => {
       </main>
 
       <footer className="site-footer">
+        <hr className="horizontal-line" />
         <div className="footer-content">
-
+          <img className="logofooter" src={logofooter} alt="Logo" />
+          {/* quick-links */}
           <div className="footer-section">
-            <h4>DreameFrame-Studios</h4>
-            <p>Premium event photography and videography for your special moments.</p>
-          </div>
-
-          <div className="footer-section">
-            <h4>Quick Links</h4>
+            <h4>Discover More</h4>
             <ul className="footer-links">
+              <li><a href="/">Home</a></li>
               <li><a href="/portfolio">Portfolio</a></li>
               <li><a href="/services">Services</a></li>
               <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
+          {/* Social media icons section */}
+          <div className="social-section">
+            <h4>Connect With Us</h4>
+            <div className="social-icons">
+              <a href="https://instagram.com/yourprofile" target="_blank" rel="noreferrer">
+                <FaInstagram />
+              </a>
 
-          <div className="footer-section">
-            <h4>Connect</h4>
-            <p className="footer-muted">hello@dreameframe.com</p>
+              <a href="https://wa.me/yourNumber" target="_blank" rel="noreferrer">
+                <FaWhatsapp />
+              </a>
+
+              <a href="https://facebook.com/yourprofile" target="_blank" rel="noreferrer">
+                <FaFacebook />
+              </a>
+            </div>
           </div>
-
         </div>
 
         <hr className="horizontal-line" />
