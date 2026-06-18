@@ -4,6 +4,7 @@ const getPortfolioItems = async (req, res, next) => {
   try {
     const { category } = req.query;
     const filter = category ? { category } : {};
+
     const items = await PortfolioService.getPortfolioItems(filter);
 
     res.status(200).json({
@@ -18,26 +19,27 @@ const getPortfolioItems = async (req, res, next) => {
 const createPortfolioItem = async (req, res, next) => {
   try {
     const { title, category } = req.body;
-    const file = req.file;
 
-    if (!file) {
+    const coverImage = req.files?.coverImage?.[0];
+    const media = req.files?.media || [];
+
+    if (!coverImage) {
       return res.status(400).json({
         success: false,
-        message: 'Media file is required',
+        message: 'Cover image is required',
       });
     }
 
     const item = await PortfolioService.createPortfolioItem({
       title,
       category,
-      fileBuffer: file.buffer,
-      mimetype: file.mimetype,
-      fileName: file.originalname,
+      coverImage,
+      media,
     });
 
     res.status(201).json({
       success: true,
-      message: 'Portfolio item uploaded successfully',
+      message: 'Portfolio created successfully',
       item,
     });
   } catch (error) {
@@ -48,6 +50,7 @@ const createPortfolioItem = async (req, res, next) => {
 const deletePortfolioItem = async (req, res, next) => {
   try {
     const { id } = req.params;
+
     await PortfolioService.deletePortfolioItem(id);
 
     res.status(200).json({

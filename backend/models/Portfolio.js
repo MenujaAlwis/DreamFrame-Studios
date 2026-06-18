@@ -1,5 +1,15 @@
 const mongoose = require('mongoose');
 
+const mediaSchema = new mongoose.Schema(
+  {
+    url: { type: String, required: true },
+    thumbnailUrl: String,
+    cloudinaryPublicId: String,
+    mediaType: { type: String, enum: ['image', 'video'], required: true },
+  },
+  { _id: false }
+);
+
 const portfolioSchema = new mongoose.Schema(
   {
     title: { type: String, required: true, trim: true },
@@ -11,21 +21,8 @@ const portfolioSchema = new mongoose.Schema(
       index: true,
     },
 
-    coverImage: {
-      url: String,
-      thumbnailUrl: String,
-      cloudinaryPublicId: String,
-      mediaType: { type: String, enum: ['image', 'video'], default: 'image' }
-    },
-
-    media: [
-      {
-        url: { type: String, required: true },
-        thumbnailUrl: String,
-        cloudinaryPublicId: String,
-        mediaType: { type: String, enum: ['image', 'video'], required: true }
-      }
-    ],
+    coverImage: mediaSchema,
+    media: [mediaSchema],
   },
   { timestamps: true }
 );

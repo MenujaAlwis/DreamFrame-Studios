@@ -7,11 +7,7 @@ class PortfolioService {
   static uploadBufferToCloudinary(buffer, options) {
     return new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(options, (error, result) => {
-        if (error) {
-          reject(error);
-          return;
-        }
-
+        if (error) return reject(error);
         resolve(result);
       });
 
@@ -27,51 +23,61 @@ class PortfolioService {
   }
 
   static async getPortfolioItems(filter = {}) {
-    const items = await Portfolio.find(filter).sort({ createdAt: -1 });
-    return items;
+    return await Portfolio.find(filter).sort({ createdAt: -1 });
   }
 
   static async createPortfolioItem(payload) {
-    const { title, category, fileBuffer, mimetype, fileName } = payload;
+    const { title, category, coverImage, media } = payload;
 
     if (!title || !category) {
       throw new AppError('Title and category are required', 400);
     }
 
-    if (!fileBuffer) {
-      throw new AppError('Media file is required', 400);
+    const uploadFile = async (file) => {
+      const result = await this.uploadBufferToCloudinary(file.buffer, {
+        folder: 'dreamframe-portfolio',
+        resource_type: 'auto',
+        public_id: `${Date.now()}-${file.originalname}`,
+      });
+
+      return {
+        url: result.secure_url,
+        thumbnailUrl: result.secure_url,
+        cloudinaryPublicId: result.public_id,
+        mediaType: file.mimetype.startsWith('video/') ? 'video' : 'image',
+      };
+    };
+
+    const cover = await uploadFile(coverImage);
+
+    const mediaUploads = [];
+
+    for (const file of media) {
+      mediaUploads.push(await uploadFile(file));
     }
 
-    const mediaType = mimetype.startsWith('video/') ? 'video' : 'image';
-
-    const cloudinaryResult = await this.uploadBufferToCloudinary(fileBuffer, {
-      folder: 'event-photography/portfolio',
-      resource_type: 'auto',
-      public_id: `${Date.now()}-${fileName}`,
-    });
-
-    const item = await Portfolio.create({
+    return await Portfolio.create({
       title,
       category,
-      mediaType,
-      mediaUrl: cloudinaryResult.secure_url,
-      thumbnailUrl: cloudinaryResult.secure_url,
-      cloudinaryPublicId: cloudinaryResult.public_id,
+      coverImage: cover,
+      media: mediaUploads,
     });
-
-    return item;
   }
 
   static async deletePortfolioItem(itemId) {
     const item = await Portfolio.findByIdAndDelete(itemId);
 
-    if (!item) {
-      throw new AppError('Portfolio item not found', 404);
-    }
+    if (!item) throw new AppError('Portfolio item not found', 404);
 
-    await cloudinary.uploader.destroy(item.cloudinaryPublicId, {
-      resource_type: item.mediaType === 'video' ? 'video' : 'image',
+    await cloudinary.uploader.destroy(item.coverImage.cloudinaryPublicId, {
+      resource_type: item.coverImage.mediaType,
     });
+
+    for (const file of item.media) {
+      await cloudinary.uploader.destroy(file.cloudinaryPublicId, {
+        resource_type: file.mediaType,
+      });
+    }
 
     return { message: 'Portfolio item deleted successfully' };
   }
