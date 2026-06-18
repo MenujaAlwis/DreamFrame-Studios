@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/api';
 import { useAuth } from '../context/AuthContext';
@@ -8,7 +8,7 @@ import './loginpage.css';
 const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, login, isAdmin } = useAuth();
+  const { login, isAdmin } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,13 +16,6 @@ const LoginPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const from = location.state?.from?.pathname || '/admin';
-
-  // If already logged in as admin → redirect
-  useEffect(() => {
-    if (isAdmin) {
-      navigate('/admin', { replace: true });
-    }
-  }, [isAdmin, navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,7 +26,6 @@ const LoginPage = () => {
 
       const result = await loginUser({ email, password });
 
-      // Backend must ensure only admin can login
       if (!result.user || result.user.role !== 'admin') {
         setError('Access denied');
         return;
@@ -49,7 +41,6 @@ const LoginPage = () => {
     }
   };
 
-  // Prevent login page if already authenticated
   if (isAdmin) {
     return <Navigate to="/admin" replace />;
   }
@@ -60,9 +51,7 @@ const LoginPage = () => {
         <div className="login-copy">
           <span className="login-eyebrow">Admin access</span>
           <h1>Sign in to DreamFrame-Studios</h1>
-          <p>
-            Only authorized admins can access this panel.
-          </p>
+          <p>Only authorized admins can access this panel.</p>
         </div>
 
         <Card className="login-card" hover>

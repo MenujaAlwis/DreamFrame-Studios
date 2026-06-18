@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './adminpage.css';
+import UploadPortfolioItem from './uploadPortfolioItem';
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -14,11 +15,19 @@ const AdminPage = () => {
 
   return (
     <div className="admin-page">
-      <button onClick={handleLogout}>
-        Logout
-      </button>
 
-      <h1 className="admin-title">Admin Dashboard</h1>
+      <div className="admin-header">
+        <h1 className="admin-title">Admin Dashboard</h1>
+
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+
+      <div className="admin-content">
+        <UploadPortfolioItem />
+      </div>
+
     </div>
   );
 };
