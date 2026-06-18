@@ -2,38 +2,32 @@ const mongoose = require('mongoose');
 
 const portfolioSchema = new mongoose.Schema(
   {
-    title: {
-      type: String,
-      required: [true, 'Title is required'],
-      trim: true,
-    },
+    title: { type: String, required: true, trim: true },
+
     category: {
       type: String,
-      required: [true, 'Category is required'],
-      trim: true,
+      enum: ['wedding', 'pre-shoot', 'portrait', 'event', 'commercial'],
+      required: true,
       index: true,
     },
-    mediaType: {
-      type: String,
-      enum: ['image', 'video'],
-      required: [true, 'Media type is required'],
+
+    coverImage: {
+      url: String,
+      thumbnailUrl: String,
+      cloudinaryPublicId: String,
+      mediaType: { type: String, enum: ['image', 'video'], default: 'image' }
     },
-    mediaUrl: {
-      type: String,
-      required: [true, 'Media URL is required'],
-    },
-    thumbnailUrl: {
-      type: String,
-      required: [true, 'Thumbnail URL is required'],
-    },
-    cloudinaryPublicId: {
-      type: String,
-      required: [true, 'Cloudinary public ID is required'],
-    },
+
+    media: [
+      {
+        url: { type: String, required: true },
+        thumbnailUrl: String,
+        cloudinaryPublicId: String,
+        mediaType: { type: String, enum: ['image', 'video'], required: true }
+      }
+    ],
   },
-  {
-    timestamps: { createdAt: true, updatedAt: false },
-  }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model('Portfolio', portfolioSchema);
