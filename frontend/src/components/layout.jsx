@@ -48,6 +48,7 @@ const Layout = () => {
               <li><a href="/">Home</a></li>
               <li><a href="/portfolio">Portfolio</a></li>
               <li><a href="/services">Services</a></li>
+              <li><a href="/our-team">Our Team</a></li>
               <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
@@ -73,7 +74,7 @@ const Layout = () => {
         <hr className="horizontal-line" />
 
         <div className={`footer-bottom ${footerVisible ? 'show' : ''}`}>
-          <p>&copy; {new Date().getFullYear()} DreameFrame-Studios. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DreamFrame-Studios. All rights reserved.</p>
         </div>
       </footer>
 

@@ -17,7 +17,7 @@ text-transform: uppercase;
   color: #222222;
 }
 .site-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 1000;
@@ -30,6 +30,7 @@ text-transform: uppercase;
 
 .header-white {
   background: #ffffff;
+  position: fixed;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 8px 0;
 }
@@ -37,7 +38,7 @@ text-transform: uppercase;
 .header-content {
   display: flex;
   align-items: center;
-  width: 85%;
+  width: 90%;
   margin: 0 auto;
   justify-content: space-between;
   gap: 150px;
