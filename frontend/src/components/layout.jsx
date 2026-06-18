@@ -2,8 +2,8 @@ import { NavLink, Outlet } from 'react-router-dom';
 import Feedbacks from '../components/Feedbacks';
 import Mission from '../components/Mission';
 import './layout.css';
+import Header from "../components/Header";
 import { useEffect, useRef, useState } from 'react';
-import logo from '../assets/logo.png';
 import logofooter from '../assets/logofooter.png';
 import { FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
@@ -28,18 +28,7 @@ const Layout = () => {
   return (
     <div className="layout">
 
-      <header className='site-header'>
-        <div className="header-content">
-          <img className="logo" src={logo} alt="Logo" />
-
-          <nav className="nav-links">
-            <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Home</NavLink>
-            <NavLink to="/portfolio" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Portfolio</NavLink>
-            <NavLink to="/services" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Services</NavLink>
-            <NavLink to="/contact" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Contact</NavLink>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <main className="page-content">
         <Outlet />
