@@ -1,6 +1,7 @@
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   border: none;
   border-radius: 8px;
@@ -8,6 +9,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: inherit;
+  text-align: center;
 }
 
 .btn:disabled {

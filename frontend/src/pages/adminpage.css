@@ -1,0 +1,11 @@
+.admin-page {
+    background-color: #fdfdfd;
+    min-height: 100vh;
+}
+.admin-title {
+    min-height: 100vh;
+    background: #fdfdfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
