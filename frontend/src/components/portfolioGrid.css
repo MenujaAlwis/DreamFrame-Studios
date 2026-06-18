@@ -1,0 +1,140 @@
+.portfolio-section {
+  width: 100%;
+  padding: 60px 40px;
+  background: #ffffff;
+}
+
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.portfolio-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.portfolio-subtitle {
+  font-size: 15px;
+  color: #777;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-card {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* COVER IMAGE */
+.portfolio-cover {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.portfolio-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-card:hover .portfolio-cover img {
+  transform: scale(1.05);
+}
+
+/* BODY */
+.portfolio-card-body {
+  padding: 15px 18px;
+}
+
+.portfolio-card-body h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #222;
+  font-weight: 600;
+}
+
+.portfolio-category {
+  font-size: 13px;
+  color: #888;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* MEDIA STRIP */
+.portfolio-media-strip {
+  display: flex;
+  gap: 6px;
+  padding: 0 15px 15px;
+  overflow: hidden;
+}
+
+.media-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid #eee;
+}
+
+.media-thumb img,
+.media-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* STATES */
+.loading-state,
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #777;
+}
+
+.loading-state p {
+  margin-top: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .portfolio-section {
+    padding: 40px 20px;
+  }
+
+  .portfolio-cover {
+    height: 180px;
+  }
+}
