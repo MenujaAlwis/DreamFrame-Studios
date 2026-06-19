@@ -45,13 +45,14 @@
 
 .btn--secondary {
   background: transparent;
-  color: white;
+  color: rgb(100, 99, 99);
   border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 .btn--secondary:hover:not(:disabled) {
-  background: rgba(148, 163, 184, 0.1);
-  border-color: rgba(148, 163, 184, 0.6);
+  background: rgba(105, 105, 105, 0.6);
+  border-color: rgba(234, 235, 235, 0.6);
+  color:white;
 }
 
 .btn-spinner {

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { getPortfolioItems } from '../services/api';
 import { CATEGORIES } from '../constants';
 import Button from './UI/Button';
-import Card from './UI/Card';
 import Spinner from './UI/Spinner';
 import Alert from './UI/Alert';
 import './portfolioGrid.css';
@@ -18,7 +17,6 @@ const PortfolioGrid = () => {
       try {
         setLoading(true);
         setError('');
-
         const data = await getPortfolioItems(selectedCategory);
         setItems(data.items || []);
       } catch (err) {
@@ -32,15 +30,10 @@ const PortfolioGrid = () => {
   }, [selectedCategory]);
 
   return (
-    <section className="portfolio-section">
-
-      <div className="portfolio-header">
-        <h1>Portfolio</h1>
-        <p className="portfolio-subtitle">
-          Browse event highlights across different categories.
-        </p>
-      </div>
-
+    <section className="portfoliogrid-section">
+      <p className="portfolio-intro-line">
+      A curated collection of timeless stories captured through light, emotion, and detail
+    </p>
       <div className="filter-container">
         <div className="filter-pills">
           {CATEGORIES.map((category) => (
@@ -63,49 +56,26 @@ const PortfolioGrid = () => {
           <Spinner size="md" />
           <p>Loading portfolio...</p>
         </div>
-      ) : items.length === 0 ? (
-        <div className="empty-state">
-          <p>No portfolio events found.</p>
-        </div>
       ) : (
         <div className="portfolio-grid">
 
           {items.map((item) => (
-            <Card key={item._id} hover className="portfolio-card">
+            <div key={item._id} className="portfolio-card">
 
-              {/* COVER IMAGE (main preview) */}
-              {item.coverImage?.url && (
-                <div className="portfolio-cover">
-                  <img
-                    src={item.coverImage.url}
-                    alt={item.title}
-                    loading="lazy"
-                  />
-                </div>
-              )}
+              <img
+                className="portfolio-image"
+                src={item.coverImage?.url}
+                alt={item.title}
+              />
 
-              {/* TITLE + CATEGORY */}
-              <div className="portfolio-card-body">
-                <h3>{item.title}</h3>
-                <p className="portfolio-category">{item.category}</p>
+              <div className="portfolio-overlay"></div>
+
+              <div className="portfolio-center">
+                <h2>{item.title}</h2>
+                <span className="arrow">→</span>
               </div>
 
-              {/* MEDIA GALLERY */}
-              {item.media?.length > 0 && (
-                <div className="portfolio-media-strip">
-                  {item.media.slice(0, 3).map((m, index) => (
-                    <div key={index} className="media-thumb">
-                      {m.mediaType === 'video' ? (
-                        <video src={m.url} />
-                      ) : (
-                        <img src={m.url} alt="media" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-            </Card>
+            </div>
           ))}
 
         </div>

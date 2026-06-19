@@ -56,7 +56,8 @@ text-transform: uppercase;
 }
 
 .header-transparent .nav-link:hover {
-  color: #a5a5a5;
+  color: #ffffff;
+  ;
 }
 
 .header-transparent .nav-link.active {
