@@ -23,14 +23,14 @@ class PortfolioService {
   }
 
   static async getPortfolioItems(filter = {}) {
-    return await Portfolio.find(filter).sort({ createdAt: -1 });
+    return await Portfolio.find(filter).sort({ eventDate: -1 });
   }
 
   static async createPortfolioItem(payload) {
-    const { title, category, coverImage, media } = payload;
+    const { title, category, eventDate, coverImage, media } = payload;
 
-    if (!title || !category) {
-      throw new AppError('Title and category are required', 400);
+    if (!title || !category || !eventDate) {
+      throw new AppError('Title, category, and event date are required', 400);
     }
 
     const uploadFile = async (file) => {
@@ -61,6 +61,7 @@ class PortfolioService {
       category,
       coverImage: cover,
       media: mediaUploads,
+      eventDate,
     });
   }
 

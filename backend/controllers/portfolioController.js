@@ -18,7 +18,7 @@ const getPortfolioItems = async (req, res, next) => {
 
 const createPortfolioItem = async (req, res, next) => {
   try {
-    const { title, category } = req.body;
+    const { title, category, eventDate } = req.body;
 
     const coverImage = req.files?.coverImage?.[0];
     const media = req.files?.media || [];
@@ -33,6 +33,7 @@ const createPortfolioItem = async (req, res, next) => {
     const item = await PortfolioService.createPortfolioItem({
       title,
       category,
+      eventDate,
       coverImage,
       media,
     });

@@ -72,7 +72,17 @@ const PortfolioGrid = () => {
 
               <div className="portfolio-center">
                 <h2>{item.title}</h2>
-                <span className="arrow">→</span>
+                <p className="portfolio-date">
+                  {item.eventDate
+                  ? `${new Date(item.eventDate).toLocaleDateString('en-GB', {
+                      day: 'numeric',
+                      month: 'long',
+                    })}, ${new Date(item.eventDate).getFullYear()}`
+                  : ''}
+                </p>
+                <div className="arrow-wrapper">
+                  <span className="arrow">→</span>
+                </div>
               </div>
 
             </div>

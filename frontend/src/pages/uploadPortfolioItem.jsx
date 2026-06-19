@@ -8,6 +8,7 @@ const UploadPortfolioItem = () => {
 
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('wedding');
+  const [eventDate, setEventDate] = useState('');
   const [coverImage, setCoverImage] = useState(null);
   const [media, setMedia] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ const UploadPortfolioItem = () => {
 
       formData.append('title', title);
       formData.append('category', category);
-
+      formData.append('eventDate', eventDate);
       if (coverImage) {
         formData.append('coverImage', coverImage);
       }
@@ -40,6 +41,7 @@ const UploadPortfolioItem = () => {
 
       setMessage('Upload successful');
       setTitle('');
+      setEventDate('');
       setCoverImage(null);
       setMedia([]);
     } catch (err) {
@@ -76,6 +78,16 @@ const UploadPortfolioItem = () => {
               <option value="event">Event</option>
               <option value="commercial">Commercial</option>
             </select>
+          </div>
+
+          <div className="form-group">
+            <label>Event Date</label>
+            <input
+              type="date"
+              value={eventDate}
+              onChange={(e) => setEventDate(e.target.value)}
+              required
+            />
           </div>
 
           <div className="form-group">

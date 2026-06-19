@@ -21,6 +21,11 @@ const portfolioSchema = new mongoose.Schema(
       index: true,
     },
 
+    eventDate: {
+      type: Date,
+      required: true,
+    },
+
     coverImage: mediaSchema,
     media: [mediaSchema],
   },
