@@ -4,10 +4,12 @@ import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
 import PortfolioPage from './pages/PortfolioPage';
+import ScrollToTop from './components/ScrollToTop';
 
 const  App = () => {
   return (
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin" element={<AdminPage />} />

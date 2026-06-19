@@ -1,6 +1,6 @@
 .portfoliogrid-section {
   width: 100%;
-  padding: 60px 90px;
+  padding: 60px 100px;
   background: #fdfdfd;
   box-sizing: border-box;
 }
@@ -19,7 +19,7 @@
 
 .portfolio-grid {
   column-count: 2;
-  column-gap: 80px;
+  column-gap: 50px;
   max-width: 1400px;
   margin: 0 auto;
 }
