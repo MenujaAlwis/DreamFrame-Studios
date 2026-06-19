@@ -1,8 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
+import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
+import PortfolioPage from './pages/PortfolioPage';
 
 const  App = () => {
   return (
@@ -11,7 +12,8 @@ const  App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route element={<Layout />}>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
