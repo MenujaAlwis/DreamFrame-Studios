@@ -1,6 +1,6 @@
 .portfoliogrid-section {
   width: 100%;
-  padding: 60px 100px;
+  padding: 60px 50px;
   background: #fdfdfd;
   box-sizing: border-box;
 }
@@ -18,8 +18,8 @@
 }
 
 .portfolio-grid {
-  column-count: 2;
-  column-gap: 50px;
+  column-count: 3;
+  column-gap: 20px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -71,7 +71,7 @@
 .portfolio-center h2 {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 300;
   letter-spacing: 1px;
   color: #ffffff;
