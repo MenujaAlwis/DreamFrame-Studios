@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ScrollToTop from './components/ScrollToTop';
+import PortfolioDetailsPage from './pages/PortfolioDetailsPage';
 
 const  App = () => {
   return (
@@ -16,6 +17,7 @@ const  App = () => {
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/portfolio/:id" element={<PortfolioDetailsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

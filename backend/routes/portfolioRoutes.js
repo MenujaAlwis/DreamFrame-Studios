@@ -5,11 +5,13 @@ const {
   getPortfolioItems,
   createPortfolioItem,
   deletePortfolioItem,
+  getPortfolioItemById
 } = require('../controllers/portfolioController');
 
 const router = express.Router();
 
 router.get('/', getPortfolioItems);
+router.get('/:id', getPortfolioItemById);
 
 router.post(
   '/',

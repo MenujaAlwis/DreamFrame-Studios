@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getPortfolioItems } from '../services/api';
 import { CATEGORIES } from '../constants';
 import Button from './UI/Button';
@@ -11,6 +12,7 @@ const PortfolioGrid = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadItems = async () => {
@@ -32,8 +34,9 @@ const PortfolioGrid = () => {
   return (
     <section className="portfoliogrid-section">
       <p className="portfolio-intro-line">
-      A curated collection of timeless stories captured through light, emotion, and detail
-    </p>
+        A curated collection of timeless stories captured through light, emotion, and detail
+      </p>
+
       <div className="filter-container">
         <div className="filter-pills">
           {CATEGORIES.map((category) => (
@@ -58,10 +61,13 @@ const PortfolioGrid = () => {
         </div>
       ) : (
         <div className="portfolio-grid">
-
           {items.map((item) => (
-            <div key={item._id} className="portfolio-card">
-
+            <div
+              key={item._id}
+              className="portfolio-card"
+              onClick={() => navigate(`/portfolio/${item._id}`)}
+              style={{ cursor: 'pointer' }}
+            >
               <img
                 className="portfolio-image"
                 src={item.coverImage?.url}
@@ -72,22 +78,22 @@ const PortfolioGrid = () => {
 
               <div className="portfolio-center">
                 <h2>{item.title}</h2>
+
                 <p className="portfolio-date">
                   {item.eventDate
-                  ? `${new Date(item.eventDate).toLocaleDateString('en-GB', {
-                      day: 'numeric',
-                      month: 'long',
-                    })}, ${new Date(item.eventDate).getFullYear()}`
-                  : ''}
+                    ? `${new Date(item.eventDate).toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'long',
+                      })}, ${new Date(item.eventDate).getFullYear()}`
+                    : ''}
                 </p>
+
                 <div className="arrow-wrapper">
                   <span className="arrow">→</span>
                 </div>
               </div>
-
             </div>
           ))}
-
         </div>
       )}
     </section>

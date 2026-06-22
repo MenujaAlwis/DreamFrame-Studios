@@ -41,6 +41,17 @@ export const getPortfolioItems = async (category = '') => {
   return data;
 };
 
+export const getPortfolioItemById = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/portfolio/${id}`);
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Failed to load portfolio item');
+  }
+
+  return data;
+};
+
 export const uploadPortfolioItem = async (formData, token) => {
   const response = await fetch(`${API_BASE_URL}/portfolio`, {
     method: 'POST',
@@ -49,7 +60,7 @@ export const uploadPortfolioItem = async (formData, token) => {
     },
     body: formData,
   });
-
+  
   const data = await response.json();
 
   if (!response.ok) {

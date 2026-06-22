@@ -25,7 +25,13 @@ class PortfolioService {
   static async getPortfolioItems(filter = {}) {
     return await Portfolio.find(filter).sort({ eventDate: -1 });
   }
+  static async getPortfolioItemById(id) {
+    const item = await Portfolio.findById(id);
 
+    if (!item) throw new AppError('Portfolio item not found', 404);
+
+    return item;
+  }
   static async createPortfolioItem(payload) {
     const { title, category, eventDate, coverImage, media } = payload;
 

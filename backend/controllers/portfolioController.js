@@ -15,7 +15,18 @@ const getPortfolioItems = async (req, res, next) => {
     next(error);
   }
 };
+const getPortfolioItemById = async (req, res, next) => {
+  try {
+    const item = await PortfolioService.getPortfolioItemById(req.params.id);
 
+    res.status(200).json({
+      success: true,
+      item,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 const createPortfolioItem = async (req, res, next) => {
   try {
     const { title, category, eventDate } = req.body;
@@ -67,4 +78,5 @@ module.exports = {
   getPortfolioItems,
   createPortfolioItem,
   deletePortfolioItem,
+  getPortfolioItemById,
 };
