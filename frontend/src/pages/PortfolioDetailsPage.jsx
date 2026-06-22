@@ -36,34 +36,36 @@ const PortfolioDetailPage = () => {
   if (!item) return <p>Portfolio not found</p>;
 
   return (
-    <div className="portfolio-detail">
-      <section className="portfolio-hero">
+    <div className="portfolio-detail-page">
+      <section className="portfolio-detail-hero">
         <div
-          className="hero-bg"
+          className="portfolio-detail-bg"
           style={{
             backgroundImage: `url(${item.coverImage?.url})`,
           }}
         />
 
-        <div className="hero-overlay" />
+        <div className="portfolio-detail-overlay" />
 
         <button
-          className="back-btn"
+          className="portfolio-detail-back-btn"
           onClick={() => navigate(-1)}
         >
           ← Back to Portfolio
         </button>
 
-        <div className="hero-content">
-          <div className="hero-info">
-            <span className="hero-category">
+        <div className="portfolio-detail-content">
+          <div className="portfolio-detail-info">
+            <span className="portfolio-detail-category">
               {item.category?.toUpperCase() || 'PORTFOLIO'}
             </span>
 
-            <h1>{item.title}</h1>
+            <h1 className="portfolio-detail-title">
+              {item.title}
+            </h1>
 
             {item.eventDate && (
-              <p className="hero-date">
+              <p className="portfolio-detail-date">
                 {new Date(item.eventDate).toLocaleDateString('en-GB', {
                   day: 'numeric',
                   month: 'long',
@@ -73,28 +75,28 @@ const PortfolioDetailPage = () => {
             )}
           </div>
 
-          <div className="hero-image-wrapper">
+          <div className="portfolio-detail-image-wrapper">
             <img
               src={item.coverImage?.url}
               alt={item.title}
-              className="hero-image"
+              className="portfolio-detail-image"
             />
           </div>
         </div>
       </section>
 
-      <section className="portfolio-gallery-section">
-        <div className="portfolio-gallery">
+      <section className="portfolio-detail-gallery-section">
+        <div className="portfolio-detail-gallery">
           {item.media?.map((media, index) =>
             media.mediaType === 'image' ? (
-              <div key={index} className="gallery-item">
+              <div key={index} className="portfolio-detail-gallery-item">
                 <img
                   src={media.url}
                   alt={`gallery-${index}`}
                 />
               </div>
             ) : (
-              <div key={index} className="gallery-item">
+              <div key={index} className="portfolio-detail-gallery-item">
                 <video controls preload="metadata">
                   <source src={media.url} />
                 </video>
