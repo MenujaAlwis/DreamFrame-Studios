@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getPortfolioItemById } from '../services/api';
 import Spinner from '../components/UI/Spinner';
 import Alert from '../components/UI/Alert';
@@ -7,6 +7,8 @@ import './portfolioDetailsPage.css';
 
 const PortfolioDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -35,31 +37,72 @@ const PortfolioDetailPage = () => {
 
   return (
     <div className="portfolio-detail">
-      <div className="portfolio-header">
-        <h1>{item.title}</h1>
-        <p className="portfolio-date">
-          {item.eventDate &&
-            new Date(item.eventDate).toLocaleDateString('en-GB', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric',
-            })}
-        </p>
-      </div>
+      <section className="portfolio-hero">
+        <div
+          className="hero-bg"
+          style={{
+            backgroundImage: `url(${item.coverImage?.url})`,
+          }}
+        />
 
-      <div className="portfolio-cover">
-        <img src={item.coverImage?.url} alt={item.title} />
-      </div>
+        <div className="hero-overlay" />
 
-      <div className="portfolio-gallery">
-        {item.media?.map((m, index) =>
-          m.mediaType === 'image' ? (
-            <img key={index} src={m.url} alt={`media-${index}`} />
-          ) : (
-            <video key={index} controls src={m.url} />
-          )
-        )}
-      </div>
+        <button
+          className="back-btn"
+          onClick={() => navigate('/portfolio')}
+        >
+          ← Back to Portfolio
+        </button>
+
+        <div className="hero-content">
+          <div className="hero-info">
+            <span className="hero-category">
+              {item.category?.toUpperCase() || 'PORTFOLIO'}
+            </span>
+
+            <h1>{item.title}</h1>
+
+            {item.eventDate && (
+              <p className="hero-date">
+                {new Date(item.eventDate).toLocaleDateString('en-GB', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })}
+              </p>
+            )}
+          </div>
+
+          <div className="hero-image-wrapper">
+            <img
+              src={item.coverImage?.url}
+              alt={item.title}
+              className="hero-image"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="portfolio-gallery-section">
+        <div className="portfolio-gallery">
+          {item.media?.map((media, index) =>
+            media.mediaType === 'image' ? (
+              <div key={index} className="gallery-item">
+                <img
+                  src={media.url}
+                  alt={`gallery-${index}`}
+                />
+              </div>
+            ) : (
+              <div key={index} className="gallery-item">
+                <video controls preload="metadata">
+                  <source src={media.url} />
+                </video>
+              </div>
+            )
+          )}
+        </div>
+      </section>
     </div>
   );
 };
