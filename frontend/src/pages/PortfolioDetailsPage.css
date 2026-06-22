@@ -1,7 +1,7 @@
 .portfolio-detail-page {
   width: 100%;
-  background: #080808;
-  color: #ffffff;
+  background: var(--background-color);
+  color:  var(--text-color);
 }
 
 .portfolio-detail-hero {
@@ -112,7 +112,7 @@
 
 .portfolio-detail-gallery-section {
   padding: 100px 40px;
-  background: #080808;
+  background: var(--background-color);
 }
 
 .portfolio-detail-gallery {

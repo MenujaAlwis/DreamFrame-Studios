@@ -1,5 +1,5 @@
 .mission-section {
-  background: #fdfdfd;
+  background: var(--background-color);
   padding: 150px 20px 80px 20px;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
   transition: all 0.6s ease;
   max-width: 800px;
   text-align: center;
-  color: #6B5E50;
+  color: var(--text-color);
 }
 .mission-text-first::before {
   content: '';

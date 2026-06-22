@@ -1,6 +1,6 @@
 .admin-page {
   min-height: 100vh;
-  background: #ffffff;
+  background: var(--background-color);
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
 .admin-title {
   font-size: 34px;
   font-weight: 700;
-  color: #333333;
+  color: var(--text-color);
   text-align: center;
   margin: 0;
   letter-spacing: 1px;

@@ -1,5 +1,5 @@
 .portfolio-page {
   width: 100%;
-  background: #fdfdfd;
+  background: var(--background-color);
   box-sizing: border-box;
 }
