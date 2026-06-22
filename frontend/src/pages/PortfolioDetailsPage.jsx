@@ -49,7 +49,7 @@ const PortfolioDetailPage = () => {
 
         <button
           className="back-btn"
-          onClick={() => navigate('/portfolio')}
+          onClick={() => navigate(-1)}
         >
           ← Back to Portfolio
         </button>
