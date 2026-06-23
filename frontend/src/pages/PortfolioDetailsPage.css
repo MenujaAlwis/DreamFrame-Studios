@@ -1,7 +1,7 @@
 .portfolio-detail-page {
   width: 100%;
   background: var(--background-color);
-  color:  var(--text-color);
+  color: var(--text-color);
 }
 
 .portfolio-detail-hero {
@@ -126,7 +126,7 @@
 
 .portfolio-detail-gallery-item {
   break-inside: avoid;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   overflow: hidden;
 }
 

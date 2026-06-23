@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getPortfolioItemById } from '../services/api';
 import Spinner from '../components/UI/Spinner';
 import Alert from '../components/UI/Alert';
+import RevealCard from '../components/RevealCard';
 import './portfolioDetailsPage.css';
 
 const PortfolioDetailPage = () => {
@@ -55,54 +56,64 @@ const PortfolioDetailPage = () => {
         </button>
 
         <div className="portfolio-detail-content">
-          <div className="portfolio-detail-info">
-            <span className="portfolio-detail-category">
-              {item.category?.toUpperCase() || 'PORTFOLIO'}
-            </span>
+          <RevealCard>
+            <div className="portfolio-detail-info">
+              <span className="portfolio-detail-category">
+                {item.category?.toUpperCase() || 'PORTFOLIO'}
+              </span>
 
-            <h1 className="portfolio-detail-title">
-              {item.title}
-            </h1>
+              <h1 className="portfolio-detail-title">
+                {item.title}
+              </h1>
 
-            {item.eventDate && (
-              <p className="portfolio-detail-date">
-                {new Date(item.eventDate).toLocaleDateString('en-GB', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric',
-                })}
-              </p>
-            )}
-          </div>
+              {item.eventDate && (
+                <p className="portfolio-detail-date">
+                  {new Date(item.eventDate).toLocaleDateString(
+                    'en-GB',
+                    {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    }
+                  )}
+                </p>
+              )}
+            </div>
+          </RevealCard>
 
-          <div className="portfolio-detail-image-wrapper">
-            <img
-              src={item.coverImage?.url}
-              alt={item.title}
-              className="portfolio-detail-image"
-            />
-          </div>
+          <RevealCard delay={200}>
+            <div className="portfolio-detail-image-wrapper">
+              <img
+                src={item.coverImage?.url}
+                alt={item.title}
+                className="portfolio-detail-image"
+              />
+            </div>
+          </RevealCard>
         </div>
       </section>
 
       <section className="portfolio-detail-gallery-section">
         <div className="portfolio-detail-gallery">
-          {item.media?.map((media, index) =>
-            media.mediaType === 'image' ? (
-              <div key={index} className="portfolio-detail-gallery-item">
-                <img
-                  src={media.url}
-                  alt={`gallery-${index}`}
-                />
+          {item.media?.map((media, index) => (
+            <RevealCard
+              key={index}
+              delay={(index % 4) * 120}
+            >
+              <div className="portfolio-detail-gallery-item">
+                {media.mediaType === 'image' ? (
+                  <img
+                    src={media.url}
+                    alt={`gallery-${index}`}
+                  />
+                ) : (
+                  <video controls preload="metadata">
+                    <source src={media.url} />
+                  </video>
+                )}
               </div>
-            ) : (
-              <div key={index} className="portfolio-detail-gallery-item">
-                <video controls preload="metadata">
-                  <source src={media.url} />
-                </video>
-              </div>
-            )
-          )}
+            </RevealCard>
+          ))}
         </div>
       </section>
     </div>
