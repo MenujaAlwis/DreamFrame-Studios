@@ -143,7 +143,92 @@
 .portfolio-detail-gallery-item:hover img {
   transform: scale(1.03);
 }
+.portfolio-detail-gallery-item img {
+  cursor: pointer;
+}
 
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lightboxFade 0.25s ease;
+}
+
+.lightbox-image {
+  max-width: 92vw;
+  max-height: 92vh;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 52px;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 100001;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 80px;
+  cursor: pointer;
+  padding: 20px;
+  line-height: 1;
+  z-index: 100001;
+}
+
+.lightbox-arrow.left {
+  left: 20px;
+}
+
+.lightbox-arrow.right {
+  right: 20px;
+}
+
+.lightbox-close:hover,
+.lightbox-arrow:hover {
+  opacity: 0.7;
+}
+
+@keyframes lightboxFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .lightbox-arrow {
+    font-size: 50px;
+  }
+
+  .lightbox-close {
+    font-size: 40px;
+    right: 20px;
+  }
+
+  .lightbox-image {
+    max-width: 96vw;
+    max-height: 85vh;
+  }
+}
 @media (max-width: 1400px) {
   .portfolio-detail-gallery {
     column-count: 3;

@@ -14,6 +14,9 @@ const PortfolioDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   useEffect(() => {
     const loadItem = async () => {
       try {
@@ -31,6 +34,41 @@ const PortfolioDetailPage = () => {
 
     loadItem();
   }, [id]);
+
+  const imageMedia =
+    item?.media?.filter(
+      media => media.mediaType === 'image'
+    ) || [];
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (!lightboxOpen) return;
+
+      if (e.key === 'Escape') {
+        setLightboxOpen(false);
+      }
+
+      if (e.key === 'ArrowRight') {
+        setCurrentImageIndex(prev =>
+          prev === imageMedia.length - 1 ? 0 : prev + 1
+        );
+      }
+
+      if (e.key === 'ArrowLeft') {
+        setCurrentImageIndex(prev =>
+          prev === 0 ? imageMedia.length - 1 : prev - 1
+        );
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () =>
+      window.removeEventListener(
+        'keydown',
+        handleKeyDown
+      );
+  }, [lightboxOpen, imageMedia.length]);
 
   if (loading) return <Spinner size="md" />;
   if (error) return <Alert type="error">{error}</Alert>;
@@ -95,27 +133,88 @@ const PortfolioDetailPage = () => {
 
       <section className="portfolio-detail-gallery-section">
         <div className="portfolio-detail-gallery">
-          {item.media?.map((media, index) => (
-            <RevealCard
-              key={index}
-              delay={(index % 4) * 120}
-            >
-              <div className="portfolio-detail-gallery-item">
-                {media.mediaType === 'image' ? (
-                  <img
-                    src={media.url}
-                    alt={`gallery-${index}`}
-                  />
-                ) : (
-                  <video controls preload="metadata">
-                    <source src={media.url} />
-                  </video>
-                )}
-              </div>
-            </RevealCard>
-          ))}
+          {item.media?.map((media, index) => {
+            const imageIndex = imageMedia.findIndex(
+              img => img.url === media.url
+            );
+
+            return (
+              <RevealCard
+                key={index}
+                delay={(index % 4) * 120}
+              >
+                <div className="portfolio-detail-gallery-item">
+                  {media.mediaType === 'image' ? (
+                    <img
+                      src={media.url}
+                      alt={`gallery-${index}`}
+                      onClick={() => {
+                        setCurrentImageIndex(imageIndex);
+                        setLightboxOpen(true);
+                      }}
+                    />
+                  ) : (
+                    <video controls preload="metadata">
+                      <source src={media.url} />
+                    </video>
+                  )}
+                </div>
+              </RevealCard>
+            );
+          })}
         </div>
       </section>
+
+      {lightboxOpen && (
+        <div
+          className="lightbox-overlay"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            className="lightbox-close"
+            onClick={() => setLightboxOpen(false)}
+          >
+            ×
+          </button>
+
+          <button
+            className="lightbox-arrow left"
+            onClick={e => {
+              e.stopPropagation();
+
+              setCurrentImageIndex(prev =>
+                prev === 0
+                  ? imageMedia.length - 1
+                  : prev - 1
+              );
+            }}
+          >
+            ‹
+          </button>
+
+          <img
+            src={imageMedia[currentImageIndex]?.url}
+            alt=""
+            className="lightbox-image"
+            onClick={e => e.stopPropagation()}
+          />
+
+          <button
+            className="lightbox-arrow right"
+            onClick={e => {
+              e.stopPropagation();
+
+              setCurrentImageIndex(prev =>
+                prev === imageMedia.length - 1
+                  ? 0
+                  : prev + 1
+              );
+            }}
+          >
+            ›
+          </button>
+        </div>
+      )}
     </div>
   );
 };
