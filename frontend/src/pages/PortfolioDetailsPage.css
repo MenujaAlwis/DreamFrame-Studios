@@ -84,6 +84,7 @@
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3.5rem, 5vw, 6rem);
+  color: var(--text-color-secondary);
   line-height: 0.95;
   font-weight: 300;
 }
@@ -91,6 +92,7 @@
 .portfolio-detail-date {
   margin-top: 28px;
   font-size: 17px;
+  color: rgb(217, 215, 215);
   letter-spacing: 1px;
   opacity: 0.9;
 }
@@ -111,7 +113,7 @@
 }
 
 .portfolio-detail-gallery-section {
-  padding: 100px 40px;
+  padding: 60px 40px;
   background: var(--background-color);
 }
 
@@ -119,7 +121,7 @@
   max-width: 1500px;
   margin: 0 auto;
   column-count: 4;
-  column-gap: 20px;
+  column-gap: 10px;
 }
 
 .portfolio-detail-gallery-item {

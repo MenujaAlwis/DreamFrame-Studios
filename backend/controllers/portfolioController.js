@@ -15,6 +15,7 @@ const getPortfolioItems = async (req, res, next) => {
     next(error);
   }
 };
+
 const getPortfolioItemById = async (req, res, next) => {
   try {
     const item = await PortfolioService.getPortfolioItemById(req.params.id);
@@ -27,17 +28,29 @@ const getPortfolioItemById = async (req, res, next) => {
     next(error);
   }
 };
+
 const createPortfolioItem = async (req, res, next) => {
   try {
+    console.log("📦 BODY:", req.body);
+    console.log("📁 FILES:", req.files);
+
     const { title, category, eventDate } = req.body;
 
     const coverImage = req.files?.coverImage?.[0];
     const media = req.files?.media || [];
 
+    // ✅ HARD GUARD (prevents 500 crash)
+    if (!title || !category || !eventDate) {
+      return res.status(400).json({
+        success: false,
+        message: 'Title, category, and event date are required',
+      });
+    }
+
     if (!coverImage) {
       return res.status(400).json({
         success: false,
-        message: 'Cover image is required',
+        message: 'Cover image is required or multer failed',
       });
     }
 
@@ -54,7 +67,9 @@ const createPortfolioItem = async (req, res, next) => {
       message: 'Portfolio created successfully',
       item,
     });
+
   } catch (error) {
+    console.error("🔥 CREATE PORTFOLIO ERROR:", error);
     next(error);
   }
 };

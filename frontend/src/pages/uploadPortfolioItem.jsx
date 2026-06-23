@@ -36,6 +36,7 @@ const UploadPortfolioItem = () => {
       await axios.post('http://localhost:5000/api/portfolio', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
         },
       });
 
@@ -105,7 +106,7 @@ const UploadPortfolioItem = () => {
               type="file"
               multiple
               accept="image/*,video/*"
-              onChange={(e) => setMedia(e.target.files)}
+              onChange={(e) => setMedia([...e.target.files])}
             />
           </div>
 

@@ -134,6 +134,9 @@
 
 .arrow-wrapper {
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .arrow {
@@ -141,16 +144,14 @@
   font-size: 26px;
   color: #ffffff;
   display: inline-block;
+  background: transparent;
   line-height: 1;
   opacity: 0.9;
-  transition:
-    transform 0.35s ease,
-    opacity 0.35s ease;
-}
 
-.portfolio-card:hover .arrow {
-  transform: translateX(8px);
+}
+.arrow:hover {
   opacity: 1;
+  background: transparent;
 }
 
 .loading-state,
