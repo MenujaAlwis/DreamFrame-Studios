@@ -73,7 +73,33 @@ const createPortfolioItem = async (req, res, next) => {
     next(error);
   }
 };
+const updatePortfolioItem = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { title, category, eventDate } = req.body;
 
+    const item = await Portfolio.findByIdAndUpdate(
+      id,
+      { title, category, eventDate },
+      { new: true }
+    );
+
+    if (!item) {
+      return res.status(404).json({
+        success: false,
+        message: 'Portfolio not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Portfolio updated successfully',
+      item
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 const deletePortfolioItem = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -94,4 +120,5 @@ module.exports = {
   createPortfolioItem,
   deletePortfolioItem,
   getPortfolioItemById,
+  updatePortfolioItem,
 };
