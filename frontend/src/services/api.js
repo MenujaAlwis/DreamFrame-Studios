@@ -69,7 +69,23 @@ export const uploadPortfolioItem = async (formData, token) => {
 
   return data;
 };
+export const updatePortfolioItem = async (id, formData, token) => {
+  const response = await fetch(`${API_BASE_URL}/portfolio/${id}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
 
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Update failed');
+  }
+
+  return data;
+};
 export const deletePortfolioItem = async (id, token) => {
   const response = await fetch(`${API_BASE_URL}/portfolio/${id}`, {
     method: 'DELETE',
