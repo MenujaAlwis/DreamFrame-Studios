@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './adminpage.css';
@@ -7,6 +7,8 @@ import UploadPortfolioItem from './uploadPortfolioItem';
 const AdminPage = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
+
+  const [showUploadForm, setShowUploadForm] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -19,13 +21,41 @@ const AdminPage = () => {
       <div className="admin-header">
         <h1 className="admin-title">Admin Dashboard</h1>
 
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
+        <div className="buttons">
+          <button
+            className="upload-btn"
+            onClick={() => setShowUploadForm(true)}
+          >
+            Upload Portfolio
+          </button>
+
+          <button className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </div>
 
       <div className="admin-content">
-        <UploadPortfolioItem />
+
+        {showUploadForm && (
+          <div className="modal-overlay">
+            <div className="modal-box">
+
+              <div className="modal-header">
+                <button
+                  className="close-btn"
+                  onClick={() => setShowUploadForm(false)}
+                >
+                  ✕
+                </button>
+              </div>
+
+              <UploadPortfolioItem />
+
+            </div>
+          </div>
+        )}
+
       </div>
 
     </div>
