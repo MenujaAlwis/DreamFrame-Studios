@@ -1,4 +1,5 @@
 const PortfolioService = require('../services/PortfolioService');
+const Portfolio = require('../models/Portfolio');
 
 const getPortfolioItems = async (req, res, next) => {
   try {
@@ -39,7 +40,6 @@ const createPortfolioItem = async (req, res, next) => {
     const coverImage = req.files?.coverImage?.[0];
     const media = req.files?.media || [];
 
-    // ✅ HARD GUARD (prevents 500 crash)
     if (!title || !category || !eventDate) {
       return res.status(400).json({
         success: false,
@@ -76,7 +76,15 @@ const createPortfolioItem = async (req, res, next) => {
 const updatePortfolioItem = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { title, category, eventDate } = req.body;
+
+    const { title, category, eventDate } = req.body || {};
+
+    if (!title || !category || !eventDate) {
+      return res.status(400).json({
+        success: false,
+        message: 'Missing required fields'
+      });
+    }
 
     const item = await Portfolio.findByIdAndUpdate(
       id,
@@ -100,6 +108,7 @@ const updatePortfolioItem = async (req, res, next) => {
     next(error);
   }
 };
+
 const deletePortfolioItem = async (req, res, next) => {
   try {
     const { id } = req.params;

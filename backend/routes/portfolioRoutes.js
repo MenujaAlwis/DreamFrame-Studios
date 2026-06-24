@@ -13,7 +13,6 @@ const router = express.Router();
 
 router.get('/', getPortfolioItems);
 router.get('/:id', getPortfolioItemById);
-router.put('/:id', protect, authorizeRoles('admin'), updatePortfolioItem);
 
 router.post(
   '/',
@@ -29,6 +28,7 @@ router.put(
   '/:id',
   protect,
   authorizeRoles('admin'),
+  upload.none(), 
   updatePortfolioItem
 );
 
