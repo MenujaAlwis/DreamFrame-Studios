@@ -5,13 +5,15 @@ const {
   getPortfolioItems,
   createPortfolioItem,
   deletePortfolioItem,
-  getPortfolioItemById
+  getPortfolioItemById,
+  updatePortfolioItem
 } = require('../controllers/portfolioController');
 
 const router = express.Router();
 
 router.get('/', getPortfolioItems);
 router.get('/:id', getPortfolioItemById);
+router.put('/:id', protect, authorizeRoles('admin'), updatePortfolioItem);
 
 router.post(
   '/',
@@ -22,6 +24,12 @@ router.post(
     { name: 'media', maxCount: 20 },
   ]),
   createPortfolioItem
+);
+router.put(
+  '/:id',
+  protect,
+  authorizeRoles('admin'),
+  updatePortfolioItem
 );
 
 router.delete('/:id', protect, authorizeRoles('admin'), deletePortfolioItem);
