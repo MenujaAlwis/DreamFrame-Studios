@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './adminpage.css';
 import UploadPortfolioItem from './uploadPortfolioItem';
+import AdminPortfolioList from '../components/admin/AdminPortfolioList';
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ const AdminPage = () => {
         )}
 
       </div>
-
+        <AdminPortfolioList />
     </div>
   );
 };

@@ -1,0 +1,115 @@
+.admin-list {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.admin-list h2 {
+  margin-bottom: 20px;
+  color: var(--text-color);
+  font-size: 24px;
+}
+
+.admin-grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .admin-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-grid {
+    column-count: 1;
+  }
+}
+
+.admin-card {
+  position: relative;
+  break-inside: avoid;
+  margin-bottom: 20px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.admin-card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.admin-info {
+  padding: 12px;
+}
+
+.admin-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.admin-info p {
+  margin: 5px 0 10px;
+  opacity: 0.7;
+}
+
+.menu-wrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+}
+
+.menu-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 130px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background: #222;
+}

@@ -9,6 +9,7 @@ const AdminPortfolioList = () => {
 
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [openMenuId, setOpenMenuId] = useState(null);
 
   const loadItems = async () => {
     const res = await axios.get('http://localhost:5000/api/portfolio');
@@ -17,6 +18,12 @@ const AdminPortfolioList = () => {
 
   useEffect(() => {
     loadItems();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = () => setOpenMenuId(null);
+    window.addEventListener('click', handleClickOutside);
+    return () => window.removeEventListener('click', handleClickOutside);
   }, []);
 
   const handleDelete = async (id) => {
@@ -34,22 +41,51 @@ const AdminPortfolioList = () => {
       <div className="admin-grid">
         {items.map((item) => (
           <div key={item._id} className="admin-card">
+
+            {/* 3 DOT MENU */}
+            <div className="menu-wrapper">
+              <button
+                className="menu-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenMenuId(openMenuId === item._id ? null : item._id);
+                }}
+              >
+                ⋮
+              </button>
+
+              {openMenuId === item._id && (
+                <div className="dropdown-menu">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedItem(item);
+                      setOpenMenuId(null);
+                    }}
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDelete(item._id);
+                      setOpenMenuId(null);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
+
             <img src={item.coverImage?.url} />
 
             <div className="admin-info">
               <h3>{item.title}</h3>
               <p>{item.category}</p>
-
-              <div className="admin-actions">
-                <button onClick={() => setSelectedItem(item)}>
-                  Edit
-                </button>
-
-                <button onClick={() => handleDelete(item._id)}>
-                  Delete
-                </button>
-              </div>
             </div>
+
           </div>
         ))}
       </div>
