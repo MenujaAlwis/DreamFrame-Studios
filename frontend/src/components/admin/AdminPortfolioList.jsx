@@ -10,6 +10,7 @@ const AdminPortfolioList = () => {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [openMenuId, setOpenMenuId] = useState(null);
+  const [deleteItem, setDeleteItem] = useState(null);
 
   const loadItems = async () => {
     const res = await axios.get('http://localhost:5000/api/portfolio');
@@ -26,11 +27,17 @@ const AdminPortfolioList = () => {
     return () => window.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/portfolio/${id}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
+  const confirmDelete = async () => {
+    if (!deleteItem) return;
 
+    await axios.delete(
+      `http://localhost:5000/api/portfolio/${deleteItem._id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    );
+
+    setDeleteItem(null);
     loadItems();
   };
 
@@ -42,7 +49,6 @@ const AdminPortfolioList = () => {
         {items.map((item) => (
           <div key={item._id} className="admin-card">
 
-            {/* 3 DOT MENU */}
             <div className="menu-wrapper">
               <button
                 className="menu-btn"
@@ -69,7 +75,7 @@ const AdminPortfolioList = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleDelete(item._id);
+                      setDeleteItem(item);
                       setOpenMenuId(null);
                     }}
                   >
@@ -97,6 +103,30 @@ const AdminPortfolioList = () => {
           onClose={() => setSelectedItem(null)}
           onUpdated={loadItems}
         />
+      )}
+
+      {deleteItem && (
+        <div
+          className="delete-modal-overlay"
+          onClick={() => setDeleteItem(null)}
+        >
+          <div
+            className="delete-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3>Delete Portfolio?</h3>
+            <p>This action cannot be undone.</p>
+
+            <div className="delete-actions">
+              <button onClick={() => setDeleteItem(null)}>
+                Cancel
+              </button>
+              <button onClick={confirmDelete}>
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
