@@ -8,6 +8,14 @@
 .services-intro {
   text-align: center;
   margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.services-intro.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .services-intro p {
@@ -27,15 +35,28 @@
   column-gap: 25px;
   max-width: 1400px;
   margin: 0 auto;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: all 0.8s ease;
+}
+
+.services-masonry.show {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .service-card {
   break-inside: avoid;
   margin-bottom: 25px;
   cursor: pointer;
-  animation: fadeUp 0.6s ease forwards;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.service-card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .image-wrapper {
@@ -64,7 +85,6 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding-left: 4px;
 }
 
 .service-title {
@@ -83,13 +103,6 @@
 
 .service-card:hover .service-arrow {
   transform: translateX(5px);
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 1200px) {

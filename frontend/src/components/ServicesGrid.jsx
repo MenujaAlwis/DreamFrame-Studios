@@ -1,22 +1,42 @@
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SERVICES } from '../constants/services';
 import './ServicesGrid.css';
 
 const ServicesGrid = () => {
   const navigate = useNavigate();
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="services-section">
-      <div className="services-intro">
-        <p>Explore our photography categories and collections</p>
+    <section ref={sectionRef} className="services-section">
+      <div className={`services-intro ${isVisible ? 'show' : ''}`}>
+        <p>
+          Explore our photography categories and collections
+        </p>
       </div>
 
-      <div className="services-masonry">
+      <div className={`services-masonry ${isVisible ? 'show' : ''}`}>
         {SERVICES.map((service, index) => (
           <div
             key={service.category}
-            className="service-card"
-            style={{ animationDelay: `${index * 80}ms` }}
+            className={`service-card ${isVisible ? 'show' : ''}`}
+            style={{ transitionDelay: `${index * 80}ms` }}
             onClick={() =>
               navigate(`/portfolio?category=${service.category}`)
             }

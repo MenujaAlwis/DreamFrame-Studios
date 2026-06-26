@@ -16,9 +16,17 @@ text-transform: uppercase;
   letter-spacing: 3px;
   color: #222222;
 }
+.brand-text-default {
+font-family: "Montserrat", sans-serif;
+text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #ffffff;
+}
 .site-header {
   position: absolute;
-  top: 0;
+  top: 10;
   width: 100%;
   z-index: 1000;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -26,6 +34,7 @@ text-transform: uppercase;
 
 .header-transparent {
   background: transparent;
+  padding-top: 25px;
 }
 
 .header-white {

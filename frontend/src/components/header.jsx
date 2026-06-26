@@ -27,7 +27,8 @@ const Header = () => {
     >
       <div className='header-wrapper'>
         <div className="header-content">
-          {scrolledPastHero ? (<div className="brand-text">DreamFrame Studios</div>) : (<img className="logo" src={logo} alt="Logo" />)}
+          {/* {scrolledPastHero ? (<div className="brand-text">DreamFrame Studios</div>) : (<img className="logo" src={logo} alt="Logo" />)} */}
+          {scrolledPastHero ? (<div className="brand-text">DreamFrame Studios</div>) : (<div className="brand-text-default">DreamFrame Studios</div>)}
           <nav className="nav-links">
             <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Home</NavLink>
             <NavLink to="/portfolio" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Portfolio</NavLink>
