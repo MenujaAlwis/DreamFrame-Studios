@@ -6,6 +6,7 @@ import AdminPage from './pages/AdminPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ScrollToTop from './components/ScrollToTop';
 import PortfolioDetailsPage from './pages/PortfolioDetailsPage';
+import ServicesPage from './pages/ServicesPage';
 
 const  App = () => {
   return (

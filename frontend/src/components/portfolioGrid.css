@@ -159,7 +159,22 @@
   text-align: center;
   padding: 60px 20px;
 }
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: #aaa;
+}
 
+.empty-state h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.empty-state p {
+  font-size: 14px;
+  opacity: 0.7;
+}
 @media (max-width: 1200px) {
   .portfolio-grid {
     column-count: 2;
