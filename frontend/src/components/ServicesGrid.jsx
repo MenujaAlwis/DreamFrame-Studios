@@ -6,22 +6,34 @@ const ServicesGrid = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="services-grid">
-      {SERVICES.map((service) => (
-        <div
-          key={service.category}
-          className="service-card"
-          onClick={() =>
-            navigate(`/portfolio?category=${service.category}`)
-          }
-        >
-          <img src={service.image} alt={service.title} />
-          <div className="overlay">
-            <h2>{service.title}</h2>
+    <section className="services-section">
+      <div className="services-intro">
+        <h2>Our Services</h2>
+        <p>Explore our photography categories and collections</p>
+      </div>
+
+      <div className="services-masonry">
+        {SERVICES.map((service, index) => (
+          <div
+            key={service.category}
+            className="service-card"
+            style={{ animationDelay: `${index * 80}ms` }}
+            onClick={() =>
+              navigate(`/portfolio?category=${service.category}`)
+            }
+          >
+            <div className="image-wrapper">
+              <img src={service.image} alt={service.title} />
+            </div>
+
+            <div className="service-text">
+              <p className="service-title">{service.title}</p>
+              <p className="service-arrow">→</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

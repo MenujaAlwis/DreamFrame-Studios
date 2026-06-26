@@ -6,27 +6,27 @@ import commercialCoverImage from '../assets/services-commercial-cover-image.png'
 
 export const SERVICES = [
   {
-    title: 'Wedding Photography',
+    title: 'Weddings',
     category: 'wedding',
     image: weddingCoverImage
   },
   {
-    title: 'Pre-shoot Photography',
+    title: 'Pre-shoots',
     category: 'pre-shoot',
     image: preshootCoverImage
   },
   {
-    title: 'Portrait Photography',
+    title: 'Portraits',
     category: 'portrait',
     image: portraitCoverImage
   },
   {
-    title: 'Event Photography',
+    title: 'Events',
     category: 'event',
     image: eventCoverImage
   },
   {
-    title: 'Commercial Photography',
+    title: 'Commercials',
     category: 'commercial',
     image: commercialCoverImage
   }
