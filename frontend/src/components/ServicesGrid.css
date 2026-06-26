@@ -10,18 +10,16 @@
   margin-bottom: 40px;
 }
 
-.services-intro h2 {
-  font-size: 34px;
-  font-weight: 300;
-  color: var(--text-color);
-  margin-bottom: 10px;
-}
-
 .services-intro p {
-  font-size: 14px;
-  opacity: 0.7;
-  letter-spacing: 1px;
+  font-size: 16px;
+  opacity: 0.9;
+  letter-spacing: 1.5px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  font-family: var(--body-font);
   color: var(--text-color);
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .services-masonry {

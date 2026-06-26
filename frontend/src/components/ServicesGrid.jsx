@@ -8,7 +8,6 @@ const ServicesGrid = () => {
   return (
     <section className="services-section">
       <div className="services-intro">
-        <h2>Our Services</h2>
         <p>Explore our photography categories and collections</p>
       </div>
 
