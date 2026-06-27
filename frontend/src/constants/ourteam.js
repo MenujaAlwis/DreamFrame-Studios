@@ -16,12 +16,12 @@ export const OUR_TEAM = [
     image: teammember2
   },
   {
-    name: 'Mike Johnson',
+    name: 'Sarah Williams',
     role: 'Photographer',
     image: teammember3
   },
   {
-    name: 'Sarah Williams',
+    name: 'Mike Johnson',
     role: 'Photographer',
     image: teammember4
   },
