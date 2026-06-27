@@ -7,6 +7,7 @@ import PortfolioPage from './pages/PortfolioPage';
 import ScrollToTop from './components/ScrollToTop';
 import PortfolioDetailsPage from './pages/PortfolioDetailsPage';
 import ServicesPage from './pages/ServicesPage';
+import OurTeamPage from './pages/OurTeamPage';
 
 const  App = () => {
   return (
@@ -20,6 +21,7 @@ const  App = () => {
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/portfolio/:id" element={<PortfolioDetailsPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/our-team" element={<OurTeamPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
