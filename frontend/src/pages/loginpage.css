@@ -31,6 +31,7 @@
 
 .login-copy h1 {
   font-size: 50px;
+  color: var(--text-color);
   font-family: 'INTER', sans-serif;
   margin: 10px 0;
   font-weight: 700;

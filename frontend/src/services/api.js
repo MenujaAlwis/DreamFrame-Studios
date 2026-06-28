@@ -102,3 +102,54 @@ export const deletePortfolioItem = async (id, token) => {
 
   return data;
 };
+
+export const submitInquiry = async (payload) => {
+  const response = await fetch(`${API_BASE_URL}/inquiries`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Inquiry submission failed');
+  }
+
+  return data;
+};
+
+export const getAllInquiries = async (token) => {
+  const response = await fetch(`${API_BASE_URL}/inquiries`, {
+    headers: {
+      ...getAuthHeaders(token)
+    }
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Failed to fetch inquiries');
+  }
+
+  return data;
+};
+
+export const deleteInquiry = async (id, token) => {
+  const response = await fetch(`${API_BASE_URL}/inquiries/${id}`, {
+    method: 'DELETE',
+    headers: {
+      ...getAuthHeaders(token)
+    }
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Failed to delete inquiry');
+  }
+
+  return data;
+};
