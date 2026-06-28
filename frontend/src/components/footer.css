@@ -11,37 +11,64 @@
   margin: 20px auto;
 }
 
+
 .footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 85%;
   margin: 0 auto;
   padding: 40px 0;
-  gap: 60px;
+  align-items: stretch;
 }
+
+.footer-content,
+.footer-bottom {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-content.show,
+.footer-bottom.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.footer-column {
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+
+.footer-column:nth-child(2),
+.footer-column:nth-child(3) {
+  border-left: 1px solid #d9d9d9;
+}
+
 
 .logofooter {
   width: 150px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
-
 }
+
 
 .footer-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 40px;
 }
-
-.footer-section h4 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0.4px;
-  color: var(--text-color);
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .footer-links {
@@ -55,10 +82,10 @@
 
 .footer-links li a {
   text-decoration: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
   color: var(--text-color);
-  font-size: 16px;
-  letter-spacing: 0.3px;
+  font-size: 20px;
   transition: 0.3s ease;
 }
 
@@ -67,23 +94,23 @@
   transform: translateY(-2px);
 }
 
+
 .social-section {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  gap: 10px;
 }
 
-.social-section h4 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0.4px;
-  color: var(--text-color);
+.social-section h4, .contact-section h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 35px;
+  color: black;
 }
 
 .social-icons {
   display: flex;
-  flex-direction: row;
   gap: 15px;
   justify-content: flex-end;
 }
@@ -95,19 +122,19 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1px solid var(--text-color);
   color: var(--text-color);
-  font-size: 16px;
+  font-size: 36px;
   transition: all 0.3s ease;
+}
+.social-icons a.facebook-icon {
+  background: none; 
 }
 
 .social-icons a:hover {
-  color: #fff;
-  background-color: var(--text-color-hover);
-  border-color: var(--text-color-hover);
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(62, 47, 32, 0.25);
 }
+
 
 .footer-bottom {
   font-family: 'Inter', sans-serif;
@@ -119,15 +146,23 @@
   text-transform: uppercase;
   color: var(--text-color);
 }
-.footer-content,
-.footer-bottom {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.footer-content.show,
-.footer-bottom.show {
-  opacity: 1;
-  transform: scale(1);
+
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-column {
+    border-left: none !important;
+    border-right: none !important;
+    padding: 20px 0;
+    align-items: center !important;
+    text-align: center;
+  }
+
+  .social-section {
+    align-items: center;
+  }
 }
