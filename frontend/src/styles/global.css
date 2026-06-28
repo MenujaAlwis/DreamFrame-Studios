@@ -48,6 +48,9 @@ html, body, #root {
   background: #000;
   
 }
+html {
+  scroll-behavior: smooth;
+}
 h1,
 h2 {
   font-weight: 500;

@@ -52,7 +52,7 @@ const InquiryForm = () => {
   };
 
   return (
-    <div className="inquiry-container">
+    <div id="inquiry" className="inquiry-container">
       <h2>Send Us an Inquiry</h2>
       <p>Tell us about your event and we will get back to you soon.</p>
 
