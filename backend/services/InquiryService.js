@@ -6,16 +6,28 @@ class InquiryService {
   }
 
   static async getAllInquiries() {
-    return await Inquiry.find().sort({
-      createdAt: -1,
-    });
+    return await Inquiry.find().sort({ createdAt: -1 });
+  }
+
+  static async getInquiryById(id) {
+    const inquiry = await Inquiry.findById(id);
+
+    if (!inquiry) {
+      const error = new Error('Inquiry not found');
+      error.statusCode = 404;
+      throw error;
+    }
+
+    return inquiry;
   }
 
   static async deleteInquiry(id) {
     const inquiry = await Inquiry.findById(id);
 
     if (!inquiry) {
-      throw new Error('Inquiry not found');
+      const error = new Error('Inquiry not found');
+      error.statusCode = 404;
+      throw error;
     }
 
     await inquiry.deleteOne();

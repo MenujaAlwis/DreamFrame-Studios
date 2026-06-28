@@ -59,6 +59,18 @@ const getAllInquiries = async (req, res, next) => {
     next(error);
   }
 };
+const getInquiryById = async (req, res, next) => {
+  try {
+    const inquiry = await InquiryService.getInquiryById(req.params.id);
+
+    res.status(200).json({
+      success: true,
+      inquiry,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 const deleteInquiry = async (req, res, next) => {
   try {
@@ -77,4 +89,5 @@ module.exports = {
   createInquiry,
   getAllInquiries,
   deleteInquiry,
+getInquiryById,
 };
