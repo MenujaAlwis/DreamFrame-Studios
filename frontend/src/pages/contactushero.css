@@ -1,0 +1,59 @@
+.contact-us-hero {
+    min-height: 100vh;
+    width: 100%; 
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+}
+
+.contact-us-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.contact-us-hero-content {
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-us-title {
+    font-family: var(--title-font);
+    color: white;
+    font-size: 70px;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.contact-us-title:hover {
+    color: #d2d1d1;
+    transform: scale(1.02);
+}
+
+.contact-us-subtitle {
+    font-size: 15px;
+    font-family: var(--body-font);
+    margin-top: 25px;
+    opacity: 0.85;
+    font-weight: 500;
+    color: #f0f0f0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.contact-us-subtitle:hover {
+    color: #d2d1d1;
+}
