@@ -1,6 +1,7 @@
 .admin-list {
   width: 100%;
   padding: 20px 0;
+  overflow: visible;
 }
 
 .admin-list h2 {

@@ -1,0 +1,77 @@
+.admin-list {
+  width: 100%;
+  padding: 20px 0;
+  overflow: visible;
+}
+
+.admin-list h2 {
+  margin-bottom: 20px;
+  color: var(--text-color);
+  font-size: 24px;
+}
+
+.admin-grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .admin-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-grid {
+    column-count: 1;
+  }
+}
+
+.admin-card {
+  position: relative;
+  break-inside: avoid;
+  margin-bottom: 20px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.admin-info {
+  padding: 12px;
+}
+
+.admin-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.admin-info p {
+  margin: 5px 0;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+  width: calc(100% - 24px);
+  margin: 12px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  background: #ff3b3b;
+  color: white;
+  transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #e62e2e;
+}
