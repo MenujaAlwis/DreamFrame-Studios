@@ -42,23 +42,26 @@ const Feedbacks = () => {
   };
 
   return (
-    <div className={`feedbacks-section slide-${index}`}
-      style={{ backgroundImage: `url(${feedbacks[index].bg})` }}
-    >
-      <button className="arrow left" onClick={prevSlide}>❮</button>
+    <section className="feedbacks-wrapper">
+      <h2 className="feedbacks-title">What Our Clients Say</h2>
+      <div className={`feedbacks-section slide-${index}`}
+        style={{ backgroundImage: `url(${feedbacks[index].bg})` }}
+      >
+        <button className="arrow left" onClick={prevSlide}>❮</button>
 
-      <div key={index} className="feedback-card animate">
-        <p className="feedback-text">
-          “{feedbacks[index].text}”
-        </p>
+        <div key={index} className="feedback-card animate">
+          <p className="feedback-text">
+            “{feedbacks[index].text}”
+          </p>
 
-        <p className="feedback-name">
-          — {feedbacks[index].name}
-        </p>
+          <p className="feedback-name">
+            — {feedbacks[index].name}
+          </p>
+        </div>
+
+        <button className="arrow right" onClick={nextSlide}>❯</button>
       </div>
-
-      <button className="arrow right" onClick={nextSlide}>❯</button>
-    </div>
+    </section>
   );
 };
 
