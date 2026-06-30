@@ -42,7 +42,7 @@ const Feedbacks = () => {
   };
 
   return (
-    <section className="feedbacks-wrapper">
+    <section id="feedbacks" className="feedbacks-wrapper">
       <h2 className="feedbacks-title">What Our Clients Say</h2>
       <div className={`feedbacks-section slide-${index}`}
         style={{ backgroundImage: `url(${feedbacks[index].bg})` }}

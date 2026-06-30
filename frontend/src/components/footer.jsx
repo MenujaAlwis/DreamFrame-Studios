@@ -37,6 +37,9 @@ const Footer = () => {
   const goToInquiry = () => {
     navigate('/contact-us#inquiry');
   };
+  const goToFeedbacks = () => {
+    navigate('/#feedbacks');
+  };
 
   return (
     <footer className="site-footer" ref={footerRef}>
@@ -84,6 +87,9 @@ const Footer = () => {
             </a>
           </div>
           <p className="social-text">Follow The Story</p>
+          <button onClick={goToFeedbacks} className="footer-feedbacks-btn">
+            View Feedbacks →
+          </button>
         </div>
 
       </div>
