@@ -28,6 +28,7 @@ const InstagramGallery = () => {
         <div className="gallery-overlay">
             <FaInstagram className="instagram-icon" />
             <span>Follow Us</span>
+            <p>@dreamframe-studios</p>
         </div>
         </a>
     </div>

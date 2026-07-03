@@ -60,7 +60,15 @@
   font-weight: 600;
   letter-spacing: 2px;
 }
-
+.gallery-overlay p {
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  margin-top: 5px;
+  letter-spacing: 1.3px;
+}
 /* =========================
    Tablet (≤ 992px)
 ========================= */

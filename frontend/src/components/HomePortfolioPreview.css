@@ -1,0 +1,163 @@
+.home-portfolio {
+  padding: 120px 5%;
+  background: var(--background-color);
+  text-align: center;
+}
+
+.home-portfolio-header {
+  max-width: 720px;
+  margin: 0 auto 70px;
+}
+
+.home-portfolio-subtitle {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #605343;
+  margin-bottom: 16px;
+}
+
+.home-portfolio-header h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 60px;
+  font-weight: 400;
+  color: #322b25;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.home-portfolio-description {
+  max-width: 560px;
+  margin: auto;
+  color: #7d746b;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.home-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  margin-top: 60px;
+}
+
+.home-portfolio-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: visible;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.home-portfolio.show .home-portfolio-card {
+  animation: fadeUp 0.8s forwards;
+}
+
+.home-portfolio-card:hover {
+  transform: translateY(-10px);
+  transition: .35s;
+}
+
+.home-portfolio-image img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 18px 18px 0 0;
+}
+
+.home-portfolio-icon {
+  width: 60px;
+  height: 60px;
+  margin: -30px auto 18px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #81664b;
+  font-size: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+  position: relative;
+  z-index: 2;
+}
+
+.home-portfolio-content {
+  padding: 0 22px 30px;
+}
+
+.home-portfolio-content h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.home-portfolio-content p {
+  color: #787068;
+  font-size: 14px;
+  line-height: 1.8;
+  min-height: 55px;
+}
+
+.home-portfolio-link {
+  display: inline-block;
+  margin-top: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+.home-portfolio-button {
+  margin-top: 60px;
+  padding: 16px 46px;
+  background: transparent;
+  border: 1px solid #cabaa6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  color: #322b25;
+  transition: .35s;
+}
+
+.home-portfolio-button:hover {
+  background: #322b25;
+  color: white;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .home-portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .home-portfolio-header h2 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-portfolio-header h2 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 550px) {
+  .home-portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-portfolio-header h2 {
+    font-size: 32px;
+  }
+}
