@@ -1,7 +1,8 @@
-.instagram-gallery-container{
-    background-color: var(--background-color);
-    padding: 60px 0 30px 0;
+.instagram-gallery-container {
+  background-color: var(--background-color);
+  padding: 60px 0 30px;
 }
+
 .instagram-gallery {
   position: relative;
   display: grid;
@@ -20,7 +21,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .6s ease;
+  transition: transform 0.6s ease;
 }
 
 .gallery-overlay {
@@ -34,9 +35,8 @@
   align-items: center;
 
   opacity: 0;
-  transition: opacity .35s ease;
-
-  z-index: 2;
+  transition: opacity 0.35s ease;
+  z-index: 5;
 }
 
 .instagram-gallery:hover .gallery-overlay {
@@ -49,32 +49,81 @@
 
 .instagram-icon {
   font-size: 60px;
-  color: white;
+  color: #fff;
   margin-bottom: 16px;
 }
 
 .gallery-overlay span {
   font-family: 'Cormorant Garamond', serif;
   font-size: 34px;
-  color: white;
+  color: #fff;
   font-weight: 600;
   letter-spacing: 2px;
 }
 
-@media (max-width: 1000px) {
-  .instagram-gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+/* =========================
+   Tablet (≤ 992px)
+========================= */
 
-@media (max-width: 700px) {
+@media (max-width: 992px) {
+  .instagram-gallery-container {
+    padding: 50px 0 25px;
+  }
+
   .instagram-gallery {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .gallery-item:nth-child(5) {
+    display: none;
+  }
+
+  .instagram-icon {
+    font-size: 54px;
+  }
+
+  .gallery-overlay span {
+    font-size: 30px;
+  }
 }
 
-@media (max-width: 450px) {
+/* =========================
+   Mobile (≤ 576px)
+========================= */
+
+@media (max-width: 576px) {
+  .instagram-gallery-container {
+    padding: 40px 0 20px;
+  }
+
   .instagram-gallery {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-item:nth-child(5) {
+    display: none;
+  }
+
+  .gallery-item img {
+    transition: transform 0.4s ease;
+  }
+
+  .instagram-gallery:hover .gallery-item img {
+    transform: scale(1.05);
+  }
+
+  .gallery-overlay {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .instagram-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  .gallery-overlay span {
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-align: center;
   }
 }
