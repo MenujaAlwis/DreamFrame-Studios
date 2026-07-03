@@ -1,12 +1,12 @@
 .home-portfolio {
-  padding: 120px 5%;
+  padding: 80px 5%;
   background: var(--background-color);
   text-align: center;
 }
 
 .home-portfolio-header {
   max-width: 720px;
-  margin: 0 auto 70px;
+  margin: 0 auto 60px;
 }
 
 .home-portfolio-subtitle {
@@ -38,11 +38,11 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 22px;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 .home-portfolio-card {
-  background: #fff;
+  background: #fcf9f6;
   border-radius: 18px;
   overflow: visible;
   cursor: pointer;
@@ -61,7 +61,7 @@
 
 .home-portfolio-image img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 18px 18px 0 0;
 }
@@ -83,7 +83,7 @@
 }
 
 .home-portfolio-content {
-  padding: 0 22px 30px;
+  padding: 0 10px 8px;
 }
 
 .home-portfolio-content h3 {
@@ -91,6 +91,7 @@
   letter-spacing: 2px;
   font-size: 13px;
   margin-bottom: 12px;
+  color: gray;
 }
 
 .home-portfolio-content p {
@@ -105,6 +106,8 @@
   margin-top: 18px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  color: var(--text-color);
+  font-weight: 600;
   font-size: 12px;
 }
 
