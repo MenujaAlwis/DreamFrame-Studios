@@ -43,7 +43,6 @@ const Footer = () => {
 
   return (
     <footer className="site-footer" ref={footerRef}>
-      <hr className="horizontal-line" />
 
       <div className={`footer-content ${footerVisible ? 'show' : ''}`}>
 

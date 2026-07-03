@@ -5,6 +5,7 @@ import Feedbacks from '../components/Feedbacks';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import InstagramGallery from '../components/InstagramGallery';
 
 const Home = () => {
   const location = useLocation();
@@ -29,7 +30,7 @@ const Home = () => {
       <Mission />
 
       <Feedbacks />
-
+      <InstagramGallery />
       <Footer />
     </>
   );
