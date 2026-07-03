@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+{/*import { useEffect, useState } from 'react';
 import './homepage.css';
 
 import img1 from '../assets/homepage-img11.png';
@@ -33,6 +33,33 @@ const HomePage = () => {
             </div>
         </div>
     );
+};
+
+export default HomePage;*/}
+
+import "./homepage.css";
+import heroImage from "../assets/home.jpg";
+import { useNavigate } from "react-router-dom";
+
+const HomePage = () => {
+  return (
+    <section
+      className="homepage"
+      style={{ backgroundImage: `url(${heroImage})` }}
+    >
+      <div className="hero-content">
+        <p className="hero-subtitle">Timeless Photography</p>
+        <h1 className="hero-title">Preserve What Matters Most</h1>
+        <p className="hero-description">Natural, Authentic, and Timeless<br />images that tell your story beautifully.</p>
+        <button
+          className="portfolio-btn"
+          onClick={() => navigate("/portfolio")}
+        >
+          Explore Portfolio →
+        </button>
+      </div>
+    </section>
+  );
 };
 
 export default HomePage;

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+/*import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import logo from '../assets/logo.png';
 import './header.css';
@@ -27,7 +27,6 @@ const Header = () => {
     >
       <div className='header-wrapper'>
         <div className="header-content">
-          {/* {scrolledPastHero ? (<div className="brand-text">DreamFrame Studios</div>) : (<img className="logo" src={logo} alt="Logo" />)} */}
           {scrolledPastHero ? (<div className="brand-text">DreamFrame Studios</div>) : (<div className="brand-text-default">DreamFrame Studios</div>)}
           <nav className="nav-links">
             <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Home</NavLink>
@@ -42,4 +41,33 @@ const Header = () => {
   );
 };
 
+export default Header;*/
+
+import { NavLink } from "react-router-dom";
+import "./header.css";
+import logo from "../assets/header-logo.png";
+
+const Header = () => {
+  return (
+    <header className="site-header">
+      <div className="header-content">
+
+        <div className="brand-logo">
+          <img src={logo} alt="DreamFrame Studios Logo" />
+        </div>
+
+        <nav className="nav-links">
+          <NavLink to="/" end className="nav-link">Home</NavLink>
+          <NavLink to="/portfolio" className="nav-link">Portfolio</NavLink>
+          <NavLink to="/services" className="nav-link">Services</NavLink>
+          <NavLink to="/our-team" className="nav-link">Our Team</NavLink>
+          <NavLink to="/contact-us" className="nav-link">Contact</NavLink>
+        </nav>
+
+      </div>
+    </header>
+  );
+};
+
 export default Header;
+
