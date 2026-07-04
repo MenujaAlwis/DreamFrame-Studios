@@ -59,10 +59,11 @@
   align-items: center;
 
   position: relative;
-  padding-left: 100px;
+  overflow: visible;
 }
 
 .hero-content {
+     padding-left: 100px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -139,6 +140,67 @@
 .portfolio-btn:hover {
   background: #4a4920;
   color: white;
+}
+.hero-bottom-card {
+  position: absolute;
+  left: 50%;
+  bottom: -65px;
+  transform: translateX(-50%);
+
+  width: 70%;
+  min-height: 130px;
+
+  background: #fff;
+  border-radius: 12px;
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.home-service-card {
+  position: relative;
+  text-align: center;
+  padding: 15px 20px;
+  transition: 0.3s ease;
+}
+.home-service-card::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 70%;   
+  background: #ececec;
+}
+.home-service-card:last-child::after {
+  display: none;
+}
+.home-service-card:hover {
+  background: #faf7f2;
+}
+
+.home-service-icon {
+  font-size: 34px;
+  color: #8b7a55;
+  margin-bottom: 2px;
+}
+
+.home-service-card h3 {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 1px 0 10px 0;
+  color: #333;
+  font-family: "Inter", serif;
+}
+
+.home-service-card p {
+  color: #666;
+  font-size: 12px;
+  line-height: 1.2;
 }
 @media (max-width: 768px) {
   .homepage {

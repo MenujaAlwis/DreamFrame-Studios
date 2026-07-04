@@ -1,12 +1,12 @@
 .site-footer {
-  background: var(--background-color);
+  background: #f9f4ee;
   color: var(--text-color);
 }
 
 .horizontal-line {
   width: 90%;
   height: 1px;
-  margin: 20px auto;
+  margin: 10px auto;
   border: none;
   background-color: #dbcfc2;
 }
@@ -27,7 +27,7 @@
 .footer-content {
   width: 85%;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 20px 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: stretch;
@@ -154,7 +154,7 @@
 
 .footer-bottom {
   text-align: center;
-  padding: 18px 0 32px;
+  padding: 10px 0 22px;
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   font-weight: 300;

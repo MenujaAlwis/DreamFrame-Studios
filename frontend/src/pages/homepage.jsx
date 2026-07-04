@@ -40,8 +40,10 @@ export default HomePage;*/}
 import "./homepage.css";
 import heroImage from "../assets/home.jpg";
 import { useNavigate } from "react-router-dom";
+import { HOME_PORTFOLIO } from "../constants/homeportfolio";
 
 const HomePage = () => {
+const navigate = useNavigate();
   return (
     <section
       className="homepage"
@@ -57,6 +59,23 @@ const HomePage = () => {
         >
           Explore Portfolio →
         </button>
+      </div>
+      <div className="hero-bottom-card">
+        {HOME_PORTFOLIO.map((item) => {
+          const Icon = item.icon;
+
+          return (
+            <div className="home-service-card" key={item.category}>
+              <div className="home-service-icon">
+                <Icon />
+              </div>
+
+              <h3>{item.title.toUpperCase()}</h3>
+
+              <p>{item.description}</p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

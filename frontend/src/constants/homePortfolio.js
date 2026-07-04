@@ -3,7 +3,7 @@ import {
   FaCamera,
   FaUser,
   FaCalendarDays,
-  FaBriefcase,
+  FaVideo ,
 } from "react-icons/fa6";
 
 import wedding from "../assets/homepage-portfolio/portfolio-wedding.png";
@@ -46,6 +46,6 @@ export const HOME_PORTFOLIO = [
     category: "commercial",
     image: commercial,
     description: "Professional visuals for your brand.",
-    icon: FaBriefcase,
+    icon: FaVideo ,
   },
 ];
