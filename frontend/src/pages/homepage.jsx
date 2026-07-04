@@ -41,10 +41,12 @@ import "./homepage.css";
 import heroImage from "../assets/home.jpg";
 import { useNavigate } from "react-router-dom";
 import { HOME_PORTFOLIO } from "../constants/homeportfolio";
+import { FaAward, FaCamera } from "react-icons/fa";
 
 const HomePage = () => {
 const navigate = useNavigate();
   return (
+    <>
     <section
       className="homepage"
       style={{ backgroundImage: `url(${heroImage})` }}
@@ -65,7 +67,7 @@ const navigate = useNavigate();
           const Icon = item.icon;
 
           return (
-            <div className="home-service-card" key={item.category}>
+            <div className="home-service-card" key={item.category} onClick={() => navigate(`/portfolio?category=${item.category}`)}>
               <div className="home-service-icon">
                 <Icon />
               </div>
@@ -78,6 +80,47 @@ const navigate = useNavigate();
         })}
       </div>
     </section>
+      {/* Stats section */}
+      <div className="stats-section">
+        <div className="stat-title">More Than Photos, It's Your Legacy.</div>
+        <div className="stat-subsection">
+          <div className="stat-item">
+            <div className="stat-icon-circle">
+              <FaAward />
+            </div>
+            <div className="stat-text">
+              <div className="stat-number-row">
+                <span className="stat-number">5+</span>
+                <span className="stat-label">
+                  YEARS OF
+                  <br />
+                  EXCELLENCE
+                </span>
+              </div>
+              
+            </div>
+          </div>
+
+          <div className="stat-divider" />
+
+          <div className="stat-item">
+            <div className="stat-icon-circle">
+              <FaCamera />
+            </div>
+            <div className="stat-text">
+              <div className="stat-number-row">
+                <span className="stat-number">500+</span>
+                <span className="stat-label">
+                  PROJECTS
+                  <br />
+                  COMPLETED
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
