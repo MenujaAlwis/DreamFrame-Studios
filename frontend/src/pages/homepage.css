@@ -207,7 +207,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 60px;
+  gap: 90px;
   padding: 80px 8% 20px;
   background: var(--background-color);
   flex-wrap: wrap;
