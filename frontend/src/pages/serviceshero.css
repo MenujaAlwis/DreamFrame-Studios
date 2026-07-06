@@ -61,7 +61,8 @@
 
 .servicespage {
   width: 100%;
-  height: 600px;
+  min-height: 600px;
+  height: 70vh;
 
   background-size: cover;
   background-position: center;
