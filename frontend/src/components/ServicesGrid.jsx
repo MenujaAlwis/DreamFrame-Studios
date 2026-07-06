@@ -25,7 +25,7 @@ const ServicesGrid = () => {
 
   return (
     <section ref={sectionRef} className="services-section">
-      <div className={`services-intro ${isVisible ? 'show' : ''}`}>
+      <div className="services-intro">
         <p>
           Explore our photography categories and collections
         </p>
