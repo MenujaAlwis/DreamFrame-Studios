@@ -64,7 +64,7 @@ const PortfolioGrid = ({ sectionRef }) => {
   }, [selectedCategory]);
 
   return (
-    <section
+    <section id="collections"
       ref={sectionRef || animationRef}
       className="portfoliogrid-section"
     >

@@ -38,7 +38,12 @@ const navigate = useNavigate();
         <p className="portfolio-hero-description">Explore our featured collections <br /> A curated glimpse into our dedicated work</p>
         <button
           className="portfolio-hero-btn"
-          onClick={() => navigate("/")}
+          onClick={() => {
+            document.getElementById("collections")?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }}
         >
           Explore Work →
         </button>
