@@ -91,7 +91,7 @@ padding-left: 100px;
 }
 .services-hero-title,
 .services-hero-subtitle,
-.services-ero-description {
+.services-hero-description {
   text-align: left;
 }
 .services-hero-subtitle {
@@ -101,15 +101,6 @@ padding-left: 100px;
   color: #817c46;
   font-size: 14px;
   font-weight: 500;
-}
-.services-hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-left: 20px;
-    width: 40%;
-    gap: 10px;
 }
 .services-hero-title {
   font-family: "Cormorant Garamond", serif;

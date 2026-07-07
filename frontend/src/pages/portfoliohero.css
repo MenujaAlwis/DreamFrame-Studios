@@ -1,4 +1,4 @@
-.portfolio-hero {
+/*.portfolio-hero {
     min-height: 100vh;
     width: 100%; 
     max-width: 100%;
@@ -56,4 +56,94 @@
 
 .portfolio-subtitle:hover {
     color: #d2d1d1;
+}*/
+
+.portfoliopage {
+  width: 100%;
+  min-height: 600px;
+  height: 70vh;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  position: relative;
+  overflow: visible;
 }
+
+.portfolio-hero-content {
+padding-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  width: 40%;
+  gap: 20px;
+
+  color: white;
+  z-index: 2;
+}
+.portfolio-hero-title,
+.portfolio-hero-subtitle,
+.portfolio-hero-description {
+  text-align: left;
+}
+.portfolio-hero-subtitle {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #817c46;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.portfolio-hero-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 70px;
+  line-height: 1;
+  color: #1F3A2E;
+  margin: 10px 0;
+  font-weight: 400;
+}
+.portfolio-hero-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #d3bc97;
+  margin-top: 10px;
+}
+.portfolio-hero-description {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  margin-top: 10px;
+  color: #244028;
+  opacity: 0.9;
+  font-weight: 400;
+}
+.portfolio-hero-btn {
+  margin-top: 15px;
+  padding: 12px 24px;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  border: none;
+  background: #64632c;
+  color: #ffffff;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.portfolio-hero-btn:hover {
+  background: #4a4920;
+  color: white;
+}
+
