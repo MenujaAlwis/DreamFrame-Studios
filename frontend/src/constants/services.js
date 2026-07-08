@@ -8,7 +8,7 @@ export const SERVICES = [
   {
     title: 'Weddings',
     category: 'wedding',
-    image: weddingCoverImage
+    image: weddingCoverImage,
   },
   {
     title: 'Pre-shoots',

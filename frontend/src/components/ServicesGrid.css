@@ -23,7 +23,7 @@
 }
 
 .services-masonry {
-  column-count: 3;
+  column-count: 5;
   column-gap: 25px;
   max-width: 1400px;
   margin: 0 auto;
@@ -80,7 +80,7 @@
 }
 
 .service-title {
-  font-size: 46px;
+  font-size: 36px;
   color: var(--text-color);
   font-weight: 500;
   font-family: 'Cormorant Garamond', serif;
