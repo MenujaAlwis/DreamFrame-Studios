@@ -35,7 +35,6 @@
 .btn--primary {
   background: linear-gradient(135deg, #f97316, #ea580c);
   color: white;
-  border: none;
 }
 
 .btn--primary:hover:not(:disabled) {
@@ -52,7 +51,41 @@
 .btn--secondary:hover:not(:disabled) {
   background: rgba(105, 105, 105, 0.6);
   border-color: rgba(234, 235, 235, 0.6);
-  color:white;
+  color: white;
+}
+
+.btn--filter {
+  background: rgb(223, 230, 205);
+  color: black;
+  gap: 10px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 200;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn--filter:hover:not(:disabled) {
+  background: rgb(74, 81, 63);
+  color: white;
+}
+
+.btn--filter-active {
+  background: rgb(74, 81, 63);
+  color: white;
+  gap: 10px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 200;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn--filter-active:hover:not(:disabled) {
+  background: rgb(74, 81, 63);
+  color: white;
 }
 
 .btn-spinner {

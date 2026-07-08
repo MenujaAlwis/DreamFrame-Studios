@@ -33,7 +33,7 @@
   font-size: 16px;
   letter-spacing: 1.5px;
   color: var(--text-color);
-  margin: 0px auto 20px;
+  margin: 0 auto 20px;
   max-width: 700px;
   font-family: var(--body-font);
   text-transform: uppercase;
@@ -147,8 +147,8 @@
   background: transparent;
   line-height: 1;
   opacity: 0.9;
-
 }
+
 .arrow:hover {
   opacity: 1;
   background: transparent;
@@ -159,6 +159,7 @@
   text-align: center;
   padding: 60px 20px;
 }
+
 .empty-state {
   text-align: center;
   padding: 80px 20px;
@@ -175,6 +176,7 @@
   font-size: 14px;
   opacity: 0.7;
 }
+
 @media (max-width: 1200px) {
   .portfolio-grid {
     column-count: 2;

@@ -64,38 +64,45 @@ const PortfolioGrid = ({ sectionRef }) => {
   }, [selectedCategory]);
 
   return (
-    <section id="collections"
+    <section
+      id="collections"
       ref={sectionRef || animationRef}
       className="portfoliogrid-section"
     >
       <p className={`portfolio-intro-line ${isVisible ? 'show' : ''}`}>
-        A curated collection of timeless stories captured through light, emotion, and detail
+        A curated collection of timeless stories captured through light,
+        emotion, and detail
       </p>
 
       <div className={`filter-container ${isVisible ? 'show delay-1' : ''}`}>
         <div className="filter-pills">
-          {CATEGORIES.map((category) => (
-            <Button
-              key={category.value || 'all'}
-              variant={
-                selectedCategory === category.value
-                  ? 'primary'
-                  : 'secondary'
-              }
-              size="sm"
-              onClick={() => {
-                setSelectedCategory(category.value);
+          {CATEGORIES.map((category) => {
+            const Icon = category.icon;
 
-                if (category.value) {
-                  navigate(`/portfolio?category=${category.value}`);
-                } else {
-                  navigate('/portfolio');
+            return (
+              <Button
+                key={category.value || 'all'}
+                variant={
+                  selectedCategory === category.value
+                    ? 'filter-active'
+                    : 'filter'
                 }
-              }}
-            >
-              {category.label}
-            </Button>
-          ))}
+                size="sm"
+                onClick={() => {
+                  setSelectedCategory(category.value);
+
+                  if (category.value) {
+                    navigate(`/portfolio?category=${category.value}`);
+                  } else {
+                    navigate('/portfolio');
+                  }
+                }}
+              >
+                <Icon />
+                <span>{category.label}</span>
+              </Button>
+            );
+          })}
         </div>
       </div>
 
@@ -136,10 +143,13 @@ const PortfolioGrid = ({ sectionRef }) => {
 
                   <p className="portfolio-date">
                     {item.eventDate
-                      ? `${new Date(item.eventDate).toLocaleDateString('en-GB', {
-                          day: 'numeric',
-                          month: 'long',
-                        })}, ${new Date(item.eventDate).getFullYear()}`
+                      ? `${new Date(item.eventDate).toLocaleDateString(
+                          'en-GB',
+                          {
+                            day: 'numeric',
+                            month: 'long',
+                          }
+                        )}, ${new Date(item.eventDate).getFullYear()}`
                       : ''}
                   </p>
 
