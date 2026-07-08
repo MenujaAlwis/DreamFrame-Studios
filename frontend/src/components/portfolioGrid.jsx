@@ -152,10 +152,6 @@ const PortfolioGrid = ({ sectionRef }) => {
                         )}, ${new Date(item.eventDate).getFullYear()}`
                       : ''}
                   </p>
-
-                  <div className="arrow-wrapper">
-                    <span className="arrow">→</span>
-                  </div>
                 </div>
               </div>
             </RevealCard>
