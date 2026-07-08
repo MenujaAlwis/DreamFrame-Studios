@@ -4,6 +4,7 @@ import ServicesGrid from '../components/ServicesGrid';
 import ServicesHero from './serviceshero';
 import './ServicesPage.css';
 import ExperienceSection from '../components/ExperienceSection';
+import AwardsSection from '../components/AwardsSection';
 
 const ServicesPage = () => {
   return (
@@ -12,6 +13,7 @@ const ServicesPage = () => {
       <ServicesHero />
       <ServicesGrid />
       <ExperienceSection />
+      <AwardsSection />
       <Footer />
     </div>
   );

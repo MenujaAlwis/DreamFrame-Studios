@@ -21,7 +21,7 @@ export default PortfolioHero;*/
 
 
 import "./portfoliohero.css";
-import heroImage from "../assets/portfolio.png";
+import heroImage from "../assets/portfolio1.png";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
