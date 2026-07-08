@@ -76,33 +76,28 @@ const PortfolioGrid = ({ sectionRef }) => {
 
       <div className={`filter-container ${isVisible ? 'show delay-1' : ''}`}>
         <div className="filter-pills">
-          {CATEGORIES.map((category) => {
-            const Icon = category.icon;
+          {CATEGORIES.map((category) => (
+            <Button
+              key={category.value || 'all'}
+              variant={
+                selectedCategory === category.value
+                  ? 'filter-active'
+                  : 'filter'
+              }
+              size="sm"
+              onClick={() => {
+                setSelectedCategory(category.value);
 
-            return (
-              <Button
-                key={category.value || 'all'}
-                variant={
-                  selectedCategory === category.value
-                    ? 'filter-active'
-                    : 'filter'
+                if (category.value) {
+                  navigate(`/portfolio?category=${category.value}`);
+                } else {
+                  navigate('/portfolio');
                 }
-                size="sm"
-                onClick={() => {
-                  setSelectedCategory(category.value);
-
-                  if (category.value) {
-                    navigate(`/portfolio?category=${category.value}`);
-                  } else {
-                    navigate('/portfolio');
-                  }
-                }}
-              >
-                <Icon />
-                <span>{category.label}</span>
-              </Button>
-            );
-          })}
+              }}
+            >
+              <span>{category.label}</span>
+            </Button>
+          ))}
         </div>
       </div>
 

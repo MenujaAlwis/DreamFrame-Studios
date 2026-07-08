@@ -17,6 +17,8 @@
   cursor: not-allowed;
 }
 
+/* Sizes */
+
 .btn--sm {
   padding: 8px 12px;
   font-size: 0.875rem;
@@ -32,6 +34,8 @@
   font-size: 1.0625rem;
 }
 
+/* Primary */
+
 .btn--primary {
   background: linear-gradient(135deg, #f97316, #ea580c);
   color: white;
@@ -41,6 +45,8 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3);
 }
+
+/* Secondary */
 
 .btn--secondary {
   background: transparent;
@@ -54,39 +60,50 @@
   color: white;
 }
 
-.btn--filter {
-  background: rgb(223, 230, 205);
-  color: black;
-  gap: 10px;
-  letter-spacing: 4px;
-  font-size: 14px;
-  font-family: "Comfortaa", sans-serif;
-  font-weight: 200;
+.btn--filter,
+.btn--filter-active {
+  background: transparent;
+  box-shadow: none;
   border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  padding: 0 22px;
+  height: auto;
+
+  font-family: "Comfortaa", sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.btn--filter:hover:not(:disabled) {
-  background: rgb(74, 81, 63);
-  color: white;
+/* Default */
+
+.btn--filter {
+  color: #8b8b8b;
+  font-weight: 400;
 }
+
+.btn--filter:hover {
+  color: #24382f;
+}
+
+/* Active */
 
 .btn--filter-active {
-  background: rgb(74, 81, 63);
-  color: white;
-  gap: 10px;
-  letter-spacing: 4px;
-  font-size: 14px;
-  font-family: "Comfortaa", sans-serif;
-  font-weight: 200;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #24382f;
+  font-weight: 700;
 }
 
-.btn--filter-active:hover:not(:disabled) {
-  background: rgb(74, 81, 63);
-  color: white;
+/* Separator */
+
+.filter-pills .btn:not(:first-child) {
+  border-left: 1px solid #d3d3d3;
+  border-radius: 0;
 }
+
+/* Spinner */
 
 .btn-spinner {
   display: inline-block;
