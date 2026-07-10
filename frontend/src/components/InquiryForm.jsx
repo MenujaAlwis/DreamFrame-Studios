@@ -1,50 +1,70 @@
-import { useState, useEffect } from 'react';
-import { submitInquiry } from '../services/api';
-import './inquiryForm.css';
+import { useState, useEffect } from "react";
+import { submitInquiry } from "../services/api";
+import "./inquiryForm.css";
+
+const SERVICE_OPTIONS = [
+  { value: "wedding", label: "Wedding" },
+  { value: "pre-shoot", label: "Pre-shoot" },
+  { value: "portrait", label: "Portrait" },
+  { value: "event", label: "Event" },
+  { value: "commercial", label: "Commercial" },
+];
 
 const InquiryForm = ({ onClose }) => {
   const [form, setForm] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    service: 'wedding',
-    eventDate: '',
-    location: '',
-    message: ''
+    fullName: "",
+    email: "",
+    phone: "",
+    service: "wedding",
+    eventDate: "",
+    location: "",
+    message: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
-  // Lock background scroll while modal is open
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, []);
 
-  // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape") {
+        onClose();
+      }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [onClose]);
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
+    setForm((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleServiceSelect = (value) => {
+    setForm((prev) => ({
+      ...prev,
+      service: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setLoading(true);
-    setError('');
+    setError("");
     setSuccess(false);
 
     try {
@@ -53,110 +73,217 @@ const InquiryForm = ({ onClose }) => {
       setSuccess(true);
 
       setForm({
-        fullName: '',
-        email: '',
-        phone: '',
-        service: 'wedding',
-        eventDate: '',
-        location: '',
-        message: ''
+        fullName: "",
+        email: "",
+        phone: "",
+        service: "wedding",
+        eventDate: "",
+        location: "",
+        message: "",
       });
     } catch (err) {
-      setError(err.message || 'Something went wrong');
+      setError(err.message || "Something went wrong.");
     } finally {
       setLoading(false);
     }
   };
 
   const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) onClose();
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
   };
 
   return (
     <div className="inquiry-overlay" onClick={handleOverlayClick}>
-      <div id="inquiry" className="inquiry-container">
+      <div className="inquiry-container">
 
-        <button className="inquiry-close-btn" onClick={onClose} aria-label="Close">
+        <button
+          className="inquiry-close-btn"
+          onClick={onClose}
+          aria-label="Close"
+        >
           ×
         </button>
 
-        <h2>Send Us an Inquiry</h2>
-        <p>Tell us about your event and we will get back to you soon.</p>
+        <span className="inquiry-tag">
+          LET'S CREATE SOMETHING BEAUTIFUL
+        </span>
 
-        <form onSubmit={handleSubmit} className="inquiry-form">
+        <h2>Send an Inquiry</h2>
 
-          <input
-            name="fullName"
-            placeholder="Full Name"
-            value={form.fullName}
-            onChange={handleChange}
-            required
-          />
+        <p className="inquiry-subtitle">
+          Share a few details about your event. Nothing needs to be finalized—
+          we'll personally get in touch to discuss your plans.
+        </p>
 
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
+        <form className="inquiry-form" onSubmit={handleSubmit}>
 
-          <input
-            name="phone"
-            placeholder="Phone"
-            value={form.phone}
-            onChange={handleChange}
-            required
-          />
+          <div className="inquiry-field">
 
-          <select
-            name="service"
-            value={form.service}
-            onChange={handleChange}
+            <label htmlFor="fullName">
+              Full Name
+            </label>
+
+            <input
+              id="fullName"
+              name="fullName"
+              type="text"
+              placeholder="Your full name"
+              value={form.fullName}
+              onChange={handleChange}
+              required
+            />
+
+          </div>
+
+          <div className="inquiry-field">
+
+            <label htmlFor="email">
+              Email Address
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+
+          </div>
+
+          <div className="inquiry-field">
+
+            <label htmlFor="phone">
+              Phone Number
+            </label>
+
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="+94 7X XXX XXXX"
+              value={form.phone}
+              onChange={handleChange}
+              required
+            />
+
+          </div>
+
+          <div className="inquiry-field">
+
+            <label>
+              What type of session are you looking for?
+            </label>
+
+            <div
+              className="service-options"
+              role="radiogroup"
+              aria-label="Select a service"
+            >
+
+              {SERVICE_OPTIONS.map((option) => (
+                <label
+                  key={option.value}
+                  className="service-radio"
+                >
+                  <input
+                    type="radio"
+                    name="service"
+                    value={option.value}
+                    checked={form.service === option.value}
+                    onChange={() =>
+                      handleServiceSelect(option.value)
+                    }
+                  />
+
+                  <span className="service-radio-dot"></span>
+
+                  <span className="service-radio-label">
+                    {option.label}
+                  </span>
+
+                </label>
+              ))}
+
+            </div>
+
+          </div>
+
+          <div className="inquiry-field">
+
+            <label htmlFor="eventDate">
+              When are you planning your event?
+            </label>
+
+            <input
+              id="eventDate"
+              name="eventDate"
+              type="date"
+              value={form.eventDate}
+              onChange={handleChange}
+            />
+
+          </div>
+
+          <div className="inquiry-field">
+
+            <label htmlFor="location">
+              Event Location
+            </label>
+
+            <input
+              id="location"
+              name="location"
+              type="text"
+              placeholder="City / Venue"
+              value={form.location}
+              onChange={handleChange}
+            />
+
+          </div>
+                    <div className="inquiry-field">
+
+            <label htmlFor="message">
+              Tell us a little about your plans
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Share anything you'd like us to know about your event, vision, or ideas..."
+              value={form.message}
+              onChange={handleChange}
+              required
+            />
+
+          </div>
+
+          <button
+            type="submit"
+            className="submit-btn"
+            disabled={loading}
           >
-            <option value="wedding">Wedding</option>
-            <option value="pre-shoot">Pre-shoot</option>
-            <option value="portrait">Portrait</option>
-            <option value="event">Event</option>
-            <option value="commercial">Commercial</option>
-          </select>
-
-          <input
-            name="eventDate"
-            type="date"
-            value={form.eventDate}
-            onChange={handleChange}
-          />
-
-          <input
-            name="location"
-            placeholder="Location"
-            value={form.location}
-            onChange={handleChange}
-          />
-
-          <textarea
-            name="message"
-            placeholder="Your message"
-            value={form.message}
-            onChange={handleChange}
-            required
-          />
-
-          <button type="submit" disabled={loading}>
-            {loading ? 'Sending...' : 'Send Inquiry'}
+            {loading ? "Sending..." : "Send Inquiry"}
           </button>
 
           {success && (
             <p className="success">
-              Your inquiry has been submitted successfully!
+              Thank you! Your inquiry has been received. We'll be in touch as soon as possible.
             </p>
           )}
 
-          {error && <p className="error">{error}</p>}
+          {error && (
+            <p className="error">
+              {error}
+            </p>
+          )}
 
         </form>
+
       </div>
     </div>
   );
