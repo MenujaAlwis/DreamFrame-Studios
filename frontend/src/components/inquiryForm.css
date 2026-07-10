@@ -1,10 +1,62 @@
+.inquiry-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .inquiry-container {
+  position: relative;
   max-width: 700px;
-  margin: 80px auto;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: 0 auto;
   padding: 40px;
   background: #111;
   border-radius: 12px;
   color: white;
+  animation: slideUp 0.35s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inquiry-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.inquiry-close-btn:hover {
+  opacity: 1;
 }
 
 .inquiry-container h2 {
@@ -39,7 +91,7 @@
   resize: vertical;
 }
 
-.inquiry-form button {
+.inquiry-form button[type="submit"] {
   padding: 12px;
   background: white;
   color: black;
@@ -50,7 +102,7 @@
   transition: 0.2s ease;
 }
 
-.inquiry-form button:hover {
+.inquiry-form button[type="submit"]:hover {
   background: #ddd;
 }
 
@@ -62,4 +114,10 @@
 .error {
   color: #ff4d4d;
   font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .inquiry-container {
+    padding: 28px 20px;
+  }
 }

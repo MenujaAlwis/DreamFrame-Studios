@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { submitInquiry } from '../services/api';
 import './inquiryForm.css';
 
-const InquiryForm = () => {
+const InquiryForm = ({ onClose }) => {
   const [form, setForm] = useState({
     fullName: '',
     email: '',
@@ -16,6 +16,23 @@ const InquiryForm = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+
+  // Lock background scroll while modal is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   const handleChange = (e) => {
     setForm({
@@ -51,85 +68,96 @@ const InquiryForm = () => {
     }
   };
 
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) onClose();
+  };
+
   return (
-    <div id="inquiry" className="inquiry-container">
-      <h2>Send Us an Inquiry</h2>
-      <p>Tell us about your event and we will get back to you soon.</p>
+    <div className="inquiry-overlay" onClick={handleOverlayClick}>
+      <div id="inquiry" className="inquiry-container">
 
-      <form onSubmit={handleSubmit} className="inquiry-form">
-
-        <input
-          name="fullName"
-          placeholder="Full Name"
-          value={form.fullName}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          name="phone"
-          placeholder="Phone"
-          value={form.phone}
-          onChange={handleChange}
-          required
-        />
-
-        <select
-          name="service"
-          value={form.service}
-          onChange={handleChange}
-        >
-          <option value="wedding">Wedding</option>
-          <option value="pre-shoot">Pre-shoot</option>
-          <option value="portrait">Portrait</option>
-          <option value="event">Event</option>
-          <option value="commercial">Commercial</option>
-        </select>
-
-        <input
-          name="eventDate"
-          type="date"
-          value={form.eventDate}
-          onChange={handleChange}
-        />
-
-        <input
-          name="location"
-          placeholder="Location"
-          value={form.location}
-          onChange={handleChange}
-        />
-
-        <textarea
-          name="message"
-          placeholder="Your message"
-          value={form.message}
-          onChange={handleChange}
-          required
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? 'Sending...' : 'Send Inquiry'}
+        <button className="inquiry-close-btn" onClick={onClose} aria-label="Close">
+          ×
         </button>
 
-        {success && (
-          <p className="success">
-            Your inquiry has been submitted successfully!
-          </p>
-        )}
+        <h2>Send Us an Inquiry</h2>
+        <p>Tell us about your event and we will get back to you soon.</p>
 
-        {error && <p className="error">{error}</p>}
+        <form onSubmit={handleSubmit} className="inquiry-form">
 
-      </form>
+          <input
+            name="fullName"
+            placeholder="Full Name"
+            value={form.fullName}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            name="phone"
+            placeholder="Phone"
+            value={form.phone}
+            onChange={handleChange}
+            required
+          />
+
+          <select
+            name="service"
+            value={form.service}
+            onChange={handleChange}
+          >
+            <option value="wedding">Wedding</option>
+            <option value="pre-shoot">Pre-shoot</option>
+            <option value="portrait">Portrait</option>
+            <option value="event">Event</option>
+            <option value="commercial">Commercial</option>
+          </select>
+
+          <input
+            name="eventDate"
+            type="date"
+            value={form.eventDate}
+            onChange={handleChange}
+          />
+
+          <input
+            name="location"
+            placeholder="Location"
+            value={form.location}
+            onChange={handleChange}
+          />
+
+          <textarea
+            name="message"
+            placeholder="Your message"
+            value={form.message}
+            onChange={handleChange}
+            required
+          />
+
+          <button type="submit" disabled={loading}>
+            {loading ? 'Sending...' : 'Send Inquiry'}
+          </button>
+
+          {success && (
+            <p className="success">
+              Your inquiry has been submitted successfully!
+            </p>
+          )}
+
+          {error && <p className="error">{error}</p>}
+
+        </form>
+      </div>
     </div>
   );
 };

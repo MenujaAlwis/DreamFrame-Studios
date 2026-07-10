@@ -1,7 +1,7 @@
 import './contactushero.css';
 import bg from '../assets/contactushero.png';
 
-const ContactUsHero = () => {
+const ContactUsHero = ({ onOpenInquiry }) => {
   return (
     <div
       className="contact-us-hero"
@@ -12,6 +12,10 @@ const ContactUsHero = () => {
         <p className="contact-us-subtitle">
           Get in touch with us
         </p>
+
+        <button className="contact-us-inquiry-btn" onClick={onOpenInquiry}>
+          Send Us an Inquiry
+        </button>
       </div>
     </div>
   );

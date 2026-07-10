@@ -57,3 +57,25 @@
 .contact-us-subtitle:hover {
     color: #d2d1d1;
 }
+
+.contact-us-inquiry-btn {
+    margin-top: 40px;
+    padding: 16px 42px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: white;
+    font-family: var(--body-font);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+.contact-us-inquiry-btn:hover {
+    background: white;
+    color: #111;
+    border-color: white;
+    transform: translateY(-2px);
+}

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Header from '../components/Header';
@@ -9,25 +9,23 @@ import './ContactUsPage.css';
 
 const ContactUsPage = () => {
   const location = useLocation();
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
   useEffect(() => {
     if (location.hash === '#inquiry') {
-      const el = document.getElementById('inquiry');
-
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
+      setIsInquiryOpen(true);
     }
   }, [location]);
 
   return (
     <div className="contact-us-page">
       <Header />
-      <ContactUsHero />
-      <InquiryForm />
+      <ContactUsHero onOpenInquiry={() => setIsInquiryOpen(true)} />
       <Footer />
+
+      {isInquiryOpen && (
+        <InquiryForm onClose={() => setIsInquiryOpen(false)} />
+      )}
     </div>
   );
 };
