@@ -42,7 +42,7 @@ const AdminPortfolioList = () => {
   };
 
   return (
-    <div className="admin-list">
+    <div className="admin-list portfolio-list">
       <h2>Manage Portfolios</h2>
 
       <div className="admin-grid">

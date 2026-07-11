@@ -1,187 +1,258 @@
-.admin-list {
+.portfolio-list {
   width: 100%;
   padding: 20px 0;
   overflow: visible;
 }
 
-.admin-list h2 {
-  margin-bottom: 20px;
+.portfolio-list h2 {
+  margin-bottom: 24px;
   color: var(--text-color);
   font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-.admin-grid {
+.portfolio-list .admin-grid {
   column-count: 3;
   column-gap: 20px;
 }
 
 @media (max-width: 1200px) {
-  .admin-grid {
+  .portfolio-list .admin-grid {
     column-count: 2;
   }
 }
 
 @media (max-width: 768px) {
-  .admin-grid {
+  .portfolio-list .admin-grid {
     column-count: 1;
   }
 }
 
-.admin-card {
+.portfolio-list .admin-card {
   position: relative;
   break-inside: avoid;
   margin-bottom: 20px;
-  background: #111;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(201, 168, 106, 0.18);
+  border-radius: 14px;
   overflow: hidden;
-  color: white;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: rgb(74, 74, 74);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
 }
 
-.admin-card:hover {
+.portfolio-list .admin-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border-color: rgba(201, 168, 106, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
 }
 
-.admin-card img {
+.portfolio-list .admin-card img {
   width: 100%;
   display: block;
   object-fit: cover;
+  filter: saturate(0.92) contrast(1.02);
+  transition: filter 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.admin-info {
-  padding: 12px;
+.portfolio-list .admin-card:hover img {
+  filter: saturate(1.05) contrast(1.03);
+  transform: scale(1.02);
 }
 
-.admin-info h3 {
+.portfolio-list .admin-info {
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.portfolio-list .admin-info h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 0.2px;
 }
 
-.admin-info p {
-  margin: 5px 0 10px;
-  opacity: 0.7;
+.portfolio-list .admin-info p {
+  margin: 6px 0 2px;
+  opacity: 0.6;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #c9a86a;
 }
 
-.menu-wrapper {
+/* ---------------------------------------------------------------------- */
+/* Three-dot menu                                                          */
+/* ---------------------------------------------------------------------- */
+
+.portfolio-list .menu-wrapper {
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 5;
 }
 
-.menu-btn {
-  width: 34px;
-  height: 34px;
+.portfolio-list .menu-btn {
+  width: 32px;
+  height: 32px;
   border-radius: 8px;
-  border: none;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  font-size: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.menu-btn:hover {
-  background: rgba(0, 0, 0, 0.85);
+.portfolio-list .menu-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: rgba(201, 168, 106, 0.4);
+  color: #c9a86a;
 }
 
-.dropdown-menu {
+.portfolio-list .dropdown-menu {
   position: absolute;
-  top: 40px;
+  top: 38px;
   right: 0;
-  background: #111;
-  border: 1px solid #333;
-  border-radius: 8px;
+  background: rgba(17, 17, 17, 0.92);
+  border: 1px solid rgba(201, 168, 106, 0.22);
+  border-radius: 10px;
   overflow: hidden;
   min-width: 130px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 20;
+  animation: portfolio-dropdown-in 0.15s ease;
 }
 
-.dropdown-menu button {
+@keyframes portfolio-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolio-list .dropdown-menu button {
   width: 100%;
-  padding: 10px;
+  padding: 10px 12px;
   background: transparent;
   border: none;
-  color: white;
+  color: rgba(255, 255, 255, 0.85);
   text-align: left;
+  font-size: 14px;
+  letter-spacing: 0.2px;
   cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-.dropdown-menu button:hover {
-  background: #222;
+.portfolio-list .dropdown-menu button:hover {
+  background: rgba(201, 168, 106, 0.1);
+  color: #c9a86a;
 }
-.delete-modal-overlay {
+
+.portfolio-list .dropdown-menu button:last-child:hover {
+  background: rgba(255, 59, 59, 0.1);
+  color: #ff6b6b;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Delete confirmation modal                                               */
+/* ---------------------------------------------------------------------- */
+
+.portfolio-list .delete-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 999;
 }
 
-.delete-modal {
+.portfolio-list .delete-modal {
   width: 320px;
-  background: #111;
-  border-radius: 12px;
-  padding: 20px;
+  background: rgba(20, 20, 20, 0.85);
+  border: 1px solid rgba(201, 168, 106, 0.2);
+  border-radius: 14px;
+  padding: 26px 22px;
   color: white;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-  animation: popIn 0.2s ease;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: portfolio-popIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.delete-modal h3 {
-  margin: 0 0 10px;
+.portfolio-list .delete-modal h3 {
+  margin: 0 0 8px;
   font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
-.delete-modal p {
-  opacity: 0.7;
-  font-size: 14px;
-  margin-bottom: 20px;
+.portfolio-list .delete-modal p {
+  opacity: 0.6;
+  font-size: 13.5px;
+  margin-bottom: 22px;
 }
 
-.delete-actions {
+.portfolio-list .delete-actions {
   display: flex;
   gap: 10px;
 }
 
-.delete-actions button {
+.portfolio-list .delete-actions button {
   flex: 1;
   padding: 10px;
-  border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.3px;
+  border: 1px solid transparent;
   transition: 0.2s ease;
 }
 
-.delete-actions button:first-child {
-  background: #333;
-  color: white;
+.portfolio-list .delete-actions button:first-child {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.delete-actions button:first-child:hover {
-  background: #444;
+.portfolio-list .delete-actions button:first-child:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.delete-actions button:last-child {
+.portfolio-list .delete-actions button:last-child {
   background: #ff3b3b;
   color: white;
 }
 
-.delete-actions button:last-child:hover {
+.portfolio-list .delete-actions button:last-child:hover {
   background: #e62e2e;
 }
 
-@keyframes popIn {
+@keyframes portfolio-popIn {
   from {
-    transform: scale(0.9);
+    transform: scale(0.94);
     opacity: 0;
   }
   to {

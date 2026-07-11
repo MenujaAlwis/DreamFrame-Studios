@@ -1,77 +1,208 @@
-.admin-list {
+.inquiries-list {
   width: 100%;
   padding: 20px 0;
   overflow: visible;
 }
 
-.admin-list h2 {
+.inquiries-list h2 {
   margin-bottom: 20px;
   color: var(--text-color);
   font-size: 24px;
 }
 
-.admin-grid {
+.inquiries-list .admin-grid {
   column-count: 3;
   column-gap: 20px;
 }
 
 @media (max-width: 1200px) {
-  .admin-grid {
+  .inquiries-list .admin-grid {
     column-count: 2;
   }
 }
 
 @media (max-width: 768px) {
-  .admin-grid {
+  .inquiries-list .admin-grid {
     column-count: 1;
   }
 }
 
-.admin-card {
+/* ---------------------------------------------------------------------- */
+/* Card — transparent, light gray border, dark readable text              */
+/* ---------------------------------------------------------------------- */
+
+.inquiries-list .admin-card {
   position: relative;
   break-inside: avoid;
   margin-bottom: 20px;
-  background: #111;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 12px;
-  overflow: hidden;
-  color: white;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: visible;
+  color: #2b2b2b;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.admin-card:hover {
+.inquiries-list .admin-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border-color: rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-.admin-info {
-  padding: 12px;
+.inquiries-list .admin-info {
+  padding: 16px;
 }
 
-.admin-info h3 {
-  margin: 0;
+/* Name + service tag header */
+.inquiries-list .inquiry-name {
+  margin: 0 0 8px;
   font-size: 18px;
-}
-
-.admin-info p {
-  margin: 5px 0;
-  opacity: 0.7;
-  font-size: 14px;
-}
-
-/* DELETE BUTTON */
-.delete-btn {
-  width: calc(100% - 24px);
-  margin: 12px;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
   font-weight: 600;
-  background: #ff3b3b;
-  color: white;
-  transition: 0.2s ease;
+  color: #1a1a1a;
+  padding-right: 24px; /* keep clear of the dots button */
 }
 
-.delete-btn:hover {
-  background: #e62e2e;
+.inquiries-list .inquiry-service-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(201, 168, 106, 0.15);
+  border: 1px solid rgba(201, 168, 106, 0.4);
+  color: #8a6d2f;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* Labeled detail rows */
+.inquiries-list .inquiry-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.inquiries-list .info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.inquiries-list .info-label {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #8a8a8a;
+}
+
+.inquiries-list .info-value {
+  font-size: 14px;
+  color: #333;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* Message block */
+.inquiries-list .inquiry-message {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.inquiries-list .inquiry-message .info-label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.inquiries-list .inquiry-message p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* ---------------------------------------------------------------------- */
+/* THREE-DOT MENU                                                          */
+/* ---------------------------------------------------------------------- */
+
+.inquiries-list .admin-card-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.inquiries-list .dots-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  color: #555;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.inquiries-list .dots-btn:hover {
+  background: rgba(201, 168, 106, 0.18);
+  border-color: rgba(201, 168, 106, 0.6);
+  color: #8a6d2f;
+}
+
+.inquiries-list .dropdown-menu {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  min-width: 130px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 6px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  animation: inquiries-dropdown-in 0.15s ease;
+}
+
+@keyframes inquiries-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inquiries-list .dropdown-delete {
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #d64545;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.inquiries-list .dropdown-delete:hover {
+  background: rgba(214, 69, 69, 0.1);
+  color: #b23333;
 }
