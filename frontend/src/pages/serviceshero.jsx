@@ -23,7 +23,7 @@ import "./serviceshero.css";
 import heroImage from "../assets/services.png";
 import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+const ServicesHero = () => {
 const navigate = useNavigate();
   return (
     <>
@@ -47,4 +47,4 @@ const navigate = useNavigate();
   );
 };
 
-export default HomePage;
+export default ServicesHero;

@@ -1,7 +1,7 @@
 .upload-portfolio-wrapper {
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 15px 20px;
 }
 
 .upload-portfolio-card {
@@ -9,7 +9,7 @@
   max-width: 620px;
   background: #ffffff;
   padding: 30px 40px;
-  border-radius: 14px;
+  border-radius: 0px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -49,8 +49,8 @@
 
 .upload-portfolio-field input,
 .upload-portfolio-field select {
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: 15px 12px;
+  border-radius: 0px;
   border: 1px solid #eeeded;
   background: #ffffff;
   color: #464646;
@@ -63,9 +63,9 @@
 }
 
 .upload-portfolio-submit {
-  padding: 12px;
+  padding: 15px 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 0px;
   background: linear-gradient(135deg, #ff6a00, #ff3c00);
   color: white;
   font-weight: 600;
