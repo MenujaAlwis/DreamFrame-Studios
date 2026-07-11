@@ -10,6 +10,8 @@ const AdminInquiriesList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [openMenuId, setOpenMenuId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [serviceFilter, setServiceFilter] = useState('all');
 
   const menuRef = useRef(null);
 
@@ -54,14 +56,12 @@ const AdminInquiriesList = () => {
     setOpenMenuId((prev) => (prev === id ? null : id));
   };
 
-  // IMPORTANT FIX: wait for token
   useEffect(() => {
     if (token && user?.role === 'admin') {
       loadInquiries();
     }
   }, [token, user]);
 
-  // Close the open menu on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -72,6 +72,26 @@ const AdminInquiriesList = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  const services = Array.from(
+    new Set(inquiries.map((inq) => inq.service).filter(Boolean))
+  );
+
+  const filteredInquiries = inquiries.filter((inq) => {
+    const query = searchTerm.trim().toLowerCase();
+
+    const matchesSearch =
+      !query ||
+      inq.fullName?.toLowerCase().includes(query) ||
+      inq.email?.toLowerCase().includes(query) ||
+      inq.phone?.toLowerCase().includes(query) ||
+      inq.location?.toLowerCase().includes(query);
+
+    const matchesService =
+      serviceFilter === 'all' || inq.service === serviceFilter;
+
+    return matchesSearch && matchesService;
+  });
 
   if (!token) {
     return <p style={{ color: 'white' }}>Not logged in</p>;
@@ -89,11 +109,49 @@ const AdminInquiriesList = () => {
     <div className="admin-list inquiries-list">
       <h2>Manage Inquiries</h2>
 
+      <div className="admin-toolbar">
+        <div className="toolbar-search">
+          <svg
+            className="toolbar-search-icon"
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search by name, email, phone, or location..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
+        <select
+          className="toolbar-filter"
+          value={serviceFilter}
+          onChange={(e) => setServiceFilter(e.target.value)}
+        >
+          <option value="all">All services</option>
+          {services.map((service) => (
+            <option key={service} value={service}>
+              {service}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="admin-grid">
-        {inquiries.length === 0 ? (
-          <p style={{ color: 'white' }}>No inquiries found</p>
+        {filteredInquiries.length === 0 ? (
+          <p className="empty-state">No inquiries match your search.</p>
         ) : (
-          inquiries.map((inq) => (
+          filteredInquiries.map((inq) => (
             <div key={inq._id} className="admin-card">
               <div className="admin-card-menu" ref={openMenuId === inq._id ? menuRef : null}>
                 <button
