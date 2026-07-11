@@ -29,6 +29,83 @@
   }
 }
 
+/* ---------------------------------------------------------------------- */
+/* Toolbar — search + filter                                               */
+/* ---------------------------------------------------------------------- */
+
+.portfolio-list .admin-toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.portfolio-list .toolbar-search {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 168, 106, 0.2);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.2s ease;
+}
+
+.portfolio-list .toolbar-search:focus-within {
+  border-color: rgba(201, 168, 106, 0.55);
+}
+
+.portfolio-list .toolbar-search-icon {
+  flex-shrink: 0;
+  color: rgba(74, 74, 74, 0.55);
+}
+
+.portfolio-list .toolbar-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: rgb(74, 74, 74);
+}
+
+.portfolio-list .toolbar-search input::placeholder {
+  color: rgba(74, 74, 74, 0.5);
+}
+
+.portfolio-list .toolbar-filter {
+  min-width: 200px;
+  padding: 9px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 168, 106, 0.2);
+  border-radius: 8px;
+  font-size: 14px;
+  color: rgb(74, 74, 74);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.2s ease;
+}
+
+.portfolio-list .toolbar-filter:focus {
+  border-color: rgba(201, 168, 106, 0.55);
+  outline: none;
+}
+
+.portfolio-list .toolbar-filter option {
+  background: #fff;
+  color: rgb(74, 74, 74);
+}
+
+.portfolio-list .empty-state {
+  color: rgba(74, 74, 74, 0.7);
+  font-size: 14px;
+}
+
 .portfolio-list .admin-card {
   position: relative;
   break-inside: avoid;
