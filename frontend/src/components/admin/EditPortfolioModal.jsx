@@ -30,13 +30,13 @@ const EditPortfolioModal = ({ item, token, onClose, onUpdated }) => {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-box">
-        <button className="close-btn" onClick={onClose}>
+    <div className="edit-portfolio-overlay">
+      <div className="edit-portfolio-box">
+        <button className="edit-portfolio-close" onClick={onClose}>
           ×
         </button>
 
-        <form onSubmit={handleUpdate}>
+        <form onSubmit={handleUpdate} className="edit-portfolio-form">
           <h2>Edit Portfolio</h2>
 
           <input

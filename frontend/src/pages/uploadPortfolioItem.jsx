@@ -53,13 +53,13 @@ const UploadPortfolioItem = () => {
   };
 
   return (
-    <div className="upload-page">
-      <div className="upload-card">
-        <h2 className="upload-title">Create Portfolio Event</h2>
+    <div className="upload-portfolio-wrapper">
+      <div className="upload-portfolio-card">
+        <h2 className="upload-portfolio-title">Create Portfolio Event</h2>
 
-        <form onSubmit={handleSubmit} className="upload-form">
+        <form onSubmit={handleSubmit} className="upload-portfolio-form">
 
-          <div className="form-group">
+          <div className="upload-portfolio-field">
             <label>Event Title</label>
             <input
               type="text"
@@ -70,7 +70,7 @@ const UploadPortfolioItem = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="upload-portfolio-field">
             <label>Category</label>
             <select value={category} onChange={(e) => setCategory(e.target.value)}>
               <option value="wedding">Wedding</option>
@@ -81,7 +81,7 @@ const UploadPortfolioItem = () => {
             </select>
           </div>
 
-          <div className="form-group">
+          <div className="upload-portfolio-field">
             <label>Event Date</label>
             <input
               type="date"
@@ -91,7 +91,7 @@ const UploadPortfolioItem = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="upload-portfolio-field">
             <label>Cover Image</label>
             <input
               type="file"
@@ -100,7 +100,7 @@ const UploadPortfolioItem = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="upload-portfolio-field">
             <label>Media Files</label>
             <input
               type="file"
@@ -110,11 +110,11 @@ const UploadPortfolioItem = () => {
             />
           </div>
 
-          <button className="upload-button" type="submit" disabled={loading}>
+          <button className="upload-portfolio-submit" type="submit" disabled={loading}>
             {loading ? 'Uploading...' : 'Upload Event'}
           </button>
 
-          {message && <p className="upload-message">{message}</p>}
+          {message && <p className="upload-portfolio-message">{message}</p>}
         </form>
       </div>
     </div>

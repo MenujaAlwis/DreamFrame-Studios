@@ -1,59 +1,68 @@
-.upload-page {
+.upload-portfolio-wrapper {
   display: flex;
   justify-content: center;
-  padding: 40px;
+  padding: 40px 20px;
 }
 
-.upload-card {
+.upload-portfolio-card {
   width: 100%;
-  max-width: 520px;
-  background: #151515;
-  padding: 30px;
+  max-width: 620px;
+  background: #ffffff;
+  padding: 30px 40px;
   border-radius: 14px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.upload-title {
-  font-size: 22px;
-  color: #ffffff;
-  margin-bottom: 20px;
+.upload-portfolio-title {
+  color: #373737;
+  font-family: "Cormorant Garamond", serif;
   font-weight: 600;
-  text-align: center;
+  font-size: 35px !important;
+  margin-bottom: 20px;
+}
+.upload-portfolio-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 1px;
+  margin: 8px auto 0px;
+  background-color: #cfbaa4;
 }
 
-.upload-form {
+.upload-portfolio-form {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-.form-group {
+.upload-portfolio-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0px;
 }
 
-.form-group label {
+.upload-portfolio-field label {
   font-size: 13px;
-  color: #bdbdbd;
+  color: #7e7e7e;
+  text-align: left;
 }
 
-.form-group input,
-.form-group select {
+.upload-portfolio-field input,
+.upload-portfolio-field select {
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1px solid #2a2a2a;
-  background: #1e1e1e;
-  color: #ffffff;
+  border: 1px solid #eeeded;
+  background: #ffffff;
+  color: #464646;
   outline: none;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  border-color: #ff6a00;
+.upload-portfolio-field input:focus,
+.upload-portfolio-field select:focus {
+  border-color: #aa8246;
 }
 
-.upload-button {
+.upload-portfolio-submit {
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -64,17 +73,17 @@
   transition: 0.2s ease;
 }
 
-.upload-button:hover:not(:disabled) {
+.upload-portfolio-submit:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(255, 106, 0, 0.3);
 }
 
-.upload-button:disabled {
+.upload-portfolio-submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.upload-message {
+.upload-portfolio-message {
   text-align: center;
   font-size: 14px;
   color: #00ff99;
