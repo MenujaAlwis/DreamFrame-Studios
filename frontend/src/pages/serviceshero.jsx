@@ -1,48 +1,54 @@
-/*import './serviceshero.css';
-import bg from '../assets/serviceshero.png';
-
-const ServicesHero = () => {
-  return (
-    <div
-      className="services-hero"
-      style={{ backgroundImage: `url(${bg})` }}
-    >
-      <div className="services-hero-content">
-        <h1 className="services-title">Collections</h1>
-        <p className="services-subtitle">
-          Stories told through timeless frames and authentic moments
-        </p>
-      </div>
-    </div>
-  );
-};
-
-export default ServicesHero;*/
-
+import { useEffect, useState } from "react";
 import "./serviceshero.css";
 import heroImage from "../assets/services.png";
 import { useNavigate } from "react-router-dom";
 
 const ServicesHero = () => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setHeroLoaded(true), 50);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <>
-    <section
-      className="servicespage"
-      style={{ backgroundImage: `url(${heroImage})` }}
-    >
-      <div className="services-hero-content">
-        <p className="services-hero-subtitle">Photography Services</p>
-        <h1 className="services-hero-title">Timeless Images. Meaningful Stories</h1>
-        <p className="services-hero-description">Thoughtfully crafted sessions to capture the moments <br /> that matter most. Choose the experience that's right for you.</p>
-        <button
-          className="services-portfolio-btn"
-          onClick={() => navigate("/")}
-        >
-          View Packages →
-        </button>
-      </div>
-    </section>
+      <section className={`servicespage ${heroLoaded ? "loaded" : ""}`}>
+        <div
+          className="servicespage-bg"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        />
+
+        <div className="services-hero-content">
+          <p
+            className="services-hero-subtitle anim-item"
+            style={{ "--delay": "0.1s" }}
+          >
+            Photography Services
+          </p>
+          <h1
+            className="services-hero-title anim-item"
+            style={{ "--delay": "0.3s" }}
+          >
+            Timeless Images. Meaningful Stories
+          </h1>
+          <p
+            className="services-hero-description anim-item"
+            style={{ "--delay": "0.5s" }}
+          >
+            Thoughtfully crafted sessions to capture the moments <br /> that
+            matter most. Choose the experience that's right for you.
+          </p>
+          <button
+            className="services-portfolio-btn anim-item"
+            style={{ "--delay": "0.7s" }}
+            onClick={() => navigate("/")}
+          >
+            <span>View Packages →</span>
+          </button>
+        </div>
+      </section>
     </>
   );
 };

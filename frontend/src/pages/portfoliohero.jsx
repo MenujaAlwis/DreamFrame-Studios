@@ -1,56 +1,61 @@
-/*import './portfoliohero.css';
-import bg from '../assets/portfoliohero.png';
-
-const PortfolioHero = () => {
-  return (
-    <div
-      className="portfolio-hero"
-      style={{ backgroundImage: `url(${bg})` }}
-    >
-      <div className="portfolio-hero-content">
-        <h1 className="portfolio-title">Portfolio</h1>
-        <p className="portfolio-subtitle">
-          A collection of timeless moments captured with passion
-        </p>
-      </div>
-    </div>
-  );
-};
-
-export default PortfolioHero;*/
-
-
+import { useEffect, useState } from "react";
 import "./portfoliohero.css";
 import heroImage from "../assets/portfolio1.png";
 import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
-const navigate = useNavigate();
+const PortfolioHero = () => {
+  const navigate = useNavigate();
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setHeroLoaded(true), 50);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <>
-    <section
-      className="portfoliopage"
-      style={{ backgroundImage: `url(${heroImage})` }}
-    >
-      <div className="portfolio-hero-content">
-        <p className="portfolio-hero-subtitle">Featured Collections</p>
-        <h1 className="portfolio-hero-title">Capturing Life's Precious Moments</h1>
-        <p className="portfolio-hero-description">Explore our featured collections <br /> A curated glimpse into our dedicated work</p>
-        <button
-          className="portfolio-hero-btn"
-          onClick={() => {
-            document.getElementById("collections")?.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }}
-        >
-          Explore Work →
-        </button>
-      </div>
-    </section>
+      <section className={`portfoliopage ${heroLoaded ? "loaded" : ""}`}>
+        <div
+          className="portfoliopage-bg"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        />
+
+        <div className="portfolio-hero-content">
+          <p
+            className="portfolio-hero-subtitle anim-item"
+            style={{ "--delay": "0.1s" }}
+          >
+            Featured Collections
+          </p>
+          <h1
+            className="portfolio-hero-title anim-item"
+            style={{ "--delay": "0.3s" }}
+          >
+            Capturing Life's Precious Moments
+          </h1>
+          <p
+            className="portfolio-hero-description anim-item"
+            style={{ "--delay": "0.5s" }}
+          >
+            Explore our featured collections <br /> A curated glimpse into our
+            dedicated work
+          </p>
+          <button
+            className="portfolio-hero-btn anim-item"
+            style={{ "--delay": "0.7s" }}
+            onClick={() => {
+              document.getElementById("collections")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}
+          >
+            <span>Explore Work →</span>
+          </button>
+        </div>
+      </section>
     </>
   );
 };
 
-export default HomePage;
+export default PortfolioHero;
