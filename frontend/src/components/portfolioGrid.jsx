@@ -76,27 +76,32 @@ const PortfolioGrid = ({ sectionRef }) => {
 
       <div className={`filter-container ${isVisible ? 'show delay-1' : ''}`}>
         <div className="filter-pills">
-          {CATEGORIES.map((category) => (
-            <Button
+          {CATEGORIES.map((category, i) => (
+            <span
               key={category.value || 'all'}
-              variant={
-                selectedCategory === category.value
-                  ? 'filter-active'
-                  : 'filter'
-              }
-              size="sm"
-              onClick={() => {
-                setSelectedCategory(category.value);
-
-                if (category.value) {
-                  navigate(`/portfolio?category=${category.value}`);
-                } else {
-                  navigate('/portfolio');
-                }
-              }}
+              className="filter-pill-wrap"
+              style={{ '--pill-delay': `${0.4 + i * 0.06}s` }}
             >
-              <span>{category.label}</span>
-            </Button>
+              <Button
+                variant={
+                  selectedCategory === category.value
+                    ? 'filter-active'
+                    : 'filter'
+                }
+                size="sm"
+                onClick={() => {
+                  setSelectedCategory(category.value);
+
+                  if (category.value) {
+                    navigate(`/portfolio?category=${category.value}`);
+                  } else {
+                    navigate('/portfolio');
+                  }
+                }}
+              >
+                <span>{category.label}</span>
+              </Button>
+            </span>
           ))}
         </div>
       </div>
@@ -104,12 +109,12 @@ const PortfolioGrid = ({ sectionRef }) => {
       {error && <Alert type="error">{error}</Alert>}
 
       {loading ? (
-        <div className="loading-state">
+        <div className="loading-state show">
           <Spinner size="md" />
           <p>Loading portfolio...</p>
         </div>
       ) : items.length === 0 ? (
-        <div className="empty-state">
+        <div className="empty-state show">
           <h3>No portfolios found</h3>
           <p>
             {selectedCategory

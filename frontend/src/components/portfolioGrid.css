@@ -6,18 +6,20 @@
 }
 
 .portfolio-intro-line,
-.filter-container,
+.filter-container {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
 .portfolio-grid {
   opacity: 0;
-  transform: scale(0.92);
-  transition: all 0.8s ease;
+  transition: opacity 0.8s ease;
 }
 
 .portfolio-intro-line.show,
 .filter-container.show,
 .portfolio-grid.show {
   opacity: 1;
-  transform: scale(1);
 }
 
 .delay-1 {
@@ -51,6 +53,19 @@
   gap: 10px;
 }
 
+.filter-pill-wrap {
+  display: inline-flex;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: var(--pill-delay, 0s);
+}
+
+.filter-container.show .filter-pill-wrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .portfolio-grid {
   column-count: 3;
   column-gap: 20px;
@@ -79,6 +94,11 @@
   break-inside: avoid;
   overflow: hidden;
   cursor: pointer;
+  transition: box-shadow 0.4s ease;
+}
+
+.portfolio-card:hover {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
 }
 
 .portfolio-image {
@@ -89,18 +109,24 @@
 }
 
 .portfolio-card:hover .portfolio-image {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 .portfolio-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.18);
-  transition: background 0.4s ease;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.15) 45%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  opacity: 0.75;
+  transition: opacity 0.4s ease;
 }
 
 .portfolio-card:hover .portfolio-overlay {
-  background: rgba(0, 0, 0, 0.42);
+  opacity: 1;
 }
 
 .portfolio-center {
@@ -123,6 +149,12 @@
   font-weight: 400;
   letter-spacing: 1px;
   color: #ffffff;
+  transform: translateY(8px);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portfolio-card:hover .portfolio-center h2 {
+  transform: translateY(0);
 }
 
 .portfolio-date {
@@ -131,13 +163,27 @@
   font-family: 'Inter', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
+  opacity: 1;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease 0.05s, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+}
+
+.portfolio-card:hover .portfolio-date {
   opacity: 0.9;
+  transform: translateY(0);
 }
 
 .loading-state,
 .empty-state {
   text-align: center;
   padding: 60px 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.loading-state.show,
+.empty-state.show {
+  opacity: 1;
 }
 
 .empty-state {
@@ -155,6 +201,25 @@
 .empty-state p {
   font-size: 14px;
   opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-intro-line,
+  .filter-container,
+  .filter-pill-wrap,
+  .portfolio-grid,
+  .portfolio-card,
+  .portfolio-image,
+  .portfolio-overlay,
+  .portfolio-center h2,
+  .portfolio-date,
+  .loading-state,
+  .empty-state {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 @media (max-width: 1200px) {
