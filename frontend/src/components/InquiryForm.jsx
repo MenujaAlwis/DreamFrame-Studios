@@ -24,6 +24,7 @@ const InquiryForm = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [closing, setClosing] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -35,7 +36,7 @@ const InquiryForm = ({ onClose }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        onClose();
+        requestClose();
       }
     };
 
@@ -44,7 +45,13 @@ const InquiryForm = ({ onClose }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const requestClose = () => {
+    setClosing(true);
+    setTimeout(() => onClose(), 250);
+  };
 
   const handleChange = (e) => {
     setForm((prev) => ({
@@ -90,17 +97,20 @@ const InquiryForm = ({ onClose }) => {
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      requestClose();
     }
   };
 
   return (
-    <div className="inquiry-overlay" onClick={handleOverlayClick}>
-      <div className="inquiry-container">
+    <div
+      className={`inquiry-overlay ${closing ? "closing" : ""}`}
+      onClick={handleOverlayClick}
+    >
+      <div className={`inquiry-container ${closing ? "closing" : ""}`}>
 
         <button
           className="inquiry-close-btn"
-          onClick={onClose}
+          onClick={requestClose}
           aria-label="Close"
         >
           ×
@@ -267,17 +277,27 @@ const InquiryForm = ({ onClose }) => {
             className="submit-btn"
             disabled={loading}
           >
-            {loading ? "Sending..." : "Send Inquiry"}
+            <span className="submit-btn-label">
+              {loading ? (
+                <span className="submit-loading">
+                  <span className="submit-dot" />
+                  <span className="submit-dot" />
+                  <span className="submit-dot" />
+                </span>
+              ) : (
+                "Send Inquiry"
+              )}
+            </span>
           </button>
 
           {success && (
-            <p className="success">
+            <p className="success show">
               Thank you! Your inquiry has been received. We'll be in touch as soon as possible.
             </p>
           )}
 
           {error && (
-            <p className="error">
+            <p className="error show">
               {error}
             </p>
           )}
