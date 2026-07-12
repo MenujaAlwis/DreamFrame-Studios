@@ -64,11 +64,12 @@ const OurTeamHero = () => {
     setActiveIndex((current) => (current === index ? null : index));
 
   return (
-    <div
-      ref={heroRef}
-      className={`ourteam-hero ${isVisible ? 'show' : ''}`}
-      style={{ backgroundImage: `url(${bg})` }}
-    >
+    <div ref={heroRef} className={`ourteam-hero ${isVisible ? 'show' : ''}`}>
+      <div
+        className="ourteam-hero-bg"
+        style={{ backgroundImage: `url(${bg})` }}
+      />
+
       <div className="ourteam-hero-content">
         <p className="ourteam-eyebrow">The People Behind DreamFrame</p>
         <h1 className="ourteam-title">Behind the lens</h1>
@@ -84,7 +85,7 @@ const OurTeamHero = () => {
             style={{
               top: person.position.top,
               left: person.position.left,
-              transitionDelay: `${index * 90}ms`
+              transitionDelay: `${0.6 + index * 0.09}s`
             }}
             onMouseEnter={() => open(index)}
             onMouseLeave={() => close(index)}

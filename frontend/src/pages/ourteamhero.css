@@ -4,8 +4,6 @@
   min-height: 100dvh;
   width: 100%;
   max-width: 100%;
-  background-size: cover;
-  background-position: center top;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,8 +11,21 @@
   overflow: hidden;
 }
 
-/* Warm, brand-tinted depth instead of flat black, plus a bottom
-   pool of darkness so the lower markers/cards stay legible. */
+.ourteam-hero-bg {
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  transform: scale(1.12);
+  transition: transform 7s ease-out;
+}
+
+.ourteam-hero.show .ourteam-hero-bg {
+  transform: scale(1);
+}
+
 .ourteam-hero::before {
   content: '';
   position: absolute;
@@ -41,14 +52,6 @@
   align-items: center;
   justify-content: center;
   padding-top: 90px;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.ourteam-hero.show .ourteam-hero-content {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .ourteam-eyebrow {
@@ -58,6 +61,15 @@
   text-transform: uppercase;
   color: #f3deb8;
   margin: 0 0 14px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.1s;
+}
+
+.ourteam-hero.show .ourteam-eyebrow {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ourteam-title {
@@ -67,17 +79,35 @@
   margin: 0;
   font-weight: 600;
   letter-spacing: 1px;
-  transition: color 0.4s ease, transform 0.4s ease;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease, color 0.4s ease,
+    transform 0.4s ease;
+  transition-delay: 0.3s;
+}
+
+.ourteam-hero.show .ourteam-title {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ourteam-title::after {
   content: '';
   display: block;
-  width: 50px;
+  width: 0;
   height: 2px;
   background-color: #c9a86a;
   margin: 20px auto 0 auto;
   transition: width 0.3s ease;
+}
+
+.ourteam-hero.show .ourteam-title::after {
+  animation: growLine 0.7s ease-out forwards;
+  animation-delay: 0.9s;
+}
+
+@keyframes growLine {
+  to { width: 50px; }
 }
 
 .ourteam-title:hover {
@@ -85,16 +115,15 @@
   transform: scale(1.02);
 }
 
-.ourteam-title:hover::after {
+.ourteam-hero.show .ourteam-title:hover::after {
   width: 80px;
 }
-
 
 /* ---------- Locator markers ---------- */
 
 .person-marker {
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.4);
   width: 0;
   height: 0;
   padding: 0;
@@ -103,11 +132,12 @@
   cursor: pointer;
   z-index: 3;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .ourteam-hero.show .person-marker {
   opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .person-marker:hover,
@@ -165,7 +195,7 @@
   position: absolute;
   top: 20px;
   left: 50%;
-  transform: translate(-50%, -8px);
+  transform: translate(-50%, -8px) scale(0.96);
   min-width: 180px;
   padding: 16px 20px 14px;
   text-align: center;
@@ -183,7 +213,7 @@
 .person-marker.is-open .person-card,
 .person-marker:focus-visible .person-card {
   opacity: 1;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0) scale(1);
   pointer-events: auto;
 }
 
@@ -249,6 +279,10 @@
     width: 36px;
   }
 
+  .ourteam-hero.show .ourteam-title::after {
+    width: 36px;
+  }
+
   .ourteam-eyebrow {
     font-size: 11px;
     letter-spacing: 2px;
@@ -280,10 +314,16 @@
     opacity: 0.5;
   }
 
+  .ourteam-hero-bg,
   .ourteam-hero-content,
+  .ourteam-eyebrow,
+  .ourteam-title,
+  .ourteam-title::after,
   .person-marker,
-  .person-card,
-  .ourteam-title {
+  .person-card {
     transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
