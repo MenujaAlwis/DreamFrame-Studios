@@ -15,6 +15,15 @@
   text-transform: uppercase;
   color: #605343;
   margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.home-portfolio.show .home-portfolio-subtitle {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.05s;
 }
 
 .home-portfolio-header h2 {
@@ -24,6 +33,15 @@
   color: #322b25;
   line-height: 1.1;
   margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.home-portfolio.show .home-portfolio-header h2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
 }
 
 .home-portfolio-description {
@@ -32,6 +50,15 @@
   color: #7d746b;
   line-height: 1.8;
   font-size: 15px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.home-portfolio.show .home-portfolio-description {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
 }
 
 .home-portfolio-grid {
@@ -48,15 +75,22 @@
   cursor: pointer;
   opacity: 0;
   transform: translateY(50px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .home-portfolio.show .home-portfolio-card {
-  animation: fadeUp 0.8s forwards;
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(0.3s + var(--card-delay, 0s));
 }
 
 .home-portfolio-card:hover {
   transform: translateY(-10px);
-  transition: .35s;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.home-portfolio-image {
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
 }
 
 .home-portfolio-image img {
@@ -64,6 +98,11 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 18px 18px 0 0;
+  transition: transform 0.6s ease;
+}
+
+.home-portfolio-card:hover .home-portfolio-image img {
+  transform: scale(1.06);
 }
 
 .home-portfolio-icon {
@@ -80,6 +119,13 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
   position: relative;
   z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, color 0.3s ease;
+}
+
+.home-portfolio-card:hover .home-portfolio-icon {
+  transform: scale(1.1) rotate(-6deg);
+  background: #81664b;
+  color: #fff;
 }
 
 .home-portfolio-content {
@@ -103,15 +149,38 @@
 
 .home-portfolio-link {
   display: inline-block;
+  position: relative;
   margin-top: 18px;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: var(--text-color);
   font-weight: 600;
   font-size: 12px;
+  transition: letter-spacing 0.3s ease, color 0.3s ease;
+}
+
+.home-portfolio-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.home-portfolio-card:hover .home-portfolio-link {
+  letter-spacing: 2.5px;
+}
+
+.home-portfolio-card:hover .home-portfolio-link::after {
+  width: 100%;
 }
 
 .home-portfolio-button {
+  position: relative;
+  overflow: hidden;
   margin-top: 60px;
   padding: 16px 46px;
   background: transparent;
@@ -120,18 +189,65 @@
   letter-spacing: 2px;
   cursor: pointer;
   color: #322b25;
-  transition: .35s;
+  transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.home-portfolio-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.home-portfolio-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transform: skewX(-20deg);
 }
 
 .home-portfolio-button:hover {
   background: #322b25;
   color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(50, 43, 37, 0.2);
+}
+
+.home-portfolio-button:hover::before {
+  animation: portfolioShine 0.9s ease forwards;
+}
+
+@keyframes portfolioShine {
+  to { left: 130%; }
 }
 
 @keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-portfolio-subtitle,
+  .home-portfolio-header h2,
+  .home-portfolio-description,
+  .home-portfolio-card,
+  .home-portfolio-image img,
+  .home-portfolio-icon,
+  .home-portfolio-link,
+  .home-portfolio-button {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

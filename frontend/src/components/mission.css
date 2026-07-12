@@ -18,8 +18,9 @@
   font-size: clamp(20px, 2.4vw, 30px);
   line-height: 1.8;
   opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.6s ease;
+  transform: translateY(24px) scale(0.96);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   max-width: 800px;
   text-align: center;
   color: var(--text-color);
@@ -27,18 +28,26 @@
 .mission-text-first::before {
   content: '';
   display: block;
-  width: 50px;
+  width: 0;
   height: 1px;
   margin: 0 auto 24px;
   background-color: #dbcfc2;
+  transition: width 0.6s ease 0.5s;
+}
+.mission-text-first.show::before {
+  width: 50px;
 }
 .mission-text-second::after {
   content: '';
   display: block;
-  width: 50px;
+  width: 0;
   height: 1px;
   margin: 24px auto 0;
   background-color: #dbcfc2;
+  transition: width 0.6s ease 1.3s;
+}
+.mission-text-second.show::after {
+  width: 50px;
 }
 .mission-image-container {
   display: flex;
@@ -46,9 +55,6 @@
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.6s ease;
 }
 .mission-image-container img {
   width: 250px;
@@ -56,29 +62,82 @@
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 12px 28px rgba(62, 47, 32, 0.12);
-  transition: transform 0.7s ease;
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+  transition-delay: var(--img-delay, 0s);
 }
 
 .mission-image-container img:nth-child(1) {
-  transform: translateY(0px);
+  transform: translateY(50px);
 }
 
 .mission-image-container img:nth-child(2) {
-  transform: translateY(25px);
+  transform: translateY(75px);
 }
 
 .mission-image-container img:nth-child(3) {
-  transform: translateY(0px);
+  transform: translateY(50px);
 }
 
 .mission-image-container img:nth-child(4) {
+  transform: translateY(75px);
+}
+
+.mission-image-container.show img:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.mission-image-container.show img:nth-child(2) {
+  opacity: 1;
   transform: translateY(25px);
 }
-.mission-text.show,
-.mission-image-container.show {
+
+.mission-image-container.show img:nth-child(3) {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0px);
+}
+
+.mission-image-container.show img:nth-child(4) {
+  opacity: 1;
+  transform: translateY(25px);
+}
+
+.mission-image-container img:hover {
+  box-shadow: 0 20px 40px rgba(62, 47, 32, 0.2);
+}
+
+.mission-image-container.show img:nth-child(1):hover {
+  transform: translateY(-6px);
+}
+.mission-image-container.show img:nth-child(2):hover {
+  transform: translateY(19px);
+}
+.mission-image-container.show img:nth-child(3):hover {
+  transform: translateY(-6px);
+}
+.mission-image-container.show img:nth-child(4):hover {
+  transform: translateY(19px);
+}
+
+.mission-text.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 .mission-text.delay {
-  transition-delay: 0.9s;
+  transition-delay: 0.7s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mission-text,
+  .mission-text-first::before,
+  .mission-text-second::after,
+  .mission-image-container img {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

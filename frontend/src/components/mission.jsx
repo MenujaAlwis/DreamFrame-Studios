@@ -34,14 +34,14 @@ const Mission = () => {
       <div className="mission-container">
 
         <p className={`mission-text mission-text-first ${isVisible ? 'show' : ''}`}>
-          We don’t just take photos — we preserve emotions, stories, and moments that can never be repeated.
+          We don't just take photos — we preserve emotions, stories, and moments that can never be repeated.
         </p>
 
         <div className={`mission-image-container ${isVisible ? 'show' : ''}`}>
-          <img src={missionImage1} alt="Mission 1" />
-          <img src={missionImage2} alt="Mission 2" />
-          <img src={missionImage3} alt="Mission 3" />
-          <img src={missionImage4} alt="Mission 4" />
+          <img src={missionImage1} alt="Mission 1" style={{ '--img-delay': '0.1s' }} />
+          <img src={missionImage2} alt="Mission 2" style={{ '--img-delay': '0.22s' }} />
+          <img src={missionImage3} alt="Mission 3" style={{ '--img-delay': '0.34s' }} />
+          <img src={missionImage4} alt="Mission 4" style={{ '--img-delay': '0.46s' }} />
         </div>
 
         <p className={`mission-text mission-text-second ${isVisible ? 'show delay' : ''}`}>

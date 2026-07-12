@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './feedbacks.css';
 
 import feedbackimg1 from '../assets/feedbacks1.png';
@@ -18,12 +18,12 @@ const feedbacks = [
         bg: feedbackimg2
     },
     {
-        text: "A beautiful first birthday shoot capturing every precious smile and moment we’ll cherish forever. The attention to detail made it truly special for our family.",
+        text: "A beautiful first birthday shoot capturing every precious smile and moment we'll cherish forever. The attention to detail made it truly special for our family.",
         name: "Sarah Mitchell",
         bg: feedbackimg3
     },
     {
-        text: "Every moment was captured beautifully. We couldn’t have asked for more. The attention to detail and creativity exceeded our expectations.",
+        text: "Every moment was captured beautifully. We couldn't have asked for more. The attention to detail and creativity exceeded our expectations.",
         name: "Olivia Bennett",
         bg: feedbackimg4
     },
@@ -32,26 +32,56 @@ const feedbacks = [
 
 const Feedbacks = () => {
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState('next');
+  const sectionRef = useRef(null);
+  const [titleVisible, setTitleVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTitleVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const nextSlide = () => {
+    setDirection('next');
     setIndex((prev) => (prev + 1) % feedbacks.length);
   };
 
   const prevSlide = () => {
+    setDirection('prev');
     setIndex((prev) => (prev - 1 + feedbacks.length) % feedbacks.length);
   };
 
   return (
-    <section id="feedbacks" className="feedbacks-wrapper">
-      <h2 className="feedbacks-title">What Our Clients Say</h2>
-      <div className={`feedbacks-section slide-${index}`}
-        style={{ backgroundImage: `url(${feedbacks[index].bg})` }}
-      >
-        <button className="arrow left" onClick={prevSlide}>❮</button>
+    <section id="feedbacks" className="feedbacks-wrapper" ref={sectionRef}>
+      <h2 className={`feedbacks-title ${titleVisible ? 'show' : ''}`}>
+        What Our Clients Say
+      </h2>
+      <div className={`feedbacks-section slide-${index}`}>
+        {feedbacks.map((f, i) => (
+          <div
+            key={i}
+            className={`feedbacks-bg ${i === index ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${f.bg})` }}
+          />
+        ))}
+        <div className="feedbacks-overlay" />
 
-        <div key={index} className="feedback-card animate">
+        <button className="arrow left" onClick={prevSlide} aria-label="Previous">
+          ❮
+        </button>
+
+        <div key={index} className={`feedback-card animate-${direction}`}>
           <p className="feedback-text">
-            “{feedbacks[index].text}”
+            "{feedbacks[index].text}"
           </p>
 
           <p className="feedback-name">
@@ -59,7 +89,23 @@ const Feedbacks = () => {
           </p>
         </div>
 
-        <button className="arrow right" onClick={nextSlide}>❯</button>
+        <button className="arrow right" onClick={nextSlide} aria-label="Next">
+          ❯
+        </button>
+
+        <div className="feedback-dots">
+          {feedbacks.map((_, i) => (
+            <button
+              key={i}
+              className={`feedback-dot ${i === index ? 'active' : ''}`}
+              onClick={() => {
+                setDirection(i > index ? 'next' : 'prev');
+                setIndex(i);
+              }}
+              aria-label={`Go to testimonial ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

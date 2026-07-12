@@ -50,7 +50,7 @@ const HomePortfolioPreview = () => {
             <div
               key={item.category}
               className="home-portfolio-card"
-              style={{ animationDelay: `${index * 160}ms` }}
+              style={{ "--card-delay": `${index * 0.16}s` }}
               onClick={() =>
                 navigate(`/portfolio?category=${item.category}`)
               }
@@ -81,7 +81,7 @@ const HomePortfolioPreview = () => {
         className="home-portfolio-button"
         onClick={() => navigate("/portfolio")}
       >
-        View Full Portfolio
+        <span>View Full Portfolio</span>
       </button>
     </section>
   );
