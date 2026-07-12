@@ -29,7 +29,7 @@ const Footer = () => {
 
         <div className="footer-grid">
 
-          <div className="footer-about">
+          <div className="footer-about footer-col" style={{ "--col-delay": "0s" }}>
 
             <img src={logofooter} alt="DreamFrame Studios" className="footer-logo" />
 
@@ -39,19 +39,19 @@ const Footer = () => {
 
             <div className="footer-socials">
 
-              <a href="#" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <a href="#" target="_blank" rel="noreferrer" aria-label="Instagram" style={{ "--icon-delay": "0.1s" }}>
                 <FaInstagram />
               </a>
 
-              <a href="#" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <a href="#" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ "--icon-delay": "0.18s" }}>
                 <FaFacebookF />
               </a>
 
-              <a href="#" target="_blank" rel="noreferrer" aria-label="Pinterest">
+              <a href="#" target="_blank" rel="noreferrer" aria-label="Pinterest" style={{ "--icon-delay": "0.26s" }}>
                 <FaPinterestP />
               </a>
 
-              <a href="#" target="_blank" rel="noreferrer" aria-label="YouTube">
+              <a href="#" target="_blank" rel="noreferrer" aria-label="YouTube" style={{ "--icon-delay": "0.34s" }}>
                 <FaYoutube />
               </a>
 
@@ -59,7 +59,7 @@ const Footer = () => {
 
           </div>
 
-          <div className="footer-links-column">
+          <div className="footer-links-column footer-col" style={{ "--col-delay": "0.1s" }}>
 
             <h4>Quick Links</h4>
 
@@ -71,7 +71,7 @@ const Footer = () => {
 
           </div>
 
-          <div className="footer-links-column">
+          <div className="footer-links-column footer-col" style={{ "--col-delay": "0.18s" }}>
 
             <h4>Portfolio</h4>
 
@@ -83,7 +83,7 @@ const Footer = () => {
 
           </div>
 
-          <div className="footer-links-column">
+          <div className="footer-links-column footer-col" style={{ "--col-delay": "0.26s" }}>
 
             <h4>Services</h4>
 
@@ -95,7 +95,7 @@ const Footer = () => {
 
           </div>
 
-          <div className="footer-newsletter">
+          <div className="footer-newsletter footer-col" style={{ "--col-delay": "0.34s" }}>
 
             <h4>Let's Stay Connected</h4>
 
@@ -111,7 +111,7 @@ const Footer = () => {
               />
 
               <button type="submit">
-                Subscribe
+                <span>Subscribe</span>
               </button>
 
             </form>
