@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import "./experienceSection.css";
 import {
   MessageCircle,
@@ -42,9 +43,30 @@ const experienceSteps = [
 ];
 
 const ExperienceSection = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <section className="experience">
+      <section
+        className={`experience ${isVisible ? "show" : ""}`}
+        ref={sectionRef}
+      >
 
         <span className="section-tag">
           THE EXPERIENCE
@@ -58,7 +80,11 @@ const ExperienceSection = () => {
 
         <div className="experience-grid">
           {experienceSteps.map((item, index) => (
-            <div className="experience-card" key={index}>
+            <div
+              className="experience-card"
+              key={index}
+              style={{ "--card-delay": `${0.5 + index * 0.15}s` }}
+            >
 
               <div className="experience-icon">
                 {item.icon}

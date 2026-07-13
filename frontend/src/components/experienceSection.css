@@ -10,6 +10,13 @@
     font-size:13px;
     color:#755017;
     margin-bottom:20px;
+    opacity:0;
+    transition:opacity 0.7s ease;
+}
+
+.experience.show .section-tag{
+    opacity:1;
+    transition-delay:0.05s;
 }
 
 .experience h2 {
@@ -18,6 +25,15 @@
     color:#24382f;
     font-weight:400;
     margin-bottom:40px;
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+}
+
+.experience.show h2{
+    opacity:1;
+    transform:translateY(0);
+    transition-delay:0.15s;
 }
 
 .experience-line{
@@ -32,6 +48,14 @@
     right:10%;
     top:40px;
     border-top:2px dotted #d7d0c7;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay:0.3s;
+}
+
+.experience.show .experience-line::after{
+    transform:scaleX(1);
 }
 
 .experience-grid{
@@ -43,6 +67,15 @@
 .experience-card{
     position:relative;
     z-index:2;
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay:var(--card-delay, 0s);
+}
+
+.experience.show .experience-card{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .experience-icon{
@@ -56,6 +89,13 @@
     justify-content:center;
     color:#ffffff;
     margin-bottom:30px;
+    transition:transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover .experience-icon{
+    transform:scale(1.1) rotate(-6deg);
+    background:#755017;
+    box-shadow:0 10px 24px rgba(117, 80, 23, 0.3);
 }
 
 .experience-card h3{
@@ -64,6 +104,11 @@
     font-family:"Inter",sans-serif;
     color:#4e4b45;
     margin-bottom:20px;
+    transition:color 0.3s ease;
+}
+
+.experience-card:hover h3{
+    color:#755017;
 }
 
 .experience-card p{
@@ -71,6 +116,21 @@
     line-height:1.8;
     font-size:14px;
     opacity:0.9;
+}
+
+@media (prefers-reduced-motion: reduce){
+    .experience,
+    .section-tag,
+    .experience h2,
+    .experience-line::after,
+    .experience-card,
+    .experience-icon,
+    .experience-card h3{
+        animation:none !important;
+        transition:none !important;
+        opacity:1 !important;
+        transform:none !important;
+    }
 }
 
 

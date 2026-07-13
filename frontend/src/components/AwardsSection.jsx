@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import "./awardsSection.css";
 import image1 from "../assets/awards/awards1.png";
 import image2 from "../assets/awards/awards2.png";
@@ -25,8 +26,29 @@ const awards = [
 ];
 
 const AwardsSection = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="awards-section">
+    <section
+      className={`awards-section ${isVisible ? "show" : ""}`}
+      ref={sectionRef}
+    >
 
       <span className="section-tag">
         OUR RECOGNITION
@@ -39,7 +61,11 @@ const AwardsSection = () => {
       <div className="awards-gallery">
 
         {awards.map((award, index) => (
-          <div className="award-item" key={index}>
+          <div
+            className="award-item"
+            key={index}
+            style={{ "--award-delay": `${0.15 + index * 0.15}s` }}
+          >
 
             <div className="award-image-wrapper">
               <img
@@ -47,6 +73,7 @@ const AwardsSection = () => {
                 alt={award.title}
                 className="award-image"
               />
+              <div className="award-badge">Award</div>
             </div>
 
             <div className="award-content">

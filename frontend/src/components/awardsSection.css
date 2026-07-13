@@ -10,6 +10,13 @@
     letter-spacing:4px;
     color:#755017;
     margin-bottom:20px;
+    opacity:0;
+    transition:opacity 0.7s ease;
+}
+
+.awards-section.show .section-tag{
+    opacity:1;
+    transition-delay:0.05s;
 }
 
 .awards-title{
@@ -18,6 +25,15 @@
     font-weight:400;
     color:#24382f;
     margin-bottom:60px;
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+}
+
+.awards-section.show .awards-title{
+    opacity:1;
+    transform:translateY(0);
+    transition-delay:0.15s;
 }
 
 .awards-gallery{
@@ -29,14 +45,26 @@
 .award-item{
     background:#fff;
     overflow:hidden;
-    transition:.35s ease;
+    opacity:0;
+    transform:translateY(40px);
+    transition:transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s ease;
+    transition-delay:var(--award-delay, 0s);
+}
+
+.awards-section.show .award-item{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .award-item:hover{
     transform:translateY(-8px);
+    box-shadow:0 24px 45px rgba(0,0,0,0.1);
 }
 
 .award-image-wrapper{
+    position:relative;
     overflow:hidden;
 }
 
@@ -45,10 +73,32 @@
     aspect-ratio: 4 / 3;
     object-fit:cover;
     display:block;
+    transition:transform 0.7s ease;
 }
 
 .award-item:hover .award-image{
-    transform:scale(1.05);
+    transform:scale(1.06);
+}
+
+.award-badge{
+    position:absolute;
+    top:16px;
+    right:16px;
+    padding:6px 14px;
+    background:rgba(255,255,255,0.9);
+    color:#755017;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-family:"Inter",sans-serif;
+    opacity:0;
+    transform:translateY(-8px);
+    transition:opacity 0.35s ease, transform 0.35s ease;
+}
+
+.award-item:hover .award-badge{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .award-content{
@@ -61,12 +111,32 @@
     font-weight:500;
     color:#24382f;
     margin-bottom:15px;
+    transition:color 0.3s ease;
+}
+
+.award-item:hover .award-content h3{
+    color:#755017;
 }
 
 .award-content p{
     font-size:15px;
     color:#666;
     line-height:1.8;
+}
+
+@media (prefers-reduced-motion: reduce){
+    .awards-section,
+    .section-tag,
+    .awards-title,
+    .award-item,
+    .award-image,
+    .award-badge,
+    .award-content h3{
+        animation:none !important;
+        transition:none !important;
+        opacity:1 !important;
+        transform:none !important;
+    }
 }
 
 /* Responsive */
