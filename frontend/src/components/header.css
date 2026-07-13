@@ -85,29 +85,204 @@ body {
   border-color: #222;
 }
 
+/* ===========================
+   MOBILE MENU TOGGLE BUTTON
+   Hidden on desktop by default
+=========================== */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 2px;
+}
+
+.menu-toggle-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #222;
+}
+
+.menu-toggle-lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 22px;
+}
+
+.menu-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #222;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.is-open .menu-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.is-open .menu-line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-open .menu-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===========================
+   MOBILE NAV PANEL + OVERLAY
+=========================== */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 998;
+}
+
+.mobile-nav-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 78%;
+  max-width: 340px;
+  background: #ffffff;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 110px 36px 40px;
+  box-sizing: border-box;
+
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-nav.show {
+  transform: translateX(0);
+}
+
+.mobile-nav-link {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #222;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
+  transition-delay: var(--item-delay, 0s);
+}
+
+.mobile-nav.show .mobile-nav-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-nav-link.active {
+  color: #64632c;
+}
+
+.mobile-nav-link:hover {
+  color: #64632c;
+}
+
+.mobile-book-btn {
+  margin-top: 26px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #64632c;
+  padding: 16px 20px;
+
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
+  transition-delay: var(--item-delay, 0s);
+}
+
+.mobile-nav.show .mobile-book-btn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-book-btn:hover {
+  background: #4a4920;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-line,
+  .mobile-nav-overlay,
+  .mobile-nav,
+  .mobile-nav-link,
+  .mobile-book-btn {
+    transition: none !important;
+  }
+}
+
+/* ===========================
+   MOBILE BREAKPOINT
+   Hide desktop nav + book button,
+   show the hamburger instead
+=========================== */
 @media (max-width: 900px) {
   .header-content {
-    flex-direction: column;
-    gap: 10px;
+    padding: 12px 0;
+  }
+
+  .nav-links,
+  .header-right > .book-session-btn {
+    display: none;
   }
 
   .header-right {
-    flex-direction: column;
-    gap: 15px;
+    gap: 0;
   }
 
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+  .menu-toggle {
+    display: flex;
   }
 
-  .nav-link {
-    font-size: 13px;
+  .brand-logo img {
+    height: 46px;
   }
+}
 
-  .book-session-btn {
+@media (max-width: 480px) {
+  .menu-toggle-label {
     font-size: 11px;
-    padding: 10px 20px;
+    letter-spacing: 2px;
+  }
+
+  .mobile-nav {
+    width: 82%;
+    padding: 100px 28px 32px;
+  }
+
+  .mobile-nav-link {
+    font-size: 18px;
   }
 }

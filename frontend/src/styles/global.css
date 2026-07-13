@@ -24,16 +24,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: var(--bg);
   font-family: var(--body-font);
   overflow-x: hidden;
-  
 }
 
 #root {
   max-width: 100%;
+  overflow-x: hidden;
   margin: 0 auto;
   text-align: center;
   min-height: 100svh;
@@ -41,16 +46,14 @@ body {
   flex-direction: column;
   box-sizing: border-box;
 }
+
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
   background: #000;
-  
 }
-html {
-  scroll-behavior: smooth;
-}
+
 h1,
 h2 {
   font-weight: 500;

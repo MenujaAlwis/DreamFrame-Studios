@@ -293,7 +293,7 @@
 
 .contact-grid-section.show .contact-grid-btn {
   opacity: 1;
-  transition-delay: 0.95s;
+  transition-delay: 0.15s;
 }
 
 .contact-grid-btn span {
