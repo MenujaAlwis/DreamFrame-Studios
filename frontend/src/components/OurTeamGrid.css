@@ -41,7 +41,7 @@
   margin: 0 auto;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.8s ease 0.1s, transform 0.8s ease 0.1s;
 }
 
 .team-carousel.show {
@@ -90,6 +90,14 @@
   z-index: 1;
 }
 
+.team-slide:not([data-abs='0']):hover .team-image-wrapper {
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3);
+}
+
+.team-slide:not([data-abs='0']):hover .team-image-wrapper img {
+  filter: brightness(0.85) grayscale(15%);
+}
+
 .team-image-wrapper {
   position: relative;
   border-radius: 14px;
@@ -104,6 +112,16 @@
 .team-slide[data-abs='0'] .team-image-wrapper {
   box-shadow: 0 24px 55px rgba(0, 0, 0, 0.35);
   border-color: var(--gold-color, #c9a86a);
+  animation: activeGlow 3.2s ease-in-out infinite;
+}
+
+@keyframes activeGlow {
+  0%, 100% {
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.35);
+  }
+  50% {
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.35), 0 0 0 6px rgba(201, 168, 106, 0.12);
+  }
 }
 
 .team-image-wrapper img {
@@ -111,11 +129,15 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  transition: filter 0.6s ease;
+  transition: filter 0.6s ease, transform 0.6s ease;
 }
 
 .team-slide:not([data-abs='0']) .team-image-wrapper img {
   filter: brightness(0.7) grayscale(35%);
+}
+
+.team-slide[data-abs='0'] .team-image-wrapper img:hover {
+  transform: scale(1.04);
 }
 
 .team-slide-overlay {
@@ -146,6 +168,36 @@
 .team-active-info {
   margin-top: 20px;
   text-align: center;
+}
+
+.team-active-info.anim-next {
+  animation: activeInfoNext 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.team-active-info.anim-prev {
+  animation: activeInfoPrev 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes activeInfoNext {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes activeInfoPrev {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .team-active-role {
@@ -188,7 +240,7 @@
   cursor: pointer;
   opacity: 0.6;
   transition: opacity 0.3s ease, background 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease, transform 0.25s ease;
   z-index: 20;
 }
 
@@ -197,6 +249,11 @@
   background: var(--gold-color, #c9a86a);
   border-color: var(--gold-color, #c9a86a);
   color: #fff;
+  transform: scale(1.08);
+}
+
+.team-arrow:active {
+  transform: scale(0.92);
 }
 
 .team-dots {
@@ -219,10 +276,40 @@
   transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
 
+.team-dot:hover {
+  opacity: 0.6;
+  transform: scale(1.15);
+}
+
 .team-dot.is-active {
   opacity: 1;
   background: var(--gold-color, #c9a86a);
   transform: scale(1.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-intro,
+  .team-carousel,
+  .team-slide,
+  .team-image-wrapper,
+  .team-image-wrapper img,
+  .team-active-info,
+  .team-arrow,
+  .team-dot {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .team-slide[data-abs='0'] {
+    transform: scale(1.12) !important;
+  }
+  .team-slide[data-abs='1'] {
+    transform: translateX(calc(var(--offset) * 235px)) scale(0.8) !important;
+  }
+  .team-slide[data-abs='2'] {
+    transform: translateX(calc(var(--offset) * 220px)) scale(0.6) !important;
+  }
 }
 
 @media (max-width: 1024px) {

@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import ContactUsHero from './contactushero';
 import InquiryForm from '../components/InquiryForm';
 import './ContactUsPage.css';
+import ContactUsGrid from '../components/ContactUsGrid';
 
 const ContactUsPage = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const ContactUsPage = () => {
     <div className="contact-us-page">
       <Header />
       <ContactUsHero onOpenInquiry={() => setIsInquiryOpen(true)} />
+      <ContactUsGrid />
       <Footer />
 
       {isInquiryOpen && (

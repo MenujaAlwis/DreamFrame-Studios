@@ -51,11 +51,13 @@
         opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 0.4s ease;
     transition-delay:var(--award-delay, 0s);
+    box-shadow:0 24px 45px rgba(0,0,0,0.1);
 }
 
 .awards-section.show .award-item{
     opacity:1;
     transform:translateY(0);
+    
 }
 
 .award-item:hover{

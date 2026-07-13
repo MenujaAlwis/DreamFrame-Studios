@@ -16,6 +16,7 @@ const PortfolioDetailPage = () => {
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [lightboxClosing, setLightboxClosing] = useState(false);
 
   useEffect(() => {
     const loadItem = async () => {
@@ -40,12 +41,20 @@ const PortfolioDetailPage = () => {
       media => media.mediaType === 'image'
     ) || [];
 
+  const closeLightbox = () => {
+    setLightboxClosing(true);
+    setTimeout(() => {
+      setLightboxOpen(false);
+      setLightboxClosing(false);
+    }, 200);
+  };
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (!lightboxOpen) return;
 
       if (e.key === 'Escape') {
-        setLightboxOpen(false);
+        closeLightbox();
       }
 
       if (e.key === 'ArrowRight') {
@@ -90,7 +99,7 @@ const PortfolioDetailPage = () => {
           className="portfolio-detail-back-btn"
           onClick={() => navigate(-1)}
         >
-          ← Back to Portfolio
+          <span className="back-arrow">←</span> Back to Portfolio
         </button>
 
         <div className="portfolio-detail-content">
@@ -167,12 +176,12 @@ const PortfolioDetailPage = () => {
 
       {lightboxOpen && (
         <div
-          className="lightbox-overlay"
-          onClick={() => setLightboxOpen(false)}
+          className={`lightbox-overlay ${lightboxClosing ? 'closing' : ''}`}
+          onClick={closeLightbox}
         >
           <button
             className="lightbox-close"
-            onClick={() => setLightboxOpen(false)}
+            onClick={closeLightbox}
           >
             ×
           </button>
@@ -193,6 +202,7 @@ const PortfolioDetailPage = () => {
           </button>
 
           <img
+            key={currentImageIndex}
             src={imageMedia[currentImageIndex]?.url}
             alt=""
             className="lightbox-image"

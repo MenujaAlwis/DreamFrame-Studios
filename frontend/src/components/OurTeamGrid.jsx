@@ -6,6 +6,7 @@ const OurTeamGrid = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState('next');
   const total = OUR_TEAM.length;
 
   useEffect(() => {
@@ -21,10 +22,12 @@ const OurTeamGrid = () => {
   }, []);
 
   const goPrev = useCallback(() => {
+    setDirection('prev');
     setActiveIndex((i) => (i - 1 + total) % total);
   }, [total]);
 
   const goNext = useCallback(() => {
+    setDirection('next');
     setActiveIndex((i) => (i + 1) % total);
   }, [total]);
 
@@ -44,6 +47,11 @@ const OurTeamGrid = () => {
     if (diff > total / 2) diff -= total;
     if (diff < -total / 2) diff += total;
     return diff;
+  };
+
+  const selectIndex = (index) => {
+    setDirection(index > activeIndex ? 'next' : 'prev');
+    setActiveIndex(index);
   };
 
   return (
@@ -73,7 +81,7 @@ const OurTeamGrid = () => {
                 className={`team-slide ${isActive ? 'is-active' : ''}`}
                 data-abs={absOffset}
                 style={{ '--offset': offset }}
-                onClick={() => !isActive && setActiveIndex(index)}
+                onClick={() => !isActive && selectIndex(index)}
               >
                 <div className="team-image-wrapper">
                   <img src={member.image} alt={member.name} />
@@ -86,7 +94,7 @@ const OurTeamGrid = () => {
                 </div>
 
                 {isActive && (
-                  <div className="team-active-info">
+                  <div className={`team-active-info anim-${direction}`} key={member.name}>
                     <p className="team-active-role">{member.role}</p>
                     <p className="team-active-name">{member.name}</p>
                     {member.specialty && (
@@ -111,7 +119,7 @@ const OurTeamGrid = () => {
           <button
             key={member.name}
             className={`team-dot ${index === activeIndex ? 'is-active' : ''}`}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => selectIndex(index)}
             aria-label={`Go to ${member.name}`}
           />
         ))}

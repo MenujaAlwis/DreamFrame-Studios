@@ -20,6 +20,16 @@
   filter: blur(30px);
   transform: scale(1.2);
   z-index: 0;
+  animation: bgDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes bgDrift {
+  from {
+    transform: scale(1.2) translate(0, 0);
+  }
+  to {
+    transform: scale(1.26) translate(-1.5%, -1%);
+  }
 }
 
 .portfolio-detail-overlay {
@@ -41,6 +51,9 @@
   top: 45px;
   left: 90px;
   z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   background: transparent;
   border: none;
   color: #ffffff;
@@ -48,11 +61,20 @@
   letter-spacing: 0.5px;
   cursor: pointer;
   opacity: 0.8;
-  transition: 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .portfolio-detail-back-btn:hover {
   opacity: 1;
+}
+
+.back-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-detail-back-btn:hover .back-arrow {
+  transform: translateX(-4px);
 }
 
 .portfolio-detail-content {
@@ -110,6 +132,12 @@
   width: auto;
   object-fit: contain;
   box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.portfolio-detail-image:hover {
+  transform: scale(1.015);
+  box-shadow: 0 50px 140px rgba(0, 0, 0, 0.6);
 }
 
 .portfolio-detail-gallery-section {
@@ -128,6 +156,12 @@
   break-inside: avoid;
   margin-bottom: 10px;
   overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.4s ease;
+}
+
+.portfolio-detail-gallery-item:hover {
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.15);
 }
 
 .portfolio-detail-gallery-item img,
@@ -137,12 +171,14 @@
 }
 
 .portfolio-detail-gallery-item img {
-  transition: transform 0.6s ease;
+  transition: transform 0.6s ease, filter 0.6s ease;
 }
 
 .portfolio-detail-gallery-item:hover img {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  filter: brightness(1.03);
 }
+
 .portfolio-detail-gallery-item img {
   cursor: pointer;
 }
@@ -158,10 +194,26 @@
   animation: lightboxFade 0.25s ease;
 }
 
+.lightbox-overlay.closing {
+  animation: lightboxFade 0.2s ease reverse;
+}
+
 .lightbox-image {
   max-width: 92vw;
   max-height: 92vh;
   object-fit: contain;
+  animation: lightboxImageIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes lightboxImageIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .lightbox-close {
@@ -175,20 +227,26 @@
   cursor: pointer;
   line-height: 1;
   z-index: 100001;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+  transform: rotate(90deg);
 }
 
 .lightbox-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  border: none;
   background: transparent;
+  border: none;
   color: white;
   font-size: 80px;
   cursor: pointer;
   padding: 20px;
   line-height: 1;
   z-index: 100001;
+  transition: opacity 0.3s ease, transform 0.25s ease;
 }
 
 .lightbox-arrow.left {
@@ -197,6 +255,14 @@
 
 .lightbox-arrow.right {
   right: 20px;
+}
+
+.lightbox-arrow.left:hover {
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.lightbox-arrow.right:hover {
+  transform: translateY(-50%) translateX(4px);
 }
 
 .lightbox-close:hover,
@@ -211,6 +277,26 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-detail-bg,
+  .back-arrow,
+  .portfolio-detail-image,
+  .portfolio-detail-gallery-item,
+  .portfolio-detail-gallery-item img,
+  .lightbox-overlay,
+  .lightbox-image,
+  .lightbox-close,
+  .lightbox-arrow {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .portfolio-detail-bg {
+    transform: scale(1.2) !important;
   }
 }
 
