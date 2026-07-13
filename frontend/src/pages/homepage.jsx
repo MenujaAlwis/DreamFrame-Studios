@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./homepage.css";
 import heroImage from "../assets/home.jpg";
+import heroImageMobile from "../assets/home-mobile.jpg";
 import { useNavigate } from "react-router-dom";
 import { HOME_PORTFOLIO } from "../constants/homeportfolio";
 import { FaAward, FaCamera } from "react-icons/fa";
@@ -34,8 +35,12 @@ const HomePage = () => {
     <>
       <section className={`homepage ${heroLoaded ? "loaded" : ""}`}>
         <div
-          className="homepage-bg"
+          className="homepage-bg homepage-bg-desktop"
           style={{ backgroundImage: `url(${heroImage})` }}
+        />
+        <div
+          className="homepage-bg homepage-bg-mobile"
+          style={{ backgroundImage: `url(${heroImageMobile})` }}
         />
 
         <div className="hero-content">
@@ -43,7 +48,9 @@ const HomePage = () => {
             Timeless Photography
           </p>
           <h1 className="hero-title anim-item" style={{ "--delay": "0.3s" }}>
-            Preserve What Matters Most
+            Preserve
+            <br />
+            What Matters Most
           </h1>
           <p className="hero-description anim-item" style={{ "--delay": "0.5s" }}>
             Natural, Authentic, and Timeless
