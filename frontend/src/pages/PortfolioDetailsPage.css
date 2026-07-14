@@ -300,21 +300,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .lightbox-arrow {
-    font-size: 50px;
-  }
-
-  .lightbox-close {
-    font-size: 40px;
-    right: 20px;
-  }
-
-  .lightbox-image {
-    max-width: 96vw;
-    max-height: 85vh;
-  }
-}
 @media (max-width: 1400px) {
   .portfolio-detail-gallery {
     column-count: 3;
@@ -357,7 +342,49 @@
   }
 }
 
+/* ===================================================
+   MOBILE (covers Pixel 7 — 412 × 915 CSS px)
+=================================================== */
 @media (max-width: 768px) {
+  .portfolio-detail-hero {
+    min-height: 100vh;
+  }
+
+  .portfolio-detail-bg {
+    filter: blur(18px);
+  }
+
+  .portfolio-detail-back-btn {
+    top: 100px;
+    left: 20px;
+    font-size: 13px;
+  }
+
+  .portfolio-detail-content {
+    padding: 150px 20px 50px;
+    gap: 36px;
+  }
+
+  .portfolio-detail-category {
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .portfolio-detail-title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .portfolio-detail-date {
+    margin-top: 18px;
+    font-size: 14px;
+  }
+
+  .portfolio-detail-image {
+    max-height: 55vh;
+  }
+
   .portfolio-detail-gallery {
     column-count: 1;
   }
@@ -366,16 +393,67 @@
     padding: 50px 15px;
   }
 
+  .lightbox-close {
+    font-size: 40px;
+    right: 20px;
+    top: 20px;
+  }
+
+  .lightbox-arrow {
+    font-size: 50px;
+    padding: 14px;
+  }
+
+  .lightbox-arrow.left {
+    left: 6px;
+  }
+
+  .lightbox-arrow.right {
+    right: 6px;
+  }
+
+  .lightbox-image {
+    max-width: 96vw;
+    max-height: 85vh;
+  }
+}
+
+/* ===================================================
+   SMALL PHONES (narrower than Pixel 7's 412px)
+=================================================== */
+@media (max-width: 400px) {
+  .portfolio-detail-back-btn {
+    top: 90px;
+    font-size: 12px;
+  }
+
+  .portfolio-detail-content {
+    padding: 130px 16px 40px;
+    gap: 28px;
+  }
+
   .portfolio-detail-title {
-    font-size: 3rem;
+    font-size: 2.4rem;
   }
 
   .portfolio-detail-date {
-    font-size: 15px;
+    font-size: 13px;
   }
 
-  .portfolio-detail-back-btn {
-    top: 25px;
-    left: 20px;
+  .portfolio-detail-image {
+    max-height: 48vh;
+  }
+
+  .portfolio-detail-gallery-section {
+    padding: 40px 12px;
+  }
+
+  .lightbox-close {
+    font-size: 34px;
+  }
+
+  .lightbox-arrow {
+    font-size: 38px;
+    padding: 10px;
   }
 }

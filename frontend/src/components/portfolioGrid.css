@@ -50,6 +50,7 @@
 .filter-pills {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -243,5 +244,91 @@
 
   .portfolio-date {
     font-size: 16px;
+  }
+}
+
+/* ===================================================
+   MOBILE (covers Pixel 7 — 412 × 915 CSS px)
+=================================================== */
+@media (max-width: 768px) {
+  .portfoliogrid-section {
+    padding: 30px 16px;
+  }
+
+  .portfolio-intro-line {
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 0 10px;
+  }
+
+  .filter-container {
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .filter-pills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 100%;
+    justify-items: center;
+  }
+
+  .filter-pill-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .filter-pill-wrap .filter,
+  .filter-pill-wrap .filter-active,
+  .filter-pill-wrap button {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    padding: 8px 5px;
+    font-size: 11px;
+  }
+
+  .portfolio-card {
+    margin-bottom: 20px;
+  }
+
+  .portfolio-center {
+    padding: 16px 18px;
+  }
+
+  .portfolio-center h2 {
+    font-size: 22px;
+  }
+
+  .portfolio-date {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+}
+
+/* ===================================================
+   SMALL PHONES (narrower than Pixel 7's 412px)
+=================================================== */
+@media (max-width: 400px) {
+  .portfoliogrid-section {
+    padding: 24px 12px;
+  }
+
+  .filter-pill-wrap .filter,
+  .filter-pill-wrap .filter-active,
+  .filter-pill-wrap button {
+    font-size: 10px;
+    padding-top: 6px;
+    padding-right: 6px;
+    padding-left: 4px;
+    padding-bottom: 6px;
+  }
+
+  .portfolio-center h2 {
+    font-size: 19px;
   }
 }

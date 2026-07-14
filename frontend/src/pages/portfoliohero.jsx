@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./portfoliohero.css";
 import heroImage from "../assets/portfolio1.png";
+import heroImageMobile from "../assets/portfolio1-mobile.png";
 import { useNavigate } from "react-router-dom";
 
 const PortfolioHero = () => {
@@ -16,8 +17,12 @@ const PortfolioHero = () => {
     <>
       <section className={`portfoliopage ${heroLoaded ? "loaded" : ""}`}>
         <div
-          className="portfoliopage-bg"
+          className="portfoliopage-bg portfoliopage-bg-desktop"
           style={{ backgroundImage: `url(${heroImage})` }}
+        />
+        <div
+          className="portfoliopage-bg portfoliopage-bg-mobile"
+          style={{ backgroundImage: `url(${heroImageMobile})` }}
         />
 
         <div className="portfolio-hero-content">
