@@ -141,3 +141,118 @@
     transform: none !important;
   }
 }
+
+/* ===================================================
+   TABLET
+=================================================== */
+@media (max-width: 900px) {
+  .mission-section {
+    padding: 45px 24px 70px;
+    gap: 32px;
+  }
+
+  .mission-text {
+    font-size: 22px;
+    max-width: 600px;
+  }
+
+  .mission-image-container img {
+    width: 180px;
+  }
+}
+
+/* ===================================================
+   MOBILE (covers Pixel 7 — 412 × 915 CSS px)
+=================================================== */
+@media (max-width: 768px) {
+  .mission-section {
+    padding: 40px 20px 60px;
+    gap: 30px;
+  }
+
+  .mission-container {
+    gap: 30px;
+  }
+
+  .mission-text {
+    font-size: 19px;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .mission-image-container {
+    gap: 8px;
+  }
+
+  .mission-image-container img {
+    width: calc(50% - 4px);
+  }
+
+  .mission-image-container img:nth-child(1),
+  .mission-image-container img:nth-child(3) {
+    transform: translateY(0px);
+  }
+
+  .mission-image-container img:nth-child(2),
+  .mission-image-container img:nth-child(4) {
+    transform: translateY(16px);
+  }
+
+  .mission-image-container.show img:nth-child(1),
+  .mission-image-container.show img:nth-child(3) {
+    transform: translateY(0px);
+  }
+
+  .mission-image-container.show img:nth-child(2),
+  .mission-image-container.show img:nth-child(4) {
+    transform: translateY(16px);
+  }
+
+  .mission-image-container.show img:nth-child(1):hover,
+  .mission-image-container.show img:nth-child(3):hover {
+    transform: translateY(-4px);
+  }
+
+  .mission-image-container.show img:nth-child(2):hover,
+  .mission-image-container.show img:nth-child(4):hover {
+    transform: translateY(12px);
+  }
+}
+
+/* ===================================================
+   SMALL PHONES (narrower than Pixel 7's 412px)
+=================================================== */
+@media (max-width: 400px) {
+  .mission-section {
+    padding: 34px 16px 50px;
+  }
+
+  .mission-text {
+    font-size: 17px;
+  }
+
+  .mission-image-container img {
+    width: 100%;
+  }
+
+  .mission-image-container img:nth-child(1),
+  .mission-image-container img:nth-child(2),
+  .mission-image-container img:nth-child(3),
+  .mission-image-container img:nth-child(4) {
+    transform: translateY(0px);
+  }
+
+  .mission-image-container.show img:nth-child(1),
+  .mission-image-container.show img:nth-child(2),
+  .mission-image-container.show img:nth-child(3),
+  .mission-image-container.show img:nth-child(4) {
+    transform: translateY(0px);
+  }
+
+  .mission-image-container.show img:nth-child(1):hover,
+  .mission-image-container.show img:nth-child(2):hover,
+  .mission-image-container.show img:nth-child(3):hover,
+  .mission-image-container.show img:nth-child(4):hover {
+    transform: translateY(-4px);
+  }
+}

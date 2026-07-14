@@ -35,6 +35,10 @@
   transform: scale(1);
 }
 
+.feedbacks-bg-mobile {
+  display: none;
+}
+
 .feedbacks-overlay {
   position: absolute;
   inset: 0;
@@ -220,5 +224,140 @@
   }
   .feedbacks-bg.active {
     opacity: 1;
+  }
+}
+
+/* ===================================================
+   TABLET
+=================================================== */
+@media (max-width: 900px) {
+  .feedbacks-title {
+    font-size: 36px;
+  }
+
+  .feedback-card {
+    width: 45%;
+  }
+
+  .slide-1 .feedback-card,
+  .slide-3 .feedback-card {
+    margin-left: 60px;
+  }
+
+  .slide-0 .feedback-card,
+  .slide-2 .feedback-card {
+    margin-right: 60px;
+  }
+
+  .feedback-text {
+    font-size: 32px;
+  }
+}
+
+/* ===================================================
+   MOBILE (covers Pixel 7 — 412 × 915 CSS px)
+=================================================== */
+@media (max-width: 768px) {
+  .feedbacks-bg-desktop {
+    display: none;
+  }
+
+  .feedbacks-bg-mobile {
+    display: block;
+  }
+
+  .feedbacks-title {
+    font-size: 30px;
+    padding: 0 20px;
+  }
+
+  .feedbacks-section {
+    height: auto;
+    min-height: 500px;
+    padding: 40px 0 70px;
+    justify-content: flex-end;
+  }
+
+  .feedback-card {
+    width: 100%;
+    max-width: none;
+    padding: 0 56px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+
+  .slide-0 .feedback-card,
+  .slide-1 .feedback-card,
+  .slide-2 .feedback-card,
+  .slide-3 .feedback-card {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .feedback-text {
+    font-size: 19px;
+    line-height: 1.45;
+  }
+
+  .feedback-name {
+    font-size: 14px;
+    margin-top: 14px;
+  }
+
+  .arrow {
+    top: auto;
+    bottom: 90px;
+    transform: none;
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrow:hover {
+    transform: scale(1.1);
+  }
+
+  .arrow:active {
+    transform: scale(0.95);
+  }
+
+  .left {
+    left: 10px;
+  }
+
+  .right {
+    right: 10px;
+  }
+
+  .feedback-dots {
+    bottom: 20px;
+  }
+}
+
+/* ===================================================
+   SMALL PHONES (narrower than Pixel 7's 412px)
+=================================================== */
+@media (max-width: 400px) {
+  .feedbacks-title {
+    font-size: 26px;
+  }
+
+  .feedback-text {
+    font-size: 20px;
+  }
+
+  .feedback-card {
+    padding: 0 40px;
+  }
+
+  .arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
   }
 }

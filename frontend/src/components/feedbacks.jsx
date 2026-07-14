@@ -1,31 +1,40 @@
 import { useEffect, useRef, useState } from 'react';
 import './feedbacks.css';
 
-import feedbackimg1 from '../assets/feedbacks1.png';
-import feedbackimg2 from '../assets/feedbacks2.png';
-import feedbackimg3 from '../assets/feedbacks3.png';
-import feedbackimg4 from '../assets/feedbacks4.png';
+import feedbackimg1 from '../assets/feedback/feedbacks1.png';
+import feedbackimg2 from '../assets/feedback/feedbacks2.png';
+import feedbackimg3 from '../assets/feedback/feedbacks3.png';
+import feedbackimg4 from '../assets/feedback/feedbacks4.png';
+
+import feedbackimg1Mobile from '../assets/feedback/feedbacks1mobile.png';
+import feedbackimg2Mobile from '../assets/feedback/feedbacks2mobile.png';
+import feedbackimg3Mobile from '../assets/feedback/feedbacks3mobile.png';
+import feedbackimg4Mobile from '../assets/feedback/feedbacks4mobile.png';
 
 const feedbacks = [
     {
         text: "Professional, creative, and extremely talented team. They made our graduation shoot feel very special and memorable. The final results exceeded all our expectations.",
         name: "Sophia Carter",
-        bg: feedbackimg1
+        bg: feedbackimg1,
+        bgMobile: feedbackimg1Mobile
     },
     {
         text: "From start to finish, everything was perfect. The team knows exactly how to capture natural and emotional moments. The experience was smooth and truly enjoyable.",
         name: "Isabella Moore",
-        bg: feedbackimg2
+        bg: feedbackimg2,
+        bgMobile: feedbackimg2Mobile
     },
     {
         text: "A beautiful first birthday shoot capturing every precious smile and moment we'll cherish forever. The attention to detail made it truly special for our family.",
         name: "Sarah Mitchell",
-        bg: feedbackimg3
+        bg: feedbackimg3,
+        bgMobile: feedbackimg3Mobile
     },
     {
         text: "Every moment was captured beautifully. We couldn't have asked for more. The attention to detail and creativity exceeded our expectations.",
         name: "Olivia Bennett",
-        bg: feedbackimg4
+        bg: feedbackimg4,
+        bgMobile: feedbackimg4Mobile
     },
     
 ];
@@ -69,8 +78,15 @@ const Feedbacks = () => {
         {feedbacks.map((f, i) => (
           <div
             key={i}
-            className={`feedbacks-bg ${i === index ? 'active' : ''}`}
+            className={`feedbacks-bg feedbacks-bg-desktop ${i === index ? 'active' : ''}`}
             style={{ backgroundImage: `url(${f.bg})` }}
+          />
+        ))}
+        {feedbacks.map((f, i) => (
+          <div
+            key={`mobile-${i}`}
+            className={`feedbacks-bg feedbacks-bg-mobile ${i === index ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${f.bgMobile})` }}
           />
         ))}
         <div className="feedbacks-overlay" />
