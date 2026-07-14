@@ -151,18 +151,74 @@
 
 }
 
-@media (max-width:700px){
+@media (max-width:768px){
 
-    .awards-gallery{
-        grid-template-columns:1fr;
+    .awards-section{
+        padding:50px 6%;
+    }
+
+    .section-tag{
+        font-size:11px;
+        letter-spacing:3px;
     }
 
     .awards-title{
-        font-size:42px;
+        font-size:32px;
+        margin-bottom:36px;
+    }
+
+    .awards-gallery{
+        grid-template-columns:1fr;
+        gap:26px;
+    }
+
+    .award-item{
+        max-width:380px;
+        margin:0 auto;
     }
 
     .award-image{
-        height:280px;
+        height:auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .award-badge{
+        opacity:1;
+        transform:translateY(0);
+        top:12px;
+        right:12px;
+        font-size:10px;
+        padding:5px 12px;
+    }
+
+    .award-content{
+        padding:22px 18px;
+    }
+
+    .award-content h3{
+        font-size:24px;
+        margin-bottom:10px;
+    }
+
+    .award-content p{
+        font-size:14px;
+        line-height:1.7;
+    }
+
+}
+
+@media (max-width:400px){
+
+    .awards-section{
+        padding:40px 5%;
+    }
+
+    .awards-title{
+        font-size:27px;
+    }
+
+    .award-content h3{
+        font-size:21px;
     }
 
 }

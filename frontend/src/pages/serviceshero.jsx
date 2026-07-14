@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./serviceshero.css";
 import heroImage from "../assets/services.png";
+import heroImageMobile from "../assets/services-mobile.png";
 import { useNavigate } from "react-router-dom";
 
 const ServicesHero = () => {
@@ -16,8 +17,12 @@ const ServicesHero = () => {
     <>
       <section className={`servicespage ${heroLoaded ? "loaded" : ""}`}>
         <div
-          className="servicespage-bg"
+          className="servicespage-bg servicespage-bg-desktop"
           style={{ backgroundImage: `url(${heroImage})` }}
+        />
+        <div
+          className="servicespage-bg servicespage-bg-mobile"
+          style={{ backgroundImage: `url(${heroImageMobile})` }}
         />
 
         <div className="services-hero-content">
