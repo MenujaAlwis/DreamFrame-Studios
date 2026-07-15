@@ -354,14 +354,27 @@
   }
 
   .footer-grid{
-    grid-template-columns:1fr;
-    gap:32px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px 10px;
     padding-bottom:30px;
   }
 
   .footer-grid > div{
     border:none !important;
     padding-left:0 !important;
+  }
+
+  .footer-about{
+    grid-column:1 / -1;
+  }
+
+  .footer-newsletter{
+    grid-column:1 / -1;
+  }
+
+  .footer-links-column:nth-of-type(4){
+    display:none;
   }
 
   .footer-about,
@@ -397,18 +410,18 @@
 
   .footer-links-column h4,
   .footer-newsletter h4{
-    margin-bottom:16px;
+    margin-bottom:14px;
     font-size:12px;
-    letter-spacing:1.8px;
+    letter-spacing:1.5px;
   }
 
   .footer-links-column{
-    gap:10px;
+    gap:9px;
   }
 
   .footer-links-column a{
     margin:0 auto;
-    font-size:15px;
+    font-size:14px;
   }
 
   .footer-newsletter{

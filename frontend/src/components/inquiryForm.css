@@ -448,6 +448,10 @@ font-size:38px;
 }
 
 @media (max-width:768px){
+.inquiry-close-btn{
+top:15px;
+right:15px;
+}
 
 .inquiry-overlay{
 padding:20px 15px;

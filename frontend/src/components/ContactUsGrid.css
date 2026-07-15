@@ -363,17 +363,43 @@
     min-height: 280px;
   }
 }
-
 @media (max-width: 640px) {
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .contact-card {
+    padding: 28px 16px;
+  }
+
+  .contact-card-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .contact-card h3 {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+
+  .contact-card-value {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .contact-card-link {
+    font-size: 11px;
   }
 
   .contact-grid-title {
-    font-size: 38px;
+    font-size: 32px;
   }
 
   .contact-grid-section {
-    padding: 70px 6% 70px;
+    padding: 60px 5% 60px;
   }
 }

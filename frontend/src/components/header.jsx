@@ -41,6 +41,21 @@ const Header = () => {
     <header className="site-header">
       <div className="header-content">
 
+        <button
+          className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+        >
+          <span className="menu-toggle-lines">
+            <span className="menu-line" />
+            <span className="menu-line" />
+            <span className="menu-line" />
+          </span>
+          <span className="menu-toggle-label">Menu</span>
+        </button>
+
         <div className="brand-logo">
           <img src={logo} alt="DreamFrame Studios Logo" />
         </div>
@@ -62,21 +77,6 @@ const Header = () => {
           <Link to="/contact-us#inquiry" className="book-session-btn">
             Book a Session
           </Link>
-
-          <button
-            className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-          >
-            <span className="menu-toggle-label">Menu</span>
-            <span className="menu-toggle-lines">
-              <span className="menu-line" />
-              <span className="menu-line" />
-              <span className="menu-line" />
-            </span>
-          </button>
         </div>
 
       </div>
