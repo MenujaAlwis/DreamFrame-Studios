@@ -26,6 +26,10 @@
   transform: scale(1);
 }
 
+.ourteam-hero-bg-mobile {
+  display: none;
+}
+
 .ourteam-hero::before {
   content: '';
   position: absolute;
@@ -40,8 +44,6 @@
   pointer-events: none;
   z-index: 1;
 }
-
-/* ---------- Hero heading ---------- */
 
 .ourteam-hero-content {
   position: relative;
@@ -119,8 +121,6 @@
   width: 80px;
 }
 
-/* ---------- Locator markers ---------- */
-
 .person-marker {
   position: absolute;
   transform: translate(-50%, -50%) scale(0.4);
@@ -189,8 +189,6 @@
   }
 }
 
-/* ---------- Info card ---------- */
-
 .person-card {
   position: absolute;
   top: 20px;
@@ -245,8 +243,6 @@
   white-space: nowrap;
 }
 
-/* ---------- Responsive ---------- */
-
 @media (max-width: 900px) {
   .ourteam-title {
     font-size: 46px;
@@ -266,13 +262,63 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 768px) {
+  .ourteam-hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .ourteam-hero-bg-desktop {
+    display: none;
+  }
+
+  .ourteam-hero-bg-mobile {
+    display: block;
+    background-position: center;
+  }
+
   .ourteam-hero-content {
-    padding-top: 60px;
+    align-self: flex-start;
+    padding-top: 110px;
   }
 
   .ourteam-title {
-    font-size: 34px;
+    font-size: 38px;
+  }
+
+  .ourteam-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .marker-dot,
+  .marker-pulse {
+    width: 9px;
+    height: 9px;
+  }
+
+  .person-card {
+    min-width: 150px;
+    padding: 12px 16px 10px;
+  }
+
+  .person-card h2 {
+    font-size: 19px;
+    white-space: normal;
+  }
+
+  .person-card p {
+    font-size: 11px;
+    white-space: normal;
+  }
+}
+@media (max-width: 560px) {
+  .ourteam-hero-content {
+    padding-top: 120px;
+  }
+
+  .ourteam-title {
+    font-size: 32px;
   }
 
   .ourteam-title::after {
@@ -281,11 +327,6 @@
 
   .ourteam-hero.show .ourteam-title::after {
     width: 36px;
-  }
-
-  .ourteam-eyebrow {
-    font-size: 11px;
-    letter-spacing: 2px;
   }
 
   .marker-dot,
@@ -300,30 +341,10 @@
   }
 
   .person-card h2 {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .person-card p {
     font-size: 10px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marker-pulse {
-    animation: none;
-    opacity: 0.5;
-  }
-
-  .ourteam-hero-bg,
-  .ourteam-hero-content,
-  .ourteam-eyebrow,
-  .ourteam-title,
-  .ourteam-title::after,
-  .person-marker,
-  .person-card {
-    transition: none;
-    animation: none;
-    opacity: 1;
-    transform: none;
   }
 }

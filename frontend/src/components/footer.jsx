@@ -105,7 +105,7 @@ const Footer = () => {
 
             <form className="newsletter-form">
 
-              <input
+              <input className="newsletter-input"
                 type="email"
                 placeholder="Your email address"
               />
