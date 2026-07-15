@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./contactushero.css";
 import heroImage from "../assets/contactus.png";
+import heroImageMobile from "../assets/contactus-mobile.png";
 import { useNavigate } from "react-router-dom";
 
 const ContactUsHero = () => {
@@ -16,8 +17,12 @@ const ContactUsHero = () => {
     <>
       <section className={`contactuspage ${heroLoaded ? "loaded" : ""}`}>
         <div
-          className="contactuspage-bg"
+          className="contactuspage-bg contactuspage-bg-desktop"
           style={{ backgroundImage: `url(${heroImage})` }}
+        />
+        <div
+          className="contactuspage-bg contactuspage-bg-mobile"
+          style={{ backgroundImage: `url(${heroImageMobile})` }}
         />
 
         <div className="contactus-hero-content">

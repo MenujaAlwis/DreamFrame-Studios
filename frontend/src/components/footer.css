@@ -525,6 +525,7 @@
   .newsletter-form input,
   .newsletter-form button{
     height:46px;
+    padding:10px 18px;
   }
 
   .footer-bottom{
