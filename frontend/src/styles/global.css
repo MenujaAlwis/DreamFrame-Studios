@@ -10,7 +10,6 @@
   --text-color-hover: #3e2f20;
   --background-color: #fdfdfd;
 
-  
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -47,7 +46,9 @@ body {
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
