@@ -15,12 +15,10 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Close the menu whenever the route changes
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
 
-  // Lock body scroll while the mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -28,7 +26,6 @@ const Header = () => {
     };
   }, [menuOpen]);
 
-  // Close on Escape
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "Escape") setMenuOpen(false);
@@ -42,7 +39,7 @@ const Header = () => {
       <div className="header-content">
 
         <button
-          className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
+          className="menu-toggle"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-expanded={menuOpen}
           aria-controls="mobile-nav"
@@ -81,7 +78,6 @@ const Header = () => {
 
       </div>
 
-      {/* Mobile menu overlay */}
       <div
         className={`mobile-nav-overlay ${menuOpen ? "show" : ""}`}
         onClick={() => setMenuOpen(false)}
@@ -91,6 +87,15 @@ const Header = () => {
         id="mobile-nav"
         className={`mobile-nav ${menuOpen ? "show" : ""}`}
       >
+        <button
+          className="mobile-nav-close"
+          onClick={() => setMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          <span className="close-line" />
+          <span className="close-line" />
+        </button>
+
         {NAV_ITEMS.map((item, i) => (
           <NavLink
             key={item.to}
