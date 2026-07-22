@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import OurTeamHero from './ourteamhero';
+import OurTeamHero from './OurTeamHero';
 import './OurTeamPage.css';
 import OurTeamGrid from '../components/OurTeamGrid';
 

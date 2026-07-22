@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import './editModal.css';
+import './EditPortfolioModal.css';
 
 const EditPortfolioModal = ({ item, token, onClose, onUpdated }) => {
   const [title, setTitle] = useState(item.title);

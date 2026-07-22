@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./portfoliohero.css";
+import "./PortfolioHero.css";
 import heroImage from "../assets/portfolio1.png";
 import heroImageMobile from "../assets/portfolio1-mobile.png";
 import { useNavigate } from "react-router-dom";

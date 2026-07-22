@@ -1,9 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Layout from './components/layout';
-import Home from './pages/home';
-import LoginPage from './pages/loginpage';
-import AdminPage from './pages/adminpage';
-import PortfolioPage from './pages/portfoliopage';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import LoginPage from './pages/LoginPage';
+import AdminPage from './pages/AdminPage';
+import PortfolioPage from './pages/PortfolioPage';
 import ScrollToTop from './components/ScrollToTop';
 import PortfolioDetailsPage from './pages/PortfolioDetailsPage';
 import ServicesPage from './pages/ServicesPage';

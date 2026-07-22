@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./awardsSection.css";
+import "./AwardsSection.css";
 import image1 from "../assets/awards/awards1.png";
 import image2 from "../assets/awards/awards2.png";
 import image3 from "../assets/awards/awards3.png";

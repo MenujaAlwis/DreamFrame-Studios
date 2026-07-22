@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SERVICES } from '../constants/services';
+import { SERVICES } from '../constants/Services';
 import './ServicesGrid.css';
 
 const ServicesGrid = () => {

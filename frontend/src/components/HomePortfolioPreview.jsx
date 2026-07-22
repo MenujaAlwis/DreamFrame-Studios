@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { HOME_PORTFOLIO } from "../constants/homePortfolio";
+import { HOME_PORTFOLIO } from "../constants/HomePortfolio";
 import "./HomePortfolioPreview.css";
 
 const HomePortfolioPreview = () => {

@@ -6,7 +6,7 @@ import Button from './UI/Button';
 import Spinner from './UI/Spinner';
 import Alert from './UI/Alert';
 import RevealCard from './RevealCard';
-import './portfolioGrid.css';
+import './PortfolioGrid.css';
 
 const PortfolioGrid = ({ sectionRef }) => {
   const navigate = useNavigate();

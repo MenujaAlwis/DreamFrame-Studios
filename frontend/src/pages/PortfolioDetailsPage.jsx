@@ -4,7 +4,7 @@ import { getPortfolioItemById } from '../services/api';
 import Spinner from '../components/UI/Spinner';
 import Alert from '../components/UI/Alert';
 import RevealCard from '../components/RevealCard';
-import './portfolioDetailsPage.css';
+import './PortfolioDetailsPage.css';
 
 const PortfolioDetailPage = () => {
   const { id } = useParams();

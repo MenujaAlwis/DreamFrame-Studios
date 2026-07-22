@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './feedbacks.css';
+import './Feedbacks.css';
 
 import feedbackimg1 from '../assets/feedback/feedbacks1.png';
 import feedbackimg2 from '../assets/feedback/feedbacks2.png';

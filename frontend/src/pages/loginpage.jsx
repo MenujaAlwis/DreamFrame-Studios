@@ -3,7 +3,7 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { Alert, Button, Card, Input } from '../components/UI';
-import './loginpage.css';
+import './LoginPage.css';
 
 const LoginPage = () => {
   const navigate = useNavigate();

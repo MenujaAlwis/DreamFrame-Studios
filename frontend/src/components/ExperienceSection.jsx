@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./experienceSection.css";
+import "./ExperienceSection.css";
 import {
   MessageCircle,
   Camera,

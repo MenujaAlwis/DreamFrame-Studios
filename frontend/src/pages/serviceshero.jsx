@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./serviceshero.css";
+import "./ServicesHero.css";
 import heroImage from "../assets/services.png";
 import heroImageMobile from "../assets/services-mobile.png";
 import { useNavigate } from "react-router-dom";

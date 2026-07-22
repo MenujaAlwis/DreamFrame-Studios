@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./contactushero.css";
-import heroImage from "../assets/contactus.png";
+import "./ContactUsHero.css";
+import heroImage from "../assets/Contactus.png";
 import heroImageMobile from "../assets/contactus-mobile.png";
 import { useNavigate } from "react-router-dom";
 

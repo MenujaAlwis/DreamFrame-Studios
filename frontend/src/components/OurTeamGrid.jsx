@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { OUR_TEAM } from '../constants/ourteam';
+import { OUR_TEAM } from '../constants/OurTeam';
 import './OurTeamGrid.css';
 
 const OurTeamGrid = () => {

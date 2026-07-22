@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './instagramGallery.css';
+import './InstagramGallery.css';
 
 import img1 from '../assets/instagram_gallery/instagram1.png';
 import img2 from '../assets/instagram_gallery/instagram2.png';

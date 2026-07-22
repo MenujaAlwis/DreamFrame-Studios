@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ContactUsHero from './contactushero';
+import ContactUsHero from './ContactUsHero';
 import InquiryForm from '../components/InquiryForm';
 import './ContactUsPage.css';
 import ContactUsGrid from '../components/ContactUsGrid';

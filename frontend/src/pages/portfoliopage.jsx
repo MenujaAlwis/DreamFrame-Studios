@@ -3,8 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PortfolioGrid from '../components/PortfolioGrid';
-import PortfolioHero from './portfoliohero';
-import './portfoliopage.css';
+import PortfolioHero from './PortfolioHero';
+import './PortfolioPage.css';
 
 const PortfolioPage = () => {
   const [searchParams] = useSearchParams();

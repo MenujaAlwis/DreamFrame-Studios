@@ -5,7 +5,7 @@ import missionImage2 from '../assets/mission2.1.png';
 import missionImage3 from '../assets/mission3.1.png';
 import missionImage4 from '../assets/mission4.1.png';
 
-import './mission.css';
+import './Mission.css';
 
 const Mission = () => {
   const missionRef = useRef(null);

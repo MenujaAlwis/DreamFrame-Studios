@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import './adminpage.css';
+import './Adminpage.css';
 
-import UploadPortfolioItem from './uploadPortfolioItem';
+import UploadPortfolioItem from './UploadPortfolioItem';
 import AdminPortfolioList from '../components/admin/AdminPortfolioList';
 import AdminInquiriesList from '../components/admin/AdminInquiriesList';
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { submitInquiry } from "../services/api";
-import "./inquiryForm.css";
+import "./InquiryForm.css";
 
 const SERVICE_OPTIONS = [
   { value: "wedding", label: "Wedding" },

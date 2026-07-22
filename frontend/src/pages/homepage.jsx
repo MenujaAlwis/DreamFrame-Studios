@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import "./homepage.css";
+import "./Homepage.css";
 import heroImage from "../assets/home.jpg";
 import heroImageMobile from "../assets/home-mobile.jpg";
 import { useNavigate } from "react-router-dom";
-import { HOME_PORTFOLIO } from "../constants/homeportfolio";
+import { HOME_PORTFOLIO } from "../constants/HomePortfolio";
 import { FaAward, FaCamera } from "react-icons/fa";
 
 const HomePage = () => {

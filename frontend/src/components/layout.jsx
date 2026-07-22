@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import './layout.css';
+import './Layout.css';
 import { useEffect, useRef, useState } from 'react';
 
 const Layout = () => {
