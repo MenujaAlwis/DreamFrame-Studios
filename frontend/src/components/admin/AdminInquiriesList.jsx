@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
-import './adminInquiriesList.css';
+import './AdminInquiriesList.css';
 
 const AdminInquiriesList = () => {
   const { token, user } = useAuth();

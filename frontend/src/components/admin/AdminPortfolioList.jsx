@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import EditPortfolioModal from './EditPortfolioModal';
-import './adminPortfolioList.css';
+import './AdminPortfolioList.css';
 
 const AdminPortfolioList = () => {
   const { token } = useAuth();
