@@ -177,6 +177,7 @@
 .loading-state,
 .empty-state {
   text-align: center;
+  color: #99886e;
   padding: 60px 20px;
   opacity: 0;
   transition: opacity 0.5s ease;
