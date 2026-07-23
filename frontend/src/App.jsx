@@ -9,6 +9,7 @@ import PortfolioDetailsPage from './pages/PortfolioDetailsPage';
 import ServicesPage from './pages/ServicesPage';
 import OurTeamPage from './pages/OurTeamPage';
 import ContactUsPage from './pages/ContactUsPage';  
+import ProtectedRoute from './components/ProtectedRoute';
 
 const  App = () => {
   return (
@@ -16,7 +17,15 @@ const  App = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/admin" element={<AdminPage />} />
+          {/*<Route path="/admin" element={<AdminPage />} />*/}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminPage />
+              </ProtectedRoute>
+            }
+          />
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
