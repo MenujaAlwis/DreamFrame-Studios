@@ -10,6 +10,8 @@ import { FaAward, FaCamera } from "react-icons/fa";
 const BACKGROUND_IMAGES = [
   { desktop: heroImage, mobile: heroImageMobile },
   { desktop: heroImage2, mobile: heroImageMobile },
+];
+
 const HomePage = () => {
   const navigate = useNavigate();
   const [heroLoaded, setHeroLoaded] = useState(false);
