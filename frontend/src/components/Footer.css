@@ -12,7 +12,7 @@
 
 .footer-grid{
   display:grid;
-  grid-template-columns:1.4fr 1fr 1fr 1.2fr 1.6fr;
+  grid-template-columns: 1.0fr 0.9fr 0.9fr 1.7fr 1.5fr;
   gap:35px;
   padding-bottom:40px;
 }
@@ -136,6 +136,7 @@
   text-transform:uppercase;
   margin-bottom:22px;
   color:#222;
+  white-space:nowrap;
 }
 
 .footer-links-column{
@@ -152,6 +153,7 @@
   font-size:14px;
   color:#555;
   font-family:"Inter",sans-serif;
+  white-space:nowrap;
   transition:color .3s ease, transform .3s ease;
 }
 
@@ -191,10 +193,11 @@
 
 .newsletter-form input{
   flex:1;
+  min-width: 0;
   border:1px solid #cfc5b8;
   border-right:none;
-  padding:0 16px;
-  font-size:14px;
+  padding:0 12px;
+  font-size:13px;
   font-family:"Inter",sans-serif;
   background:#fff;
   outline:none;
@@ -209,12 +212,12 @@
 .newsletter-form button{
   position:relative;
   overflow:hidden;
-  padding:0 24px;
+  padding:0 15px;
   border:none;
   background:#6f7040;
   color:#fff;
   font-size:12px;
-  letter-spacing:2px;
+  letter-spacing:1px;
   text-transform:uppercase;
   cursor:pointer;
   transition:background .3s ease, transform .3s ease;

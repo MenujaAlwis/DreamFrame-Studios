@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import "./Header.css";
-import logo from "../assets/header-logo1.png";
+import logo from "../assets/header-logo.png";
 
 const NAV_ITEMS = [
   { to: "/", label: "Home", end: true },
@@ -13,6 +13,9 @@ const NAV_ITEMS = [
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolledPastScreen, setScrolledPastScreen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const location = useLocation();
 
   useEffect(() => {
@@ -34,8 +37,62 @@ const Header = () => {
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
+  useEffect(() => {
+    const root = document.getElementById("root");
+    if (!root) return;
+
+    lastScrollY.current = root.scrollTop;
+    let ticking = false;
+
+    const updateHeader = () => {
+      const currentScrollY = root.scrollTop;
+      const screenHeight = window.innerHeight;
+      const pastScreen = currentScrollY > screenHeight;
+
+      setScrolledPastScreen(pastScreen);
+
+      if (currentScrollY < 80) {
+        setHidden(false);
+      } else if (pastScreen) {
+        setHidden(false); 
+      } else {
+        setHidden(true); 
+      }
+
+      lastScrollY.current = currentScrollY;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    };
+
+    root.addEventListener("scroll", onScroll, { passive: true });
+    updateHeader();
+    return () => root.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const headerClasses = [
+    "site-header",
+    scrolledPastScreen ? "scrolled" : "",
+    hidden && !menuOpen ? "hidden" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const handleWheel = (e) => {
+    if (menuOpen) return;
+    const root = document.getElementById("root");
+    if (root) {
+      root.scrollTop += e.deltaY;
+    }
+  };
+
   return (
-    <header className="site-header">
+    <header className={headerClasses} onWheel={handleWheel}>
       <div className="header-content">
 
         <button

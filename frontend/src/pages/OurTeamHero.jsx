@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './OurTeamHero.css';
-import bg from '../assets/ourteamhero4.png';
+import bg from '../assets/ourteamhero.png';
 import bgMobile from '../assets/ourteam-mobile.png';
 
 const team = [

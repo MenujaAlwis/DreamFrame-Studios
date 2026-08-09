@@ -1,15 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import "./HomePage.css";
-import heroImage from "../assets/home.jpg";
-import heroImageMobile from "../assets/home-mobile.jpg";
+import heroImage from "../assets/home2.jpeg";
+import heroImage2 from "../assets/home3.png";
+import heroImageMobile from "../assets/home-mobile1.png";
 import { useNavigate } from "react-router-dom";
 import { HOME_PORTFOLIO } from "../constants/HomePortfolio";
 import { FaAward, FaCamera } from "react-icons/fa";
 
+const BACKGROUND_IMAGES = [
+  { desktop: heroImage, mobile: heroImageMobile },
+  { desktop: heroImage2, mobile: heroImageMobile },
 const HomePage = () => {
   const navigate = useNavigate();
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
+  const [currentBg, setCurrentBg] = useState(0);
   const statsRef = useRef(null);
 
   useEffect(() => {
@@ -31,17 +36,28 @@ const HomePage = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBg((prev) => (prev + 1) % BACKGROUND_IMAGES.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <section className={`homepage ${heroLoaded ? "loaded" : ""}`}>
-        <div
-          className="homepage-bg homepage-bg-desktop"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        />
-        <div
-          className="homepage-bg homepage-bg-mobile"
-          style={{ backgroundImage: `url(${heroImageMobile})` }}
-        />
+        {BACKGROUND_IMAGES.map((img, index) => (
+          <div key={index} className={`homepage-bg-wrapper ${index === currentBg ? "active" : ""}`}>
+            <div
+              className="homepage-bg homepage-bg-desktop"
+              style={{ backgroundImage: `url(${img.desktop})` }}
+            />
+            <div
+              className="homepage-bg homepage-bg-mobile"
+              style={{ backgroundImage: `url(${img.mobile})` }}
+            />
+          </div>
+        ))}
 
         <div className="hero-content">
           <p className="hero-subtitle anim-item" style={{ "--delay": "0.1s" }}>
@@ -66,7 +82,7 @@ const HomePage = () => {
           </button>
         </div>
 
-        <div className="hero-bottom-card">
+        {/*<div className="hero-bottom-card">
           {HOME_PORTFOLIO.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -84,10 +100,10 @@ const HomePage = () => {
               </div>
             );
           })}
-        </div>
+        </div>*/}
       </section>
 
-      <div className="stats-section" ref={statsRef}>
+      {/*<div className="stats-section" ref={statsRef}>
         <div className={`stat-title ${statsVisible ? "reveal" : ""}`}>
           More Than Photos, It's Your Legacy.
         </div>
@@ -136,7 +152,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>*/}
     </>
   );
 };

@@ -1,14 +1,12 @@
 .portfoliopage {
   width: 100%;
-  min-height: 600px;
-  height: 70vh;
-
+  height: 100dvh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .portfoliopage-bg {
@@ -31,8 +29,22 @@
   display: none;
 }
 
+.portfoliopage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(26, 23, 18, 0.78) 0%,
+    rgba(26, 23, 18, 0.45) 30%,
+    rgba(26, 23, 18, 0.05) 60%
+  );
+  pointer-events: none;
+}
+
 .portfolio-hero-content {
-  padding-left: 100px;
+  padding-left: clamp(40px, 6.5vw, 100px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -41,7 +53,7 @@
   width: 40%;
   gap: 20px;
 
-  color: white;
+  color: #faf7f1;
   z-index: 2;
   position: relative;
 }
@@ -53,21 +65,22 @@
 }
 
 .portfolio-hero-subtitle {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "Inter", sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: #817c46;
-  font-size: 14px;
-  font-weight: 500;
+  color: #c9a86a;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 40px;
 }
 
 .portfolio-hero-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Playfair Display", serif;
   font-size: 70px;
-  line-height: 1;
-  color: #1F3A2E;
+  line-height: 1.05;
+  color: #faf7f1;
   margin: 10px 0;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .portfolio-hero-title::after {
@@ -75,8 +88,8 @@
   display: block;
   width: 0;
   height: 3px;
-  background-color: #d3bc97;
-  margin-top: 10px;
+  background-color: #c9a86a;
+  margin-top: 14px;
   animation: growLine 0.7s ease-out forwards;
   animation-delay: 0.9s;
 }
@@ -86,11 +99,11 @@
 }
 
 .portfolio-hero-description {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
-  margin-top: 10px;
-  color: #244028;
-  opacity: 0.9;
+  line-height: 1.6;
+  margin-top: 40px;
+  color: rgba(250, 247, 241, 0.85);
   font-weight: 400;
 }
 
@@ -112,18 +125,20 @@
   position: relative;
   overflow: hidden;
   margin-top: 15px;
-  padding: 12px 24px;
+  padding: 14px 28px;
 
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-weight: 600;
 
-  border: none;
-  background: #64632c;
-  color: #ffffff;
+  border: 1px solid #c9a86a;
+  background: transparent;
+  color: #c9a86a;
 
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-hero-btn span {
@@ -148,10 +163,10 @@
 }
 
 .portfolio-hero-btn:hover {
-  background: #4a4920;
-  color: white;
+  background: #c9a86a;
+  color: #1e3d2c;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(100, 99, 44, 0.35);
+  box-shadow: 0 10px 24px rgba(201, 168, 106, 0.35);
 }
 
 .portfolio-hero-btn:hover::before {
@@ -192,6 +207,8 @@
     overflow: hidden;
   }
 
+  
+
   .portfoliopage-bg-desktop {
     display: none;
   }
@@ -217,7 +234,7 @@
     margin: 0;
     font-size: 12px;
     letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.85);
+    color: #c9a86a;
     box-sizing: border-box;
   }
 
@@ -234,7 +251,7 @@
     text-align: center;
     font-size: 38px;
     line-height: 1.15;
-    color: #ffffff;
+    color: #faf7f1;
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -251,7 +268,7 @@
     right: 24px;
     margin: 0;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(250, 247, 241, 0.85);
     box-sizing: border-box;
   }
 
