@@ -255,7 +255,7 @@ const InquiryForm = ({ onClose }) => {
             />
 
           </div>
-                    <div className="inquiry-field">
+          <div className="inquiry-field">
 
             <label htmlFor="message">
               Tell us a little about your plans

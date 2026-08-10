@@ -120,9 +120,7 @@
   .instagram-icon,
   .gallery-overlay span,
   .gallery-overlay p {
-    animation: none !important;
     transition: none !important;
-    opacity: 1 !important;
     transform: none !important;
   }
 }
@@ -135,7 +133,9 @@
   .instagram-gallery {
     grid-template-columns: repeat(2, 1fr);
   }
-
+  .gallery-overlay, .gallery-overlay p, .gallery-overlay span, .instagram-icon {
+    opacity: 1;
+  }
   .gallery-item:nth-child(5) {
     display: none;
   }
@@ -158,6 +158,9 @@
   .instagram-gallery {
     grid-template-columns: repeat(2, 1fr);
   }
+  .gallery-overlay, .gallery-overlay p, .gallery-overlay span, .instagram-icon {
+    opacity: 1;
+  }
 
   .gallery-item:nth-child(5) {
     display: none;
@@ -176,12 +179,12 @@
   }
 
   .instagram-icon {
-    font-size: 40px;
+    font-size: 50px;
     margin-bottom: 10px;
   }
 
   .gallery-overlay span {
-    font-size: 22px;
+    font-size: 25px;
     letter-spacing: 1px;
     text-align: center;
   }

@@ -375,6 +375,9 @@ body {
   .site-header.scrolled .brand-logo img {
     height: 41px;
   }
+  .menu-line {
+    background: #222;
+  }
 }
 
 @media (max-width: 480px) {
