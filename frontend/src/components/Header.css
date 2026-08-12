@@ -122,6 +122,7 @@ body {
   justify-content: center;
   gap: 5px;
   width: 22px;
+  
 }
 
 .menu-line {
@@ -374,9 +375,6 @@ body {
 
   .site-header.scrolled .brand-logo img {
     height: 41px;
-  }
-  .menu-line {
-    background: #222;
   }
 }
 

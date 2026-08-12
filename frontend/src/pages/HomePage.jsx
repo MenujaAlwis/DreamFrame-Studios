@@ -1,15 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import "./HomePage.css";
-import heroImage from "../assets/home2.jpeg";
-import heroImage2 from "../assets/home3.png";
-import heroImageMobile from "../assets/home-mobile1.png";
+import heroImage from "../assets/home11.jpeg";
+import heroImage2 from "../assets/home2.png";
+import heroImage3 from "../assets/home3.png";
+import heroImage4 from "../assets/home4.png";
+import heroImageMobile1 from "../assets/home-mobile1.png";
+import heroImageMobile2 from "../assets/home-mobile2.png";
+import heroImageMobile3 from "../assets/home-mobile3.png";
+import heroImageMobile4 from "../assets/home-mobile4.png";
 import { useNavigate } from "react-router-dom";
 import { HOME_PORTFOLIO } from "../constants/HomePortfolio";
 import { FaAward, FaCamera } from "react-icons/fa";
 
 const BACKGROUND_IMAGES = [
-  { desktop: heroImage, mobile: heroImageMobile },
-  { desktop: heroImage2, mobile: heroImageMobile },
+  { desktop: heroImage, mobile: heroImageMobile1 },
+  { desktop: heroImage2, mobile: heroImageMobile2 },
+  { desktop: heroImage3, mobile: heroImageMobile3},
+  { desktop: heroImage4, mobile: heroImageMobile4},
 ];
 
 const HomePage = () => {
