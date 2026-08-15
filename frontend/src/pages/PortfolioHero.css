@@ -71,9 +71,21 @@
   text-transform: uppercase;
   letter-spacing: 3px;
   color: #c9a86a;
-  font-size: 13px;
+  font-size: clamp(12px, 1vw, 13px);
   font-weight: 300;
-  margin-top: -20px; 
+  margin-top: -20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35); 
+}
+.portfolio-hero-subtitle::before,
+.portfolio-hero-subtitle::after {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
 }
 
 .portfolio-hero-title {
@@ -101,12 +113,15 @@
 }
 
 .portfolio-hero-description {
-  font-family: "playfair display", sans-serif;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
   font-size: clamp(14px, 1.1vw, 16px);
   line-height: 1.6;
+  letter-spacing: 0.3px;
   margin-top: 20px;
   color: rgba(250, 247, 241, 0.85);
   font-weight: 400;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .anim-item {

@@ -87,7 +87,8 @@ const HomePage = () => {
             style={{ "--delay": "0.7s" }}
             onClick={() => navigate("/portfolio")}
           >
-            <span>Explore Portfolio →</span>
+            <span>Explore Portfolio</span>
+            <span className="btn-arrow" aria-hidden="true">→</span>
           </button>
         </div>
         <div className="scroll-indicator">
