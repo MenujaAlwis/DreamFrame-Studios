@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ServicesHero.css";
-import heroImage from "../assets/services2.png";
-import heroImageMobile from "../assets/services-mobile1.png";
+import heroImage from "../assets/services2.webp";
+import heroImageMobile from "../assets/services-mobile1.webp";
 import { useNavigate } from "react-router-dom";
 
 const ServicesHero = () => {

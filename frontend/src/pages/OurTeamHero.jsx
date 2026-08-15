@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './OurTeamHero.css';
-import bg from '../assets/ourteamhero.png';
-import bgMobile from '../assets/ourteam-mobile.png';
+import bg from '../assets/ourteamhero.webp';
+import bgMobile from '../assets/ourteam-mobile.webp';
 
 const team = [
   {

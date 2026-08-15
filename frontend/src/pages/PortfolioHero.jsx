@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./PortfolioHero.css";
-import heroImage from "../assets/portfolio3.png";
-import heroImageMobile from "../assets/portfolio2-mobile.png";
+import heroImage from "../assets/portfolio3.webp";
+import heroImageMobile from "../assets/portfolio2-mobile.webp";
 import { useNavigate } from "react-router-dom";
 
 const PortfolioHero = () => {

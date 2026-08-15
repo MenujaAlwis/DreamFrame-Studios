@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ContactUsHero.css";
-import heroImage from "../assets/contactus1.png";
-import heroImageMobile from "../assets/contactus-mobile1.png";
+import heroImage from "../assets/contactus1.webp";
+import heroImageMobile from "../assets/contactus-mobile1.webp";
 import { useNavigate } from "react-router-dom";
 
 const ContactUsHero = () => {
