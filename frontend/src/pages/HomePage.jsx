@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./HomePage.css";
-import heroImage from "../assets/home11.jpeg";
-import heroImage2 from "../assets/home2.png";
+import heroImage from "../assets/home11.png";
+import heroImage2 from "../assets/home2.jpeg";
 import heroImage3 from "../assets/home3.png";
 import heroImage4 from "../assets/home4.png";
 import heroImageMobile1 from "../assets/home-mobile1.png";
@@ -73,14 +73,14 @@ const HomePage = () => {
             Timeless Photography
           </p>
           <h1 className="hero-title anim-item" style={{ "--delay": "0.3s" }}>
-            Preserve
+            <span className="hero-title-main">Preserve</span>
             <br />
             What Matters Most
           </h1>
           <p className="hero-description anim-item" style={{ "--delay": "0.5s" }}>
-            Natural, Authentic, and Timeless
+            Natural, Authentic, and Timeless images
             <br />
-            images that tell your story beautifully.
+            that tell your story beautifully.
           </p>
           <button
             className="portfolio-btn anim-item"
@@ -90,7 +90,32 @@ const HomePage = () => {
             <span>Explore Portfolio →</span>
           </button>
         </div>
+        <div className="scroll-indicator">
+          <div className="scroll-mouse">
+            <div className="scroll-dot"></div>
+          </div>
+          <span>SCROLL TO EXPLORE</span>
+        </div>
 
+        <div className="hero-socials">
+          <a
+            href="https://instagram.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            INSTAGRAM
+          </a>
+
+          <span>•</span>
+
+          <a
+            href="https://facebook.com/yourpage"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            FACEBOOK
+          </a>
+        </div>
         {/*<div className="hero-bottom-card">
           {HOME_PORTFOLIO.map((item, i) => {
             const Icon = item.icon;

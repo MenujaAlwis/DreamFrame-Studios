@@ -32,9 +32,12 @@ const Mission = () => {
     <div ref={missionRef} className="mission-section">
 
       <div className="mission-container">
-
+        <p className="mission-label">
+          OUR PROMISE
+        </p>
         <p className={`mission-text mission-text-first ${isVisible ? 'show' : ''}`}>
-          We don't just take photos — we preserve emotions, stories, and moments that can never be repeated.
+          We don't just take photos <br /> 
+          <span className='colouredtext'>We preserve emotions, stories, and moments that can never be repeated.</span>
         </p>
 
         <div className={`mission-image-container ${isVisible ? 'show' : ''}`}>
@@ -45,7 +48,8 @@ const Mission = () => {
         </div>
 
         <p className={`mission-text mission-text-second ${isVisible ? 'show delay' : ''}`}>
-          From weddings to graduations, birthdays to family gatherings, we turn your memories into timeless visual art.
+          From weddings to graduations, birthdays to family gatherings<br /> 
+          <span className='colouredtext italic-text'>We turn your memories into timeless visual art.</span>
         </p>
 
       </div>

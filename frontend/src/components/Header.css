@@ -11,8 +11,14 @@ body {
 
   background: transparent;
 
-  transition: transform 0.4s ease, background 0.4s ease,
-    top 0.4s ease, box-shadow 0.4s ease;
+  
+
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease,
+    top 0.4s ease,
+    box-shadow 0.4s ease;
+
   transform: translateY(0);
 }
 
@@ -67,11 +73,12 @@ body {
 }
 
 .nav-link:hover {
-  color: #cfcdcd;
+  color: #f7deb0;
 }
 
 .nav-link.active {
-  border-bottom: 2px solid #e1e1e1;
+  border-bottom: 2px solid #c9a86a;
+  color: #f7deb0;
 }
 
 .book-session-btn {
@@ -324,7 +331,17 @@ body {
 .site-header.scrolled .menu-line {
   color: #222;
 }
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .site-header,
   .header-content,

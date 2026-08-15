@@ -58,6 +58,32 @@ const PortfolioHero = () => {
             <span>Explore Work →</span>
           </button>
         </div>
+        <div className="scroll-indicator">
+          <div className="scroll-mouse">
+            <div className="scroll-dot"></div>
+          </div>
+          <span>SCROLL TO EXPLORE</span>
+        </div>
+
+        <div className="hero-socials">
+          <a
+            href="https://instagram.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            INSTAGRAM
+          </a>
+
+          <span>•</span>
+
+          <a
+            href="https://facebook.com/yourpage"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            FACEBOOK
+          </a>
+        </div>
       </section>
     </>
   );
