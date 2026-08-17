@@ -28,7 +28,10 @@ router.put(
   '/:id',
   protect,
   authorizeRoles('admin'),
-  upload.none(), 
+  upload.fields([
+    { name: 'coverImage', maxCount: 1 },
+    { name: 'media', maxCount: 20 },
+  ]),
   updatePortfolioItem
 );
 

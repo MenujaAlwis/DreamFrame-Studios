@@ -1,7 +1,13 @@
+/* ===================================================================
+   EditPortfolioModal – matches the admin dark-glass design system
+   =================================================================== */
+
 .edit-portfolio-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,23 +15,49 @@
 }
 
 .edit-portfolio-box {
-  width: 90%;
-  max-width: 500px;
+  width: 92%;
+  max-width: 620px;
+  max-height: 85vh;
+  overflow-y: auto;
   background: #ffffff;
-  color: #fff;
-  padding: 25px;
-  border-radius: 12px;
+  padding: 32px 28px;
+  border-radius: 16px;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-  animation: editPortfolioFadeIn 0.2s ease-in-out;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  animation: editPortfolioFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Scrollbar styling */
+.edit-portfolio-box::-webkit-scrollbar {
+  width: 5px;
+}
+.edit-portfolio-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+.edit-portfolio-box::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 106, 0.3);
+  border-radius: 10px;
+}
+
+@keyframes editPortfolioFadeIn {
+  from {
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ---- Header ---- */
 .edit-portfolio-box h2 {
   color: #373737;
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
-  font-size: 35px !important;
-  margin-bottom: 20px;
+  font-size: 32px !important;
+  margin-bottom: 24px;
+  text-align: center;
 }
 
 .edit-portfolio-box h2::after {
@@ -33,73 +65,391 @@
   display: block;
   width: 50px;
   height: 1px;
-  margin: 8px auto 0px;
+  margin: 8px auto 0;
   background-color: #cfbaa4;
 }
 
-@keyframes editPortfolioFadeIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
+/* ---- Close button ---- */
 .edit-portfolio-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: transparent;
-  border: none;
-  font-size: 22px;
-  color: #373737;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  font-size: 18px;
+  color: #666;
   cursor: pointer;
-  opacity: 0.7;
-  transition: 0.2s;
+  transition: all 0.2s ease;
 }
 
 .edit-portfolio-close:hover {
-  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
 }
 
+/* ---- Error ---- */
+.edit-portfolio-error {
+  padding: 10px 14px;
+  background: rgba(255, 59, 59, 0.08);
+  border: 1px solid rgba(255, 59, 59, 0.2);
+  border-radius: 8px;
+  color: #d32f2f;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+/* ---- Form ---- */
 .edit-portfolio-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
-.edit-portfolio-form input,
-.edit-portfolio-form select {
-  padding: 15px 10px;
-  border-radius: 6px;
-  border: 1px solid #dcdada;
-  background: #ffffff;
-  color: rgb(34, 34, 34);
+/* ---- Field group ---- */
+.edit-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edit-field-group label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-portfolio-form .edit-field-group input,
+.edit-portfolio-form .edit-field-group select {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #e0dcd8;
+  background: #fafafa;
+  color: #333;
   font-size: 14px;
   font-family: "Playfair Display", serif;
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.edit-portfolio-form input:focus,
-.edit-portfolio-form select:focus {
-  border-color: #007bff;
+.edit-portfolio-form .edit-field-group input:focus,
+.edit-portfolio-form .edit-field-group select:focus {
+  border-color: #cfbaa4;
+  box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.1);
 }
 
-.edit-portfolio-form button[type="submit"] {
-  margin-top: 10px;
-  padding: 15px 10px;
-  border: none;
-  border-radius: 6px;
-  background: #007bff;
-  color: white;
-  font-weight: 600;
+/* ---- Cover Image Section ---- */
+.edit-cover-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.edit-cover-preview {
+  position: relative;
+  width: 100px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0dcd8;
+  flex-shrink: 0;
+}
+
+.edit-cover-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edit-cover-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  padding: 2px 6px;
+  background: #cfbaa4;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+.edit-replace-cover-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid #e0dcd8;
+  border-radius: 8px;
+  color: #666;
+  font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-.edit-portfolio-form button[type="submit"]:hover {
-  background: #0060d1;
+.edit-replace-cover-btn:hover {
+  border-color: #cfbaa4;
+  color: #cfbaa4;
+  background: rgba(201, 168, 106, 0.04);
+}
+
+/* ---- Media Count ---- */
+.edit-media-count {
+  font-weight: 400;
+  font-size: 11px;
+  color: #aaa;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ---- Media Grid ---- */
+.edit-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.edit-media-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0dcd8;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.edit-media-thumb:hover {
+  border-color: #cfbaa4;
+  transform: scale(1.03);
+}
+
+.edit-media-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.edit-media-thumb.new-media {
+  border-color: rgba(201, 168, 106, 0.4);
+}
+
+/* ---- Remove button on media thumb ---- */
+.edit-media-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.edit-media-thumb:hover .edit-media-remove {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.edit-media-remove:hover {
+  background: #e53935;
+}
+
+/* ---- Removed items (undo zone) ---- */
+.edit-removed-items {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 59, 59, 0.04);
+  border: 1px dashed rgba(255, 59, 59, 0.2);
+  border-radius: 8px;
+}
+
+.edit-removed-label {
+  font-size: 11px;
+  color: #d32f2f;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.edit-removed-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.edit-removed-thumb {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 59, 59, 0.25);
+  opacity: 0.5;
+}
+
+.edit-removed-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+
+.edit-undo-remove {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.edit-removed-thumb:hover {
+  opacity: 1;
+}
+
+.edit-removed-thumb:hover .edit-undo-remove {
+  opacity: 1;
+}
+
+/* ---- New media section ---- */
+.edit-new-media-section {
+  margin-top: 10px;
+}
+
+.edit-new-label {
+  font-size: 11px;
+  color: #cfbaa4;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ---- Add media button ---- */
+.edit-add-media-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  background: transparent;
+  border: 1px dashed #d4cfc9;
+  border-radius: 8px;
+  color: #999;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-add-media-btn:hover {
+  border-color: #cfbaa4;
+  color: #cfbaa4;
+  background: rgba(201, 168, 106, 0.04);
+}
+
+/* ---- Submit button ---- */
+.edit-portfolio-form button[type="submit"] {
+  margin-top: 8px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #cfbaa4;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+}
+
+.edit-portfolio-form button[type="submit"]:hover:not(:disabled) {
+  background: #b8a48f;
+}
+
+.edit-portfolio-form button[type="submit"]:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.edit-portfolio-form button[type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.edit-portfolio-form button[type="submit"].loading {
+  background: #b8a48f;
+}
+
+/* ---- Loading spinner ---- */
+.edit-loading-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.edit-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: editSpin 0.6s linear infinite;
+}
+
+@keyframes editSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+  .edit-portfolio-box {
+    padding: 24px 18px;
+    max-height: 90vh;
+  }
+
+  .edit-media-grid {
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  }
+
+  .edit-cover-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

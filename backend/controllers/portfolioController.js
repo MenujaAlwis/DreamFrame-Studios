@@ -1,5 +1,4 @@
 const PortfolioService = require('../services/PortfolioService');
-const Portfolio = require('../models/Portfolio');
 
 const getPortfolioItems = async (req, res, next) => {
   try {
@@ -77,7 +76,7 @@ const updatePortfolioItem = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const { title, category, eventDate } = req.body || {};
+    const { title, category, eventDate, removedMedia } = req.body || {};
 
     if (!title || !category || !eventDate) {
       return res.status(400).json({
@@ -86,18 +85,30 @@ const updatePortfolioItem = async (req, res, next) => {
       });
     }
 
-    const item = await Portfolio.findByIdAndUpdate(
-      id,
-      { title, category, eventDate },
-      { new: true }
-    );
-
-    if (!item) {
-      return res.status(404).json({
-        success: false,
-        message: 'Portfolio not found'
-      });
+    // Parse the removedMedia JSON string into an array of Cloudinary public IDs
+    let removedMediaIds = [];
+    if (removedMedia) {
+      try {
+        removedMediaIds = JSON.parse(removedMedia);
+      } catch (e) {
+        return res.status(400).json({
+          success: false,
+          message: 'Invalid removedMedia format'
+        });
+      }
     }
+
+    const newCoverImageFile = req.files?.coverImage?.[0] || null;
+    const newMediaFiles = req.files?.media || [];
+
+    const item = await PortfolioService.updatePortfolioItem(id, {
+      title,
+      category,
+      eventDate,
+      removedMediaIds,
+      newMediaFiles,
+      newCoverImageFile,
+    });
 
     res.status(200).json({
       success: true,
