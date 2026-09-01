@@ -54,7 +54,7 @@ const PortfolioGrid = ({ sectionRef }) => {
 
         setItems(data.items || []);
       } catch (err) {
-        setError(err.message);
+        setError('We\'re having trouble loading a few items right now. Please try again later.');
       } finally {
         setLoading(false);
       }
